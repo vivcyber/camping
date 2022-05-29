@@ -48,6 +48,11 @@ if(empty($row)){
                             <?= $row['productcategory'] ?>   
                         </div>
 
+                        <div class="my-5">
+                            <h6 class="m-0">商品顏色</h6>
+                            <?= $row['productcolor'] ?>   
+                        </div>
+
                         <div class="my-4">
                             <h6 class="m-0">商品描述</h6>
                             <?= $row['productinfo'] ?>   

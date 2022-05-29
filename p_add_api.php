@@ -19,6 +19,7 @@ $output = [
 
 $productname = $_POST['productname'];
 $productcategory = $_POST['productcategory'] ?? '';
+$productcolor= $_POST['productcolor'] ?? '';
 $productinfo = $_POST['productinfo'] ?? '';
 $productinfo = $_POST['productimg'] ?? '';
 $productinfo = $_POST['productprice'] ?? '';
@@ -40,7 +41,7 @@ $productimg3= $_POST['productimg3'] ?? '';
 
 
 
-$sql= "INSERT INTO `camproduct2`(`productname`, `productcategory`, `productinfo`, `productimg`, `productprice`, `productleft`, `productspec`, `productinclude`, `productimg2`, `productimg3`) VALUES (?,?,?,?,?,?,?,?,?,?)";
+$sql= "INSERT INTO `camproduct2`(`productname`, `productcategory`, `productcolor`,`productinfo`, `productimg`, `productprice`, `productleft`, `productspec`, `productinclude`, `productimg2`, `productimg3`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 
 
 
@@ -49,6 +50,7 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute([
     $_POST['productname'],
     $_POST['productcategory'],
+    $_POST['productcolor'],
     $_POST['productinfo'],
     $_POST['productimg'],
     $_POST['productprice'],

@@ -71,6 +71,7 @@ if ($totalRows > 0) {
                 <th scope="col p-3">產品名稱</th>
                 <th scope="col p-3">產品封面</th>
                 <th scope="col p-3">分類</th>
+                <th scope="col p-3">顏色</th>
                 <th scope="co p-3l">產品詳情</th>
                 <th scope="col p-3">價格</th>
                 <th scope="col p-3">庫存</th>
@@ -98,6 +99,7 @@ if ($totalRows > 0) {
                     <td class="p-3"><?= htmlentities($r['productname']) ?></td>
                     <td class="p-3"><img src="./imgs/product/<?= $r['productimg'] ?>.jpg" alt="" class="card-img"></td>
                     <td class="p-3"><?= $r['productcategory'] ?></td>
+                    <td class="p-3"><?= $r['productcolor'] ?></td>
                     <td class="p-3"><?= $r['productinfo'] ?></td>
                     <td class="p-3"><?= $r['productprice'] ?></td>
                     <td class="p-3"><?= $r['productleft'] ?></td>

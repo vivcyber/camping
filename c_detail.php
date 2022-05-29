@@ -55,10 +55,16 @@ if(empty($row)){
           <div class="discrib ">
               <h4> <?= $row['productname'] ?>   </h4>
               
-              <h3 class="badge bg-secondary text-wrap px-4 fs-6 fw-normal" ><?= $row['productcategory'] ?></h3>
+              <h5 class="text-secondary fw-normal" ><?= $row['productcategory'] ?></h5>
+
+              
 
               <h5 class="border-bottom border-primary py-3 text-primary">商品描述</h5>
               <p class="mt-3"><?= $row['productinfo'] ?></p>
+
+
+              <h3 class="badge bg-white text-wrap px-4 fs-6 fw-normal border border-dark text-dark" ><?= $row['productcolor'] ?></h3>
+              
 
               <br>
               <br>

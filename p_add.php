@@ -27,11 +27,45 @@ $title = '加商品';
                             <input type="text" class="form-control" id="productname" name="productname" required>
                             <div class="form-text red"></div>
                         </div>
+
+
                         <div class="mb-3">
                             <label for="productcategory" class="form-label">商品分類</label>
-                            <input type="productcategory" class="form-control" id="productcategory" name="productcategory">
+                            <select name="productcategory" id="productcategory" class="form-control">
+                                <option value="">--商品種類--</option>
+                                <option value="餐廚">餐廚</option>
+                                <option value="桌椅">桌椅</option>
+                                <option value="帳篷">帳篷</option>
+                            </select>
                             <div class="form-text red"></div>
                         </div>
+
+
+                        <div class="mb-3">
+                            <label for="productcolor" class="form-label">商品顏色</label> <br>
+                            <div class="color1">
+                                <input class="form-check-input" type="radio" id="productcolor" name="productcolor" value="黑色">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                黑色
+                                </label>
+                            </div>
+                            <div class="color1">
+                                <input class="form-check-input" type="radio" id="productcolor" name="productcolor" value="沙色">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                沙色
+                                </label>
+                            </div>
+                            <div class="color1">
+                                <input class="form-check-input" type="radio" id="productcolor" name="productcolor" value="綠色">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                綠色
+                                </label>
+                            </div>
+                            <div class="form-text red"></div>
+                        </div>
+                    
+
+
                         <div class="mb-3">
                             <label for="productinfo" class="form-label">商品描述</label>
                             <textarea class="form-control" name="productinfo" id="pproductinfo" cols="30" rows="3"></textarea>
