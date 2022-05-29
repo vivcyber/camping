@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="fontawesome/css/all.css" />
+        <link rel="stylesheet" href="./theme_test.css">
+
+        <title>前台商品頁</title>
+        <style>
+            body{
+                background: url(./imgs/pexels-lumn-167685.jpg);
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+            #logo{
+                width: 30px;
+                filter: invert(1);
+            }
+            
+        </style>
+    </head>
+
+    <body>
+        
+        <div class="container">
+            <ul class="nav mt-3">
+                  <li>  <img src="./imgs/tent (1).png" alt="" id="logo"></li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">
+                    
+                      這裡是露營的假前台
+                    </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">會員申辦</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">商品頁</a>
+                </li>
+              </ul>
+           
+        </div>
+
+        <div class="container">
+            <div class="productcard d-flex flex-wrap justify-content-center mt-5" id="productcard">
+         
+            </div>               
+        </div>
+
+
+
+        <div class="footer border-top border-white">
+            <p class="text-white m-0  m-5 text-center ">@這是露營組的假前台</p>
+
+        </div>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"
+        ></script>
+        <script>
+            let data;
+            const renderPageBtn = (pageNum) => {
+                return `
+                    <li class="page-item ">
+                        <a class="page-link" href="#">${pageNum}</a>
+                    </li>
+                `;
+            };
+            const renderPagination = (page = 1, totalPages = 10) => {
+                let str = "";
+                for (let i = 1; i <= 5; i++) {
+                    str += renderPageBtn(i);
+                }
+                document.querySelector(".pagination").innerHTML = str;
+            };
+            const renderRow = ({
+                sid,
+                productname,
+                productcategory,
+                productinfo,
+                productimg,
+                productprice,
+                productleft,
+            }) => {
+                return `<div class="card col-3 d-flex m-1 mb-5 flex-column justify-content-between ">
+                <img src="./imgs/product/${productimg}.jpg" alt="" class="card-img-top">
+                <div class="cardbody m-2">
+                <h5>${productname}</h5>
+                <h6 class="text-primary">${productcategory}</h6>
+                <p style="height:50px;" class=" card-text text-secondary overflow-auto">${productinfo}</p>
+                </div>
+                <div class="cardfoot m-3 d-flex justify-content-between align-items-end ">
+                    <div class="right">
+                   <p class="text-primary">商品價格</p>
+                   <h5>${productprice}</h5>
+                   </div>
+                   <div class="left">
+                   <p class="text-primary">剩餘數量</p>
+                   <h5>${productleft}</h5>
+                   </div>
+                </div>
+                <button type="button" class="btn btn-primary m-2">+加入購物車</button>
+            </div>
+                `
+            };
+
+            function renderTable() {
+                const tbody = document.getElementById("productcard")
+                let html = "";
+                if (data.rows && data.rows.length) {
+                    html = data.rows.map((r) => renderRow(r)).join("");
+                }
+                tbody.innerHTML = html;
+            }
+
+            fetch("p_list_api.php?page=1")
+                .then((r) => r.json())
+                .then((obj) => {
+                    data = obj;
+                    renderTable();
+                    renderPagination();
+                });
+        </script>
+    </body>
+</html>
