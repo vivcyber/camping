@@ -91,7 +91,8 @@ if(empty($row)){
               <p class="mt-3"><?= $row['productspec'] ?></p>
             <h5 class="border-bottom border-primary py-3 text-primary">商品包含</h5>
               <p class="mt-3"><?= $row['productinclude'] ?></p>
- </div>
+    </div>
+</div>
 
 
 

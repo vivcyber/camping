@@ -18,6 +18,13 @@ $title = '商品';
 </style>
 
 <div class="container">
+
+           <div class="filter text-center mt-5">
+               <button class="filter-btn btn btn-outline-info px-5" data-id="all">all</button>
+               <button class="filter-btn btn btn-outline-info px-5" data-id="餐廚">餐廚</button>
+               <button class="filter-btn btn btn-outline-info px-5" data-id="桌椅">桌椅</button>
+               <button class="filter-btn btn btn-outline-info px-5" data-id="帳篷">帳篷</button>
+           </div>
     
             <div class="productcard d-flex flex-wrap justify-content-center mt-5" id="productcard">
          
@@ -72,6 +79,8 @@ $title = '商品';
             </div>
                 `
             };
+
+          
 
             function renderTable() {
                 const tbody = document.getElementById("productcard")

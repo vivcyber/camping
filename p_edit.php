@@ -146,6 +146,9 @@ if(empty($row)){
 <script>
 
     const row = <?= json_encode($row, JSON_UNESCAPED_UNICODE); ?>;
+    
+
+
 
     async function sendData() {
         // TODO: 欄位檢查, 前端的檢查
