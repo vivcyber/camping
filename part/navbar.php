@@ -41,7 +41,7 @@ if (!isset($pageName)) {
               <button type="button" class="btn btn-outline-light w-100 border-0">
               <a class="text-dark text-decoration-none<?= $pageName == 'ab-list' ? 'active' : '' ?>" href="campland_list.php">
               <i class="fa-solid fa-location-dot"></i>
-              園區導覽
+              周邊景點
               </a>
               </button>
               <button type="button" class="btn btn-outline-light w-100 border-0">
