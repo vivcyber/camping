@@ -48,3 +48,8 @@ Thumbs.db
 *.mov
 *.wmv
 
+.gitignore
+
+p_add_upload_api.php
+
+p_add.php

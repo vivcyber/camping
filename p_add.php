@@ -110,6 +110,12 @@ $title = '加商品';
 
                         <button type="submit" class="btn btn-primary text-white">新增</button>
                     </form>
+                    <!-- <form action="p_add_upload_api.php" method="post" enctype="multipart/form-data">
+                     Select Image File to Upload:
+                    <input type="file" name="file" class="form-control my-3">
+                    <input type="submit" name="submit" value="Upload" class="btn btn-outline-secondary my-1">
+                    </form> -->
+                    
                     <div id="info-bar" class="alert alert-success p-2" role="alert" style="display:none;">
                         資料新增成功
                     </div>
