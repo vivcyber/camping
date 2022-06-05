@@ -54,7 +54,7 @@ $ID_Comment = $_POST['ID_Comments'] ?? '';
 
 // TODO: 其他的欄位檢查
 
-$sql = "UPDATE `Room_Order` SET `Date`=?, `Room_Type`=?, `Room_Spec`=?, `Price`=?, `ID_Comments`=?, WHERE `OrderNum` = $OrderNum";
+$sql = "UPDATE `room_order` SET `Date`=?, `Room_Type`=?, `Room_Spec`=?, `Price`=?, `ID_Comments`=? WHERE `OrderNum` = $sid";
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute([
