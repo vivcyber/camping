@@ -1,4 +1,4 @@
-<?php require __DIR__ . '/part/connect_db.php';
+<?php require($_SERVER['DOCUMENT_ROOT']."/campppppp/part/connect_db.php");
 
 $pageName = 'R_edit'; 
 $title = '房間類型_編輯頁面';
@@ -26,13 +26,30 @@ if($totalRows > 0){
     }
 }
 
-$sql = sprintf('SELECT * FROM Room_Order WHERE CONCAT(Date,Room_Type,Price,ID_Comments) ORDER BY OrderNum DESC LIMIT %s, %s, ($page -1) * $perPage, $perPage');
+$sql = sprintf("SELECT * FROM address_book ORDER BY sid DESC LIMIT %s , %s", ($page - 1) * $perPage, $perPage);
+//追加 ORDER BY 排序
+$rows = $pdo->query($sql)->fetchAll();
+//SELECT * FROM address_book LIMIT 0,5 這樣也是5筆，可是這樣可以選擇從第幾筆取到第幾筆
+//MVC 資料處理，呈現，跟客戶的互動
 
+if (!empty($_GET['search'])) {
+    //如果搜尋的input不是空白的值時
+    $search = $_GET['search'];
+    //$search就等於拿到‘search的值’
+    $query = $pdo->prepare("SELECT * FROM address_book WHERE CONCAT(name,email,mobile,birthday,address) LIKE :keyword ORDER BY sid DESC"); //這裡就是用pdo準備好 SQL取值的寫法。用concat一口氣全部都拿然後用keyword定位。
+    $query->bindValue(':keyword', '%' . $search . '%', PDO::PARAM_STR);
+    //取出來的值我讓他變成string然後用execute演算。
+    $query->execute();
+    $results = $query->fetchAll();
+    //結果是，這個取出來的值，我全都要。
+    $rows2 = $query->rowCount();
+    //再把它排列出來。
+}
 
 ?>
 
-<?php include __DIR__ . '/part/html-head.php' ?>
-<?php include __DIR__ . '/part/navbar.php' ?>
+<?php include($_SERVER['DOCUMENT_ROOT']."/campppppp/part/html-head.php"); ?>
+<?php include($_SERVER['DOCUMENT_ROOT']."/campppppp/part/navbar.php"); ?>
 
 <div class="container">
     <div class="row">
@@ -88,6 +105,7 @@ $sql = sprintf('SELECT * FROM Room_Order WHERE CONCAT(Date,Room_Type,Price,ID_Co
                 <th scope="col">Order_No</th>
                 <th scope="col">預定日期</th>
                 <th scope="col">房型</th></th>
+                <th scope="col">房間配備</th></th>
                 <th scope="col">價格</th>
                 <th scope="col">會員留言</th>
                 <th scope="col"><i class="fa-solid fa-file-pen"></i></th>
@@ -106,6 +124,7 @@ $sql = sprintf('SELECT * FROM Room_Order WHERE CONCAT(Date,Room_Type,Price,ID_Co
                         <td><?= $items['OrderNum']; ?></td>
                         <td><?= $items['Date']; ?></td>
                         <td><?= $items['Room_Type']; ?></td>
+                        <td><?= $items['Room_Spec']; ?></td>
                         <td><?= $items['Price']; ?></td>
                         <td><?= $items['ID_Comments']; ?></td>
                         <td><a href="R_edit_api.php?sid=<?= $items['OrderNum'] ?>">
@@ -130,7 +149,8 @@ $sql = sprintf('SELECT * FROM Room_Order WHERE CONCAT(Date,Room_Type,Price,ID_Co
                         
                         <td><?= $r['OrderNum'] ?></td>
                         <td><?= $r['Date'] ?></td>
-                        <td><?= htmlentities($r['Room_Type']) ?></td>
+                        <td><?= $r['Room_Type'] ?></td>
+                        <td><?= $r['Room_Spec'] ?></td>
                         <td><?= $r['Price'] ?></td>
                         <td><?= $r['ID_Comments'] ?></td>
                         <!-- <td><?= $r['address'] ?></td>
@@ -159,8 +179,7 @@ $sql = sprintf('SELECT * FROM Room_Order WHERE CONCAT(Date,Room_Type,Price,ID_Co
 </div>
 
 
-<?php include __DIR__ . '/part/scripts.php' ?>
-
+<?php include($_SERVER['DOCUMENT_ROOT']."/campppppp/part/scripts.php"); ?>
 <script>
     function delete_it(sid) {
         if (confirm(`確定要刪除編號為 ${sid} 的資料嗎？`)) {
@@ -169,4 +188,4 @@ $sql = sprintf('SELECT * FROM Room_Order WHERE CONCAT(Date,Room_Type,Price,ID_Co
     }
 </script>
 
-<?php include __DIR__ . '/part/html-foot.php' ?>
+<?php include($_SERVER['DOCUMENT_ROOT']."/campppppp/part/html-foot.php"); ?>

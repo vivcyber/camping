@@ -1,22 +1,22 @@
 <?php include __DIR__ . '/part/connect_db.php';
-$pageName = 'ab_edit';
+$pageName = 'Room_edit';
 $title = '編輯通訊錄資料 - 拉拉的網站';
 
 
 //基本上，這裡做修改頁面的邏輯是跳到修改頁面的方式去呈現。
 //所以會跟ab-add.php 的格式一樣，所以就拿來做修改。
 //這裡我們先取得sid的值。然後再去判斷如果沒有sid的值，那我們就不變。直接不處理。
-$sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
+$sid = isset($_GET['OrderNum']) ? intval($_GET['OrderNum']) : 0;
 if (empty($sid)) {
-    header('Location: ab_list.php');
+    header('Location: Rent_room_back.php');
     exit;
 }
 //因為上面取得到sid的值所以才會接下來到這裡。
 //設定row 就是 sql的語法。如果sql抓到空值，我們也不幹了。就直接保持原來就好。
 
-$row = $pdo->query("SELECT * FROM address_book WHERE sid=$sid")->fetch();
+$row = $pdo->query("SELECT * FROM Room_Order WHERE sid=$sid")->fetch();
 if (empty($row)) {
-    header('Location: ab_list.php');
+    header('Location: Rent_room_back.php');
     exit;
 }
 
@@ -40,29 +40,51 @@ if (empty($row)) {
             <div class="card">
                 <div class=" card-body">
                 <h5 class="card-title">編輯資料</h5>
-                <form name="form1" onsubmit="sendData(); return false;" novalidate>
+                <form name="form1" enctype="multipart/form-data" onsubmit="sendData(); return false;" novalidate>
                     <!-- 如果看到data- 的開頭等於是用戶自己設定。基本上是不想把這個刪掉，所以前面加data- 是ok的 -->
                     <!-- return false 的意思是解除預設行為 -->
                     <input type="hidden" name="sid" value="<?= $row['sid'] ?>">
 
                     <div class="mb-3">
                         <!-- 這裡的sendData 運用的方式是 AJAX的格式 -->
-                        <label for="OrderNum" class="form-label">* OrderNumber</label>
-                        <input type="text" class="form-control" id="OrderNum" name="OrderNum" value="<?= htmlentities($row['OrderNum']) ?>" required>
+                        <label for="OrderNum" class="form-label">OrderNumber</label>
+                        <input type="text" class="form-control" id="OrderNum" name="OrderNum" readonly="readonly">
                         <div class="form-text text-danger"></div>
                     </div>
 
                     <div class="mb-3">
-                        <label for="Date" class="form-label">Date</label>
+                        <label for="Date" class="form-label">* Date</label>
                         <input type="date" class="form-control" id="Date" name="Date" 
                         pattern="^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$" value="<?= $row['Date'] ?>">
                         <div class="form-text text-danger"></div>
                     </div>
 
                     <div class="mb-3">
-                        <label for="Room_Type" class="form-label">Room_Type</label>
+                        <label for="Room_Type" class="form-label">* Room_Type</label>
                         <input type="text" class="form-control" id="Room_Type" name="Room_Type" value="<?= $row['Room_Type'] ?>">
                         <div class="form-text text-danger"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="Room_Spec" class="form-label">Room_Spec</label>
+                        <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="cleaningStaff">清潔用品
+                        <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="fridge">冰箱
+                        <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="hotpot">電熱水壺
+                        <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="sheet">床單
+                        <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="wardrobe">衣櫃&衣櫃
+                        <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="toiletpaper">衛生紙
+                        <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="toilet">廁所
+                        <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="hairdryer">吹風機
+                        <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="tub">浴缸
+                        <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="washroom">沐浴間
+                        <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="towel">毛巾
+                        <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="slipper">拖鞋
+                        <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="desk">書桌
+                        <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="televsion">平面電視
+                        <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="phone">電話
+                        <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="channel">有線頻道
+
+                        <!-- <div class="form-text text-danger"></div> -->
                     </div>
 
                     <div class="mb-3">
@@ -174,7 +196,7 @@ if (empty($row)) {
         const result = await r.json();
         console.log(result);
         info_bar.style.display = 'block'; //顯示alert
-        $come_from = 'Rent_room.php';
+        $come_from = 'Rent_room_back.php';
         if (!empty($_SERVER['HTTP_REFERER'])) {
             $come_from = $_SERVER['HTTP_REFERER'];
         }
