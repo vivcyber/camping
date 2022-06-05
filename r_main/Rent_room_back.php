@@ -1,26 +1,26 @@
-<?php require($_SERVER['DOCUMENT_ROOT']."/campppppp/part/connect_db.php");
+<?php require($_SERVER['DOCUMENT_ROOT'] . "/campppppp/part/connect_db.php");
 
-$pageName = 'R_edit'; 
+$pageName = 'R_edit';
 $title = '房間類型_編輯頁面';
 
 $perPage = 20;
 
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 
-if($page < 1) {
+if ($page < 1) {
     header('Location: >page=1');
     exit;
 }
 
 $t_sql = "SELECT COUNT(1) FROM Room_Order";
-$totalRows = $pdo -> query($t_sql) -> fetch(PDO::FETCH_NUM)[0];
+$totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0];
 
 $totalPages = ceil($totalRows / $perPage);
 
 $row = [];
 
-if($totalRows > 0){
-    if($page > $totalPages){
+if ($totalRows > 0) {
+    if ($page > $totalPages) {
         header("Location: ?page= $totalPages");
         exit;
     }
@@ -32,6 +32,7 @@ $rows = $pdo->query($sql)->fetchAll();
 //SELECT * FROM address_book LIMIT 0,5 這樣也是5筆，可是這樣可以選擇從第幾筆取到第幾筆
 //MVC 資料處理，呈現，跟客戶的互動
 
+$row2 = 0;
 if (!empty($_GET['search'])) {
     //如果搜尋的input不是空白的值時
     $search = $_GET['search'];
@@ -45,11 +46,10 @@ if (!empty($_GET['search'])) {
     $rows2 = $query->rowCount();
     //再把它排列出來。
 }
-
 ?>
 
-<?php include($_SERVER['DOCUMENT_ROOT']."/campppppp/part/html-head.php"); ?>
-<?php include($_SERVER['DOCUMENT_ROOT']."/campppppp/part/navbar.php"); ?>
+<?php include($_SERVER['DOCUMENT_ROOT'] . "/campppppp/part/html-head.php"); ?>
+<?php include($_SERVER['DOCUMENT_ROOT'] . "/campppppp/part/navbar.php"); ?>
 
 <div class="container">
     <div class="row">
@@ -57,9 +57,9 @@ if (!empty($_GET['search'])) {
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
                     <li class="page-item <?= $page == 1 ? 'disabled' : '' ?> ">
-                    <a class="page-link" href="?page<?= $page == 1 ?>">
-                    <i class="fa-solid fa-angles-left"></i>    
-                    </a>
+                        <a class="page-link" href="?page<?= $page == 1 ?>">
+                            <i class="fa-solid fa-angles-left"></i>
+                        </a>
                     </li>
                     <li class="page-item <?= $page == 1 ? 'disabled' : '' ?> ">
                         <a class="page-link" href="?page=<?= $page - 1 ?>">
@@ -85,7 +85,7 @@ if (!empty($_GET['search'])) {
                             <i class="fa-solid fa-angles-right"></i>
                         </a>
                     </li>
-                </ul>                    
+                </ul>
             </nav>
             <form action="R_edit.php" method="post">
                 <div class="d-flex" style="height:40px; margin-top: 10px;">
@@ -101,70 +101,69 @@ if (!empty($_GET['search'])) {
     <table class="table table-dark table-hover">
         <thead>
             <tr>
-                
+
                 <th scope="col">Order_No</th>
                 <th scope="col">預定日期</th>
-                <th scope="col">房型</th></th>
-                <th scope="col">房間配備</th></th>
+                <th scope="col">房型</th>
+                </th>
+                <th scope="col">房間配備</th>
+                </th>
                 <th scope="col">價格</th>
                 <th scope="col">會員留言</th>
                 <th scope="col"><i class="fa-solid fa-file-pen"></i></th>
                 <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
-                
+
             </tr>
         </thead>
         <tbody>
             <?php
 
-            if ($rows2 != 0) {
+            if (!empty($rows2)) {
                 foreach ($results as $items) {
             ?>
                     <tr>
-                    
-                        <td><?= $items['OrderNum']; ?></td>
-                        <td><?= $items['Date']; ?></td>
-                        <td><?= $items['Room_Type']; ?></td>
-                        <td><?= $items['Room_Spec']; ?></td>
-                        <td><?= $items['Price']; ?></td>
-                        <td><?= $items['ID_Comments']; ?></td>
-                        <td><a href="R_edit_api.php?sid=<?= $items['OrderNum'] ?>">
-                                <i class="fa-solid fa-file-pen">
-
-                                </i></a></td>
                         <td>
-                            <a href="javascript: delete_it(<?= $items['OrderNum'] ?>)">
+                            <a href="javascript: delete_it(<?= $items['sid'] ?>)">
                                 <i class="fa-solid fa-trash-can"></i>
                             </a>
                         </td>
+                        <td><?= $items['sid']; ?></td>
+                        <td><?= $items['name']; ?></td>
+                        <td><?= $items['email']; ?></td>
+                        <td><?= $items['mobile']; ?></td>
+                        <td><?= $items['birthday']; ?></td>
+                        <td><?= $items['address']; ?></td>
+                        <td><a href="ab-edit.php?sid=<?= $items['sid'] ?>">
+                                <i class="fa-solid fa-file-pen">
+
+                                </i></a></td>
                     </tr>
                 <?php
                 }
-            } else if ($row2 < 0) {
+            } else {
                 ?>
                 <?php foreach ($rows as $r) : ?>
                     <tr>
                         <?php /*
-                    <td><a href="ab-delete.php?sid=<?= $r['sid'] ?>" onclick= "return confirm('確定要刪除編號<?= $r['sid']?>的資料嗎？')">
-                        */ ?>
-                        
-                        <td><?= $r['OrderNum'] ?></td>
-                        <td><?= $r['Date'] ?></td>
-                        <td><?= $r['Room_Type'] ?></td>
-                        <td><?= $r['Room_Spec'] ?></td>
-                        <td><?= $r['Price'] ?></td>
-                        <td><?= $r['ID_Comments'] ?></td>
-                        <!-- <td><?= $r['address'] ?></td>
-                        <td><?= strip_tags($r['address']) ?></td> -->
-                        <!-- 如果有任何tag的<>就會直接做跳脫 -->
-                        <td><a href="R_edit_api.php?sid=<?= $r['OrderNum'] ?>">
-                                <i class="fa-solid fa-file-pen">
-
-                                </i></a></td>
+        <td><a href="ab-delete.php?sid=<?= $r['sid'] ?>" onclick= "return confirm('確定要刪除編號<?= $r['sid']?>的資料嗎？')">
+            */ ?>
                         <td>
                             <a href="javascript: delete_it(<?= $r['sid'] ?>)">
                                 <i class="fa-solid fa-trash-can"></i>
                             </a>
                         </td>
+                        <td><?= $r['sid'] ?></td>
+                        <td><?= htmlentities($r['name']) ?></td>
+                        <td><?= $r['mobile'] ?></td>
+                        <td><?= $r['email'] ?></td>
+                        <td><?= $r['birthday'] ?></td>
+                        <!-- <td><?= htmlentities($r['address']) ?></td> -->
+                        <td><?= strip_tags($r['address']) ?></td>
+                        <!-- 如果有任何tag的<>就會直接做跳脫 -->
+                        <td><a href="ab-edit.php?sid=<?= $r['sid'] ?>">
+                                <i class="fa-solid fa-file-pen">
+
+                                </i></a></td>
                     </tr>
                 <?php endforeach; ?>
             <?php
@@ -179,7 +178,7 @@ if (!empty($_GET['search'])) {
 </div>
 
 
-<?php include($_SERVER['DOCUMENT_ROOT']."/campppppp/part/scripts.php"); ?>
+<?php include($_SERVER['DOCUMENT_ROOT'] . "/campppppp/part/scripts.php"); ?>
 <script>
     function delete_it(sid) {
         if (confirm(`確定要刪除編號為 ${sid} 的資料嗎？`)) {
@@ -188,4 +187,4 @@ if (!empty($_GET['search'])) {
     }
 </script>
 
-<?php include($_SERVER['DOCUMENT_ROOT']."/campppppp/part/html-foot.php"); ?>
+<?php include($_SERVER['DOCUMENT_ROOT'] . "/campppppp/part/html-foot.php"); ?>
