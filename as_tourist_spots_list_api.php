@@ -1,4 +1,4 @@
-<?php require __DIR__ . '/parts/connect_db.php';
+<?php require __DIR__ . '/part/connect_db.php';
 $pageName = 'as_tourist_spots_list_api';
 $title = '周圍景點列表 - 舒營';
 

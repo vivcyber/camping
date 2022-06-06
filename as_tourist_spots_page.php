@@ -1,4 +1,4 @@
-<?php require __DIR__ . './parts/connect_db.php';
+<?php require __DIR__ . './part/connect_db.php';
 $pageName = 'as_tourist_spots_page';
 $title = '周邊景點';
 

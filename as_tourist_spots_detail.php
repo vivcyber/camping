@@ -1,4 +1,4 @@
-<?php require __DIR__ . './parts/connect_db.php';
+<?php require __DIR__ . './part/connect_db.php';
 $pageName = 'as_tourist_spots_detail';
 $title = '景點詳情';
 
@@ -18,8 +18,8 @@ $open = '開放時間：';
 
 ?>
 
-<?php include __DIR__ . '/parts/html-head.php' ?>
-<?php include __DIR__ . '/parts/navbar.php' ?>
+<?php include __DIR__ . '/part/html-head.php' ?>
+<?php include __DIR__ . '/part/navbar.php' ?>
 
 <style>
     .form-control.red {
@@ -55,7 +55,7 @@ $open = '開放時間：';
         </div>
     </div>
 </div>
-<?php include __DIR__ . '/parts/scripts.php' ?>
+<?php include __DIR__ . '/part/scripts.php' ?>
 <script>
     // const event = document.card1.event;
 
@@ -71,4 +71,4 @@ $open = '開放時間：';
     // TODO:要如何讓他判定更為正確（有網頁的時候不會跳出alert並直接跳轉）
     // 跳轉頁面失靈?
 </script>
-<?php include __DIR__ . '/parts/html-foot.php' ?>
+<?php include __DIR__ . '/part/html-foot.php' ?>

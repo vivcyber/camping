@@ -1,10 +1,10 @@
-<?php require __DIR__ . '/parts/connect_db.php';
+<?php require __DIR__ . '/part/connect_db.php';
 $pageName = 'as_tourist_spots_add';
 $title = '新增景點資料 - 舒營';
 
 ?>
-<?php include __DIR__ . '/parts/html-head.php' ?>
-<?php include __DIR__ . '/parts/navbar.php' ?>
+<?php include __DIR__ . '/part/html-head.php' ?>
+<?php include __DIR__ . '/part/navbar.php' ?>
 <style>
     .form-control.red {
         border: 1px solid red;
@@ -113,7 +113,7 @@ $title = '新增景點資料 - 舒營';
     </div>
 </div>
 
-<?php include __DIR__ . '/parts/scripts.php' ?>
+<?php include __DIR__ . '/part/scripts.php' ?>
 
 
 <script>
@@ -227,4 +227,4 @@ $title = '新增景點資料 - 舒營';
 
     }
 </script>
-<?php include __DIR__ . '/parts/html-foot.php' ?>>
+<?php include __DIR__ . '/part/html-foot.php' ?>>

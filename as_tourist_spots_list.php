@@ -1,4 +1,4 @@
-<?php require __DIR__ . '/parts/connect_db.php';
+<?php require __DIR__ . '/part/connect_db.php';
 $pageName = 'as_tourist_spots_list';
 $title = '周圍景點列表 - 舒營';
 
@@ -34,8 +34,8 @@ if ($totalRows > 0) {
 
 ?>
 
-<?php include __DIR__ . '/parts/html-head.php' ?>
-<?php include __DIR__ . '/parts/navbar.php' ?>
+<?php include __DIR__ . '/part/html-head.php' ?>
+<?php include __DIR__ . '/part/navbar.php' ?>
 
 
 <div class="container p-5 pt-0">
@@ -157,7 +157,7 @@ if ($totalRows > 0) {
 </div>
 </div>
 
-<?php include __DIR__ . '/parts/scripts.php' ?>
+<?php include __DIR__ . '/part/scripts.php' ?>
 <script>
     function delete_it(sid) {
         if (confirm(`確定要刪除編號為 ${sid} 的資料嗎?`)) {
@@ -165,4 +165,4 @@ if ($totalRows > 0) {
         }
     }
 </script>
-<?php include __DIR__ . '/parts/html-foot.php' ?>
+<?php include __DIR__ . '/part/html-foot.php' ?>
