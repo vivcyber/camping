@@ -1,12 +1,12 @@
 <?php include __DIR__ . '/part/connect_db.php';
 $pageName = 'Room_edit';
-$title = '房間類型編輯';
+$title = '編輯通訊錄資料 - 拉拉的網站';
 
 
 //基本上，這裡做修改頁面的邏輯是跳到修改頁面的方式去呈現。
 //所以會跟ab-add.php 的格式一樣，所以就拿來做修改。
 //這裡我們先取得sid的值。然後再去判斷如果沒有sid的值，那我們就不變。直接不處理。
-$sid = isset($_GET['SID']) ? intval($_GET['SID']) : 0;
+$sid = isset($_GET['OrderNum']) ? intval($_GET['OrderNum']) : 0;
 if (empty($sid)) {
     header('Location: R_room_back.php');
     exit;
@@ -14,10 +14,10 @@ if (empty($sid)) {
 //因為上面取得到sid的值所以才會接下來到這裡。
 //設定row 就是 sql的語法。如果sql抓到空值，我們也不幹了。就直接保持原來就好。
 
-$row = $pdo->query("SELECT * FROM room_type WHERE SID=$sid")->fetch();
-// $row2 = $pdo->query("SELECT * FROM room_order,room_type WHERE room_order.Room_Type=room_type.sid and sid=$sid")->fetch(PDO::FETCH_ASSOC);
-$R_Spec = $row['Room_Spec'];
-$r_spec = explode(",", $R_Spec);
+$row = $pdo->query("SELECT * FROM room_order WHERE OrderNum=$sid")->fetch();
+$row2 = $pdo->query("SELECT * FROM room_order,room_type WHERE room_order.Room_Type=room_type.sid and sid=$sid")->fetch(PDO::FETCH_ASSOC);
+$R_Spec = $row2['Room_Spec'] ?? '';
+$r_spec = explode(",", $R_Spec) ?? '';
 if (empty($row)) {
     header('Location: R_room_back.php');
     exit;
@@ -46,21 +46,20 @@ if (empty($row)) {
                     <form name="form1" enctype="multipart/form-data" onsubmit="sendData(); return false;" novalidate>
                         <!-- 如果看到data- 的開頭等於是用戶自己設定。基本上是不想把這個刪掉，所以前面加data- 是ok的 -->
                         <!-- return false 的意思是解除預設行為 -->
-                        <input type="hidden" name="OrderNum" value="<?= $row['SID'] ?>">
+                        <input type="hidden" name="OrderNum" value="<?= $row['OrderNum'] ?>">
 
                         <div class="mb-3">
                             <!-- 這裡的sendData 運用的方式是 AJAX的格式 -->
                             <label for="OrderNum" class="form-label">OrderNumber</label>
-                            <input type="text" class="form-control" id="OrderNum" name="OrderNum" readonly="readonly" value="<?= $row['SID'] ?>">
+                            <input type="text" class="form-control" id="OrderNum" name="OrderNum" readonly="readonly" value="<?= $row['OrderNum'] ?>">
                             <div class="form-text text-danger"></div>
                         </div>
 
-                        <!-- <div class="mb-3">
+                        <div class="mb-3">
                             <label for="Date" class="form-label">* Date</label>
-                            <input type="date" class="form-control" id="Date" name="Date" pattern="^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$" value="
-                            <?= $row['Date'] ?>">
+                            <input type="date" class="form-control" id="Date" name="Date" pattern="^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$" value="<?= $row['Date'] ?>">
                             <div class="form-text text-danger"></div>
-                        </div> -->
+                        </div>
 
                         <div class="mb-3">
                             <label for="Room_Type" class="form-label">* Room_Type</label>
@@ -78,12 +77,11 @@ if (empty($row)) {
 
                         <div class="mb-3">
                             <label for="Room_Spec" class="form-label">Room_Spec</label> </br>
-                            <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="cleaningStaff" 
-                            <?php
-                                if (in_array("cleaningStaff", $r_spec)) {
-                                    echo "checked";
-                                }
-                            ?>>清潔用品
+                            <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="cleaningStaff" <?php
+                                                                                                            if (in_array("cleaningStaff", $r_spec)) {
+                                                                                                                echo "checked";
+                                                                                                            }
+                                                                                                            ?>>清潔用品
                             <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Fridge">冰箱
                             <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Hotpot">電熱水壺
                             <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Sheep">床單
@@ -110,11 +108,11 @@ if (empty($row)) {
                             <div class="form-text"></div>
                         </div>
 
-                        <!-- <div class="mb-3">
+                        <div class="mb-3">
                             <label for="ID_Comments" class="form-label">ID_Comments</label>
                             <textarea class="form-control" name="ID_Comments" id="ID_Comments" cols="30" rows="3" value="<?= $row['ID_Comments'] ?>"></textarea>
                             <div class="form-text"></div>
-                        </div> -->
+                        </div>
 
                         <!-- <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">

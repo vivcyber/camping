@@ -26,8 +26,9 @@ if ($totalRows > 0) {
     }
 }
 
-$sql = sprintf("SELECT * FROM room_order ORDER BY OrderNum DESC LIMIT %s , %s", ($page - 1) * $perPage, $perPage);
+$sql = sprintf("SELECT OrderNum,Date,RoomType,room_list.Price,ID_Comments,Create_at FROM room_order LEFT JOIN room_list ON room_order.RoomType IN(room_list.Room_Type) ORDER BY OrderNum ASC LIMIT %s , %s", ($page - 1) * $perPage, $perPage);
 //追加 ORDER BY 排序
+//SELECT `OrderNum`,`Date`,`RoomType`,`room_order`.`price`,`ID_Comments`,`Create_at` FROM `room_order` JOIN `room_list` ON `room_order`.`RoomType` = `room_list`.`Room_Type` WHERE `room_list`.`Price`=`room_order`.`price` ORDER BY `OrderNum` ASC
 $rows = $pdo->query($sql)->fetchAll();
 //SELECT * FROM address_book LIMIT 0,5 這樣也是5筆，可是這樣可以選擇從第幾筆取到第幾筆
 //MVC 資料處理，呈現，跟客戶的互動
@@ -37,7 +38,7 @@ if (!empty($_GET['search'])) {
     //如果搜尋的input不是空白的值時
     $search = $_GET['search'];
     //$search就等於拿到‘search的值’
-    $query = $pdo->prepare("SELECT * FROM room_order WHERE CONCAT(Date,Room_Type,Room_Spec,Price,ID_Comments,Create_at) LIKE :keyword ORDER BY OrderNum DESC"); //這裡就是用pdo準備好 SQL取值的寫法。用concat一口氣全部都拿然後用keyword定位。
+    $query = $pdo->prepare("SELECT OrderNum,Date,RoomType,room_list.Price,ID_Comments,Create_at FROM room_order LEFT JOIN room_list ON room_order.RoomType IN(room_list.Room_Type) WHERE CONCAT(OrderNum,Date,RoomType,room_list.Price,ID_Comments,Create_at) LIKE :keyword ORDER BY OrderNum ASC"); //這裡就是用pdo準備好 SQL取值的寫法。用concat一口氣全部都拿然後用keyword定位。
     $query->bindValue(':keyword', '%' . $search . '%', PDO::PARAM_STR);
     //取出來的值我讓他變成string然後用execute演算。
     $query->execute();
@@ -87,7 +88,7 @@ if (!empty($_GET['search'])) {
                     </li>
                 </ul>
             </nav>
-            <form action="R_room_back.php" method="post">
+            <form action="R_room_back.php" method="get">
                 <div class="d-flex" style="height:40px; margin-top: 10px;">
 
                     <input type="text" class="form-control" name="search" id="search" placeholder="搜需資料">
@@ -105,9 +106,9 @@ if (!empty($_GET['search'])) {
                 <th scope="col">Order_No</th>
                 <th scope="col">預訂日期</th>
                 <th scope="col">房型</th>
-                </th>
-                <th scope="col">房間配備</th>
-                </th>
+                <!-- </th> -->
+                <!-- <th scope="col">房間配備</th> -->
+                <!-- </th> -->
                 <th scope="col">價格</th>
                 <th scope="col">會員留言</th>
                 <th scope="col">建立日期</th>
@@ -126,8 +127,7 @@ if (!empty($_GET['search'])) {
 
                         <td><?= $items['OrderNum']; ?></td>
                         <td><?= $items['Date']; ?></td>
-                        <td><?= $items['Room_Type']; ?></td>
-                        <td><?= $items['Room_Spec']; ?></td>
+                        <td><?= $items['RoomType']; ?></td>
                         <td><?= $items['Price']; ?></td>
                         <td><?= $items['ID_Comments']; ?></td>
                         <td><?= $items['Create_at']; ?></td>
@@ -153,8 +153,7 @@ if (!empty($_GET['search'])) {
 
                         <td><?= $r['OrderNum']; ?></td>
                         <td><?= $r['Date']; ?></td>
-                        <td><?= $r['Room_Type']; ?></td>
-                        <td><?= $r['Room_Spec']; ?></td>
+                        <td><?= $r['RoomType']; ?></td>
                         <td><?= $r['Price']; ?></td>
                         <td><?= $r['ID_Comments']; ?></td>
                         <td><?= $r['Create_at']; ?></td>
