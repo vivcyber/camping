@@ -106,13 +106,14 @@ if (!empty($_GET['search'])) {
                 <th scope="col">Order_No</th>
                 <th scope="col">預訂日期</th>
                 <th scope="col">房型</th>
+                <th scope="col"><i class="fa-solid fa-file-pen"></i></th>
                 <!-- </th> -->
                 <!-- <th scope="col">房間配備</th> -->
                 <!-- </th> -->
                 <th scope="col">價格</th>
                 <th scope="col">會員留言</th>
                 <th scope="col">建立日期</th>
-                <th scope="col"><i class="fa-solid fa-file-pen"></i></th>
+
                 <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
 
             </tr>
@@ -128,13 +129,14 @@ if (!empty($_GET['search'])) {
                         <td><?= $items['OrderNum']; ?></td>
                         <td><?= $items['Date']; ?></td>
                         <td><?= $items['RoomType']; ?></td>
-                        <td><?= $items['Price']; ?></td>
-                        <td><?= $items['ID_Comments']; ?></td>
-                        <td><?= $items['Create_at']; ?></td>
-                        <td><a href="R_edit.php?OrderNum=<?= $items['OrderNum'] ?>">
+                        <td><a href="R_edit.php?RoomType=<?= $items['RoomType'] ?>">
                                 <i class="fa-solid fa-file-pen">
 
                                 </i></a></td>
+                        <td><?= $items['Price']; ?></td>
+                        <td><?= $items['ID_Comments']; ?></td>
+                        <td><?= $items['Create_at']; ?></td>
+
                         <td>
                             <a href="javascript: delete_it(<?= $items['OrderNum'] ?>)">
                                 <i class="fa-solid fa-trash-can"></i>
@@ -154,13 +156,14 @@ if (!empty($_GET['search'])) {
                         <td><?= $r['OrderNum']; ?></td>
                         <td><?= $r['Date']; ?></td>
                         <td><?= $r['RoomType']; ?></td>
-                        <td><?= $r['Price']; ?></td>
-                        <td><?= $r['ID_Comments']; ?></td>
-                        <td><?= $r['Create_at']; ?></td>
-                        <td><a href="R_edit.php?OrderNum=<?= $r['OrderNum'] ?>">
+                        <td><a href="R_edit.php?RoomType=<?= $r['RoomType'] ?>">
                                 <i class="fa-solid fa-file-pen">
 
                                 </i></a></td>
+                        <td><?= $r['Price']; ?></td>
+                        <td><?= $r['ID_Comments']; ?></td>
+                        <td><?= $r['Create_at']; ?></td>
+
                         <td>
                             <a href="javascript: delete_it(<?= $r['OrderNum'] ?>)">
                                 <i class="fa-solid fa-trash-can"></i>

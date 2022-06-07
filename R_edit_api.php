@@ -12,27 +12,26 @@ $output = [
     'error' => '',
 ];
 
-$sid = isset($_POST['OrderNum']) ? intval($_POST['OrderNum']) : 0;
-
 //如果名字是空字串，那就不做了！
 
-if (empty($sid) or empty($_POST['OrderNum'])) { //檢查必填的姓名欄位
-    //如果這裡的empty換成isset 也會判定為true哦。
+$sid = isset($_GET['RoomType']) ? strval($_GET['RoomType']) : '';
+if (empty($sid) or empty($_POST['Room_Type'])) {
+    // 
     $output['error'] = '沒有相關資料';
     $output['code'] = 400; //自己給予的網路編碼，像404就是伺服器讀取錯誤。
     echo json_encode($output, JSON_UNESCAPED_UNICODE);
+
     exit;
+
 }
-
-
 //這裡是檢查所有的值是否符合條件
-$OrderNum = $_POST['OrderNum'];
-$Date = $_POST['Date'] ?? ''; //這個的條件是當email是underfine的話，就會判斷為控空值
+// $OrderNum = $_POST['OrderNum'];
+// $Date = $_POST['Date'] ?? ''; //這個的條件是當email是underfine的話，就會判斷為控空值
 $Room_Type = $_POST['Room_Type'] ?? ''; //如果不是underfine的話，就會丟值過來。
 $Room_Spec1 = empty($_POST['Room_spec']) ? NULL : $_POST['Room_spec'];
 $Room_spec = implode($Room_Spec1);
 $Price = $_POST['Price'] ?? '';
-$ID_Comment = $_POST['ID_Comments'] ?? '';
+// $ID_Comment = $_POST['ID_Comments'] ?? '';
 
 //這裡是判斷email 是否沒有值
 //如果Email有填值，但不符合格式
@@ -54,15 +53,13 @@ $ID_Comment = $_POST['ID_Comments'] ?? '';
 
 // TODO: 其他的欄位檢查
 
-$sql = "UPDATE `room_order` SET `Date`=?, `Room_Type`=?, `Room_Spec`=?, `Price`=?, `ID_Comments`=? WHERE `OrderNum` = $sid";
+$sql = "UPDATE `room_list` SET `Room_Type`=?, `Room_Spec`=?, `Price`=?, WHERE `Room_Type` = '".$sid."'";
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute([
-    $Date,
     $Room_Type,
     $Room_spec,
     $Price,
-    $ID_Comment,
 
 ]);
 
