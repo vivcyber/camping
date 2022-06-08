@@ -20,7 +20,10 @@
                   <a class="nav-link" href="./ad_add.php">會員申辦</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="./c_product.php">商品頁</a>
+                  <a class="nav-link" href="./c_product_2.php">商品頁</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./sc.cart-list.php"><i class="fa-solid fa-cart-shopping "></i></a>
                 </li>
               </ul>
             </div>
