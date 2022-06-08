@@ -21,6 +21,12 @@
           <a class="nav-link" href="./M_db-add.php">會員註冊</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="./M_log-in.php">會員登入</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./M_log-in-admin.php">後台登入</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="./c_product_2.php">商品頁</a>
         </li>
         <li class="nav-item">
