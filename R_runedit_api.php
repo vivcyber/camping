@@ -14,9 +14,9 @@ if($_POST['Roomttype']) {
             $r_spec = explode(',', $R_Spec);
           
            foreach ($r_spec as $r) {
-                if (in_array($r, $r_spec)) {
-                    echo $r;
-                }
+                // if (in_array($r, $r_spec)) {
+                    print_r($r_spec);
+                // }
            }
         }
     }

@@ -238,8 +238,12 @@ if (empty($row)) {
             data:{ Roomttype : id },
             success : function(data) {
                 // console.log(data);
+                console.log(typeof data);
 
-               }
+                data.forEach( ( y ) => {
+                $("input:checkbox[value='${y}']").prop( 'checked' , true ); 
+                });
+            }
         });
     }
 
