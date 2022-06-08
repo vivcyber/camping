@@ -32,7 +32,7 @@ if (!isset($pageName)) {
       <ul class="p-0">
 
         <button type="button" class="btn btn-outline-light w-100 border-0">
-          <a class="text-dark text-decoration-none<?= $pageName == 'ab-list' ? 'active' : '' ?>" href="ad_list.php">
+          <a class="text-dark text-decoration-none<?= $pageName == 'ab-list' ? 'active' : '' ?>" href="M_member-list.php">
             <i class="fa-solid fa-user-large"></i>
             會員列表
           </a>

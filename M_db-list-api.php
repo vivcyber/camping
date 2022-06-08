@@ -3,7 +3,7 @@ require __DIR__ . '/M_databse-connect.php';
 $pageName = 'db-list';
 $title = "通訊錄列表";
 
-$perPage = 10;
+$perPage = 5;
 
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 //如果用戶有用GET method設定頁數，則轉去當前頁數，若輸入數字非整數，則取整數，兩種都否的話，跳轉第一頁

@@ -4,44 +4,16 @@ session_start();
 require __DIR__ . '/M_databse-connect.php';
 
 
+// if (isset($_SESSION['loginUser']['m_username'])) {
+//     header("Location:M_login-page.php");
+//     exit;
+// }
 
 $output = [
     'postData' => $_POST,
     'error' => '',
 ];
 
-//test
-
-
-if (isset($_POST['admin_account'])) {
-
-
-    $account = $_POST['admin_account'];
-    $password = $_POST['admin_password'];
-
-    // 兩個欄位都要有值
-    if (!empty($_POST['admin_account']) and !empty($_POST['admin_password'])) {
-
-
-        $sql = "SELECT * FROM `admin_list` WHERE `admin_account` = '" . $account . "' AND `admin_password` = '" . $password . "'";
-
-        $stmt = $pdo->query($sql);
-
-        $result = $stmt->fetch();
-
-        if ($_POST['admin_password'] == $password) {
-            echo "登入成功";
-            $_SESSION['admin_account'] = $username;
-            $_SESSION['admin_password'] = $password;
-            $_SESSION['loggedin'] = true;
-
-            header("Location:M_member-list.php");
-        } else {
-
-            $output['error'] = '帳號密碼錯誤';
-        }
-    }
-}
 
 ?>
 
@@ -49,56 +21,65 @@ if (isset($_POST['admin_account'])) {
 <?php include __DIR__ . '/c_part/c_nav.php' ?>
 
 
-<?php if (isset($_SESSION['loggedin'])) : ?>
 
+<div class="login-card" style="width:33rem; height:auto; margin: 5rem auto ;">
 
-    <!-- <?php else : ?>
-    <?php if (isset($_SESSION['msg'])) : ?>
-        <div style="color:red;"><?= $_SESSION['msg'] ?></div> -->
-    <!-- <?php endif; ?> -->
+    <div class="login-card card-body d-flex flex-column">
+        <!-- <img src="./W9gIYt4h.jpeg" class="card-img-top" alt="..."> -->
+        <div class="member-title" style="color:#fff">後台管理者登入</div>
+        <form name="form1" method="post" style="margin: auto;" onsubmit="return checkForm()">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="login-label  form-label">account</label>
+                <input type="text" name="admin" placeholder="帳號" value="<?= isset($_POST['admin']) ? htmlentities($_POST['admin']) : '' ?>">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class=" login-label form-label">password</label>
+                <input type="password" name="password" placeholder="密碼">
+            </div>
+            <!-- <div class="mb-3 captcha d-flex flex-column">
 
-    <!-- <form method="post">
-            <input type="text" name="account" placeholder="帳號" value="<?= isset($_POST['account']) ? htmlentities($_POST['account']) : '' ?>">
-            <br>
-            <input type="password" name="password" placeholder="密碼">
-            <br>
-            <button>登入</button>
-        </form> -->
+                <p style="color: #fff;font-size:0.8rem">請輸入下圖字樣：(點擊圖片可更換驗證碼)</p>
+                <img id="imgcode" src="M_captcha.php" onclick="refresh_code()" style="width: 150px;" />
+                <label for="checkword" class="checkword-label form-label">輸入驗證碼</label>
+                <input type="text" name="checkword" size="10" maxlength="10" />
 
-
-    <div class="card login-card" style="width:33rem; height:20rem; margin: 5rem auto ;">
-
-        <div class="login-card card-body d-flex flex-column">
-            <!-- <img src="./W9gIYt4h.jpeg" class="card-img-top" alt="..."> -->
-            <div class="admin-title" style="color:#fff">管理者登入</div>
-            <form method="post" style="margin: auto;">
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="login-label  form-label">account</label>
-                    <input type="text" name="admin_account" placeholder="帳號" value="<?= isset($_POST['admin_account']) ? htmlentities($_POST['admin_account']) : '' ?>">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class=" login-label form-label">password</label>
-                    <input type="password" name="admin_password" placeholder="密碼">
-                </div>
-                <button class="login-button">登入</button>
-                <div class="register d-flex justify-content-center pb-4">
-                    <a href="./M_log-in.php" style="text-decoration: none;">切換到會員登入</a>
-                </div>
-            </form>
-        </div>
+            </div> -->
+            <button class="login-button">登入</button>
+            <div id="info-bar" class="alert alert-success mt-2" role="alert" style="display:none;">
+            </div>
+        </form>
     </div>
-
-
-
-
-
-<?php endif; ?>
-
-
-
+</div>
 
 
 
 
 <?php include __DIR__ . '/c_part/c_scripts.php' ?>
+<script>
+    function refresh_code() {
+        document.getElementById("imgcode").src = "M_captcha.php";
+    }
+
+
+
+    function checkForm() {
+        $.post('M_login-admin-api.php', $(document.form1).serialize(), function(data) {
+
+            if (data.success) {
+                $('#info-bar').show().text('登入成功');
+
+                setTimeout(function() {
+                    location.href = 'M_member-list.php';
+                }, 1000);
+
+            } else {
+
+                $('#info-bar').show().text(JSON.stringify(data.error));
+            }
+        }, 'json');
+
+        return false;
+    }
+</script>
+<script src="./js/jquery-3.4.1.js"></script>
 <?php include __DIR__ . '/c_part/c_foot.php' ?>

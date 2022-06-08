@@ -78,7 +78,7 @@ $output = [
 
             } else {
 
-                $('#info-bar').show().text(JSON.stringify(data.error));
+                $('#info-bar').show().text(data.error);
             }
         }, 'json');
 

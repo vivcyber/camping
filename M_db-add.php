@@ -168,7 +168,7 @@ $title = '會員註冊';
 
 
             setTimeout(() => {
-                location.href = 'M_login-page.php';
+                location.href = 'M_log-in.php';
             }, 2000);
 
 
@@ -232,6 +232,20 @@ $title = '會員註冊';
     function uploadAvatar() {
         avatar.click(); // 模擬點擊
     }
+
+    $(document).ready(function() {
+        var date = new Date();
+
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+
+        if (month < 10) month = "0" + month;
+        if (day < 10) day = "0" + day;
+
+        var today = year + "-" + month + "-" + day;
+        $("#birthday").attr("value", today);
+    });
 </script>
 
 
