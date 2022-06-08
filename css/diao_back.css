@@ -1,0 +1,27 @@
+.navbar .navbar-nav .nav-link.active {
+    background-color: #eac18a;
+    color: black;
+    font-weight: 800;
+    border-radius: 5px;
+}
+
+.logo {
+    width: 40px;
+}
+
+.col-auto {
+    min-width: 440px;
+    max-width: 440px;
+}
+
+.avatar {
+    padding-top: 25px;
+    overflow: hidden;
+}
+
+.avatar img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
