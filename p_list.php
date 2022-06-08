@@ -40,7 +40,7 @@ if ($totalRows > 0) {
    
     <div class="w-100 d-flex justify-content-end">
          <!-- 新增商品按鈕 -->
-         <a class="nav-link text-dark p-3" href="upload_ beta.php">
+         <a class="nav-link text-dark p-3" href="p_add_b.php">
             <i class="fa-solid fa-plus"></i>
              新增商品
             </a>
