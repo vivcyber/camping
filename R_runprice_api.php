@@ -10,15 +10,10 @@ if($_POST['Roomttype']) {
     
     if($result-> rowCount() > 0){
         while($row = $result->fetch(PDO::FETCH_ASSOC)){
-            $R_Spec = $row['Room_Spec'];
-            $r_spec = explode(',', $R_Spec);
-            echo $R_Spec;
-        //    foreach ($r_spec as $r) {
-        //         // if (in_array($r, $r_spec)) {
-        //             print_r($r);
-        //         // }
-        //    }
+          echo '<input type="text" class="form-control" id="Price" name="Price" value='.$row['Price'].'>';
         }
+    }else {
+        echo '<input>No Price was selected</input>';
     }
 }
 

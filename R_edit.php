@@ -48,172 +48,173 @@ if (empty($row)) {
             <div class="card">
                 <div class=" card-body">
                     <h5 class="card-title">編輯資料</h5>
-                    <form name="form1" enctype="multipart/form-data" onsubmit="sendData(); return false;" novalidate>
+                    <form class="d-flex justify-content-center" name="form1" enctype="multipart/form-data" onsubmit="sendData(); return false;" novalidate>
                         <!-- 如果看到data- 的開頭等於是用戶自己設定。基本上是不想把這個刪掉，所以前面加data- 是ok的 -->
                         <!-- return false 的意思是解除預設行為 -->
-                        <input type="hidden" name="OrderNum" value="<?= $row['SID'] ?>">
-
-                        <div class="mb-3">
-                            <!-- 這裡的sendData 運用的方式是 AJAX的格式 -->
-                            <label for="OrderNum" class="form-label">房型編號</label>
-                            <input type="text" class="form-control" id="OrderNum" name="OrderNum" readonly="readonly" value="<?= $row['SID'],"  /  ",$row['Room_Type'] ?>">
-                            <div class="form-text text-danger"></div>
-                        </div>
-
-
-                        <div class="mb-3">
-                            <label for="Room_Type" class="form-label">修改房型</label>
-                            <select class="form-control" id="Room_Type" name="Room_Type" onchange="Fetchkey(this.value)">
-                                <option><?= $row["Room_Type"]?></option>
-
-                                <?php foreach ($row2 as $r) : ?>
-                                    <option value="<?= $r["SID"]; ?>"><?= $r["Room_Type"]; ?></option>
-                                <?php endforeach; ?>
-
-                            </select>
+                        <div >
+                            <input type="hidden" name="OrderNum" value="<?= $row['SID'] ?>">
+                            <div class="mb-3">
+                                <!-- 這裡的sendData 運用的方式是 AJAX的格式 -->
+                                <label for="OrderNum" class="form-label">房型編號</label>
+                                <input type="text" class="form-control" id="OrderNum" name="OrderNum" readonly="readonly" value="<?= $row['SID'],"  /  ",$row['Room_Type'] ?>">
                                 <div class="form-text text-danger"></div>
-                        </div>
-                        <label for="Room_Spec" class="form-label mb-1" id="inroom_spec">Room_Spec</label>          
-                        <div class="mb-3" id="room_spec">
-                            <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="cleaningStaff" 
-                            <?php
-                           
-                                if (in_array("cleaningStaff", $r_spec)) {
-                                    echo $str;
-                                }
-                            ?>>清潔用品
-                            <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Fridge"
-                            <?php
-                               
-                                if (in_array("Fridge", $r_spec)) {
-                                    echo $str;
-                                }
-                            ?>>冰箱
-                            <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Hotpot"
-                            <?php
-                              
-                                if (in_array("Hotpot", $r_spec)) {
-                                    echo $str;
-                                }
-                            ?>
-                            >電熱水壺
-                            <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Sheep"
-                            <?php
-                               
-                                    if (in_array("Sheep", $r_spec)) {
+                            </div>
+                            <div class="mb-3">
+                                <label for="Room_Type" class="form-label">修改房型</label>
+                                <select class="form-control" id="Room_Type" name="Room_Type" onchange="Fetchkey(this.value);">
+                                    <option><?= $row["Room_Type"]?></option>
+                                    <?php foreach ($row2 as $r) : ?>
+                                        <option value="<?= $r["SID"]; ?>"><?= $r["Room_Type"]; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                    <div class="form-text text-danger"></div>
+                            </div>
+                            <label for="Room_Spec" class="form-label mb-1" id="inroom_spec">Room_Spec</label>
+                            <div class="mb-3" id="room_spec">
+                                <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="cleaningStaff"
+                                <?php
+                            
+                                    if (in_array("cleaningStaff", $r_spec)) {
                                         echo $str;
                                     }
-                            ?>
-                            >床單
-                            <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Wardrobe"
-                            <?php
-                               
-                                    if (in_array("Wardrobe", $r_spec)) {
+                                ?>>清潔用品
+                                <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Fridge"
+                                <?php
+                            
+                                    if (in_array("Fridge", $r_spec)) {
                                         echo $str;
                                     }
-                            ?>
-                            >衣櫃
-                            <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Toiletpaper"
-                            <?php
-                               
-                                    if (in_array("Toiletpaper", $r_spec)) {
+                                ?>>冰箱
+                                <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Hotpot"
+                                <?php
+                            
+                                    if (in_array("Hotpot", $r_spec)) {
                                         echo $str;
                                     }
-                            ?>
-                            >衛生紙
-                            <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Toilet"
-                            <?php
-                               
-                                    if (in_array("Toilet", $r_spec)) {
-                                        echo $str;
-                                    }
-                            ?>
-                            >廁所
-                            <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Hairdryer"
-                            <?php
-                               
-                                    if (in_array("Hairdryer", $r_spec)) {
-                                        echo $str;
-                                    }
-                            ?>
-                            >吹風機
-                            <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Tub"
-                            <?php
-                               
-                                    if (in_array("Tub", $r_spec)) {
-                                        echo $str;
-                                    }
-                            ?>
-                            >浴缸 </br>
-                            <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Washroom"
-                            <?php
-                               
-                                    if (in_array("Washroom", $r_spec)) {
-                                        echo $str;
-                                    }
-                            ?>
-                            >沐浴間
-                            <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Towel"
-                            <?php
-                               
-                                    if (in_array("Towel", $r_spec)) {
-                                        echo $str;
-                                    }
-                            ?>
-                            >毛巾
-                            <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Sliper"
-                            <?php
-                               
-                                    if (in_array("Sliper", $r_spec)) {
-                                        echo $str;
-                                    }
-                            ?>
-                            >拖鞋
-                            <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Desk"
-                            <?php
-                                
-                                    if (in_array("Desk", $r_spec)) {
-                                        echo $str;
-                                    }
-                                
-                            ?>
-                            >書桌
-                            <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Television"
-                            <?php
-                                
-                                    if (in_array("Television", $r_spec)) {
-                                        echo $str;
-                                    }
-                            ?>
-                            >平面電視
-                            <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Phone"
-                            <?php
-                               
-                                    if (in_array("Phone", $r_spec)) {
-                                        echo $str;
-                                    }
-                               
-                            ?>
-                            >電話
-                            <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Channel"
-                            <?php
-                                    if (in_array("Channel", $r_spec)) {
-                                        echo $str;
-                                    }
-                            ?>
-                            >有線頻道
+                                ?>
+                                >電熱水壺
+                                <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Sheep"
+                                <?php
+                            
+                                        if (in_array("Sheep", $r_spec)) {
+                                            echo $str;
+                                        }
+                                ?>
+                                >床單
+                                <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Wardrobe"
+                                <?php
+                            
+                                        if (in_array("Wardrobe", $r_spec)) {
+                                            echo $str;
+                                        }
+                                ?>
+                                >衣櫃
+                                <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Toiletpaper"
+                                <?php
+                            
+                                        if (in_array("Toiletpaper", $r_spec)) {
+                                            echo $str;
+                                        }
+                                ?>
+                                >衛生紙
+                                <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Toilet"
+                                <?php
+                            
+                                        if (in_array("Toilet", $r_spec)) {
+                                            echo $str;
+                                        }
+                                ?>
+                                >廁所
+                                <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Hairdryer"
+                                <?php
+                            
+                                        if (in_array("Hairdryer", $r_spec)) {
+                                            echo $str;
+                                        }
+                                ?>
+                                >吹風機
+                                <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Tub"
+                                <?php
+                            
+                                        if (in_array("Tub", $r_spec)) {
+                                            echo $str;
+                                        }
+                                ?>
+                                >浴缸 </br>
+                                <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Washroom"
+                                <?php
+                            
+                                        if (in_array("Washroom", $r_spec)) {
+                                            echo $str;
+                                        }
+                                ?>
+                                >沐浴間
+                                <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Towel"
+                                <?php
+                            
+                                        if (in_array("Towel", $r_spec)) {
+                                            echo $str;
+                                        }
+                                ?>
+                                >毛巾
+                                <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Sliper"
+                                <?php
+                            
+                                        if (in_array("Sliper", $r_spec)) {
+                                            echo $str;
+                                        }
+                                ?>
+                                >拖鞋
+                                <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Desk"
+                                <?php
+                            
+                                        if (in_array("Desk", $r_spec)) {
+                                            echo $str;
+                                        }
+                            
+                                ?>
+                                >書桌
+                                <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Television"
+                                <?php
+                            
+                                        if (in_array("Television", $r_spec)) {
+                                            echo $str;
+                                        }
+                                ?>
+                                >平面電視
+                                <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Phone"
+                                <?php
+                            
+                                        if (in_array("Phone", $r_spec)) {
+                                            echo $str;
+                                        }
+                            
+                                ?>
+                                >電話
+                                <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Channel"
+                                <?php
+                                        if (in_array("Channel", $r_spec)) {
+                                            echo $str;
+                                        }
+                                ?>
+                                >有線頻道
+                                <!-- <div class="form-text text-danger"></div> -->
+                            </div>
 
-                            <!-- <div class="form-text text-danger"></div> -->
+                            <label for="Price" class="form-label" class="mb-1">Price</label>
+                            <div class="mb-3" id="pricess" >
+                                <input type="text" class="form-control" id="Price" name="Price" value="<?= $row['Price'] ?>">
+                                <!-- html5 的功能 -->
+                                <!-- <div class="form-text"></div> -->
+                            </div>
+                            <div>
+                                
+                            </div>
+                            <button type="submit" class="btn btn-primary">修改資料</button>
                         </div>
-
-                        <div class="mb-3">
-                            <label for="Price" class="form-label" id="pricess">Price</label>
-                            <input type="text" class="form-control" id="Price" name="Price" value="<?= $row['Price'] ?>">
-                            <!-- html5 的功能 -->
-                            <div class="form-text"></div>
+                        <div class="col-s-3 col-m-4 col-l-6">
+                            <img src="" class="img-thumbnail" alt="">
                         </div>
-
-                        <button type="submit" class="btn btn-primary">修改資料</button>
                     </form>
                     <div id="info-bar" class="alert alert-success" role="alert" style="display: none;">
                         資料新增成功
@@ -228,24 +229,38 @@ if (empty($row)) {
     const row = <?= json_encode($row, JSON_UNESCAPED_UNICODE); ?>; // unicode 是中文
 
     function Fetchkey(id){
-       $check=false;
-       $('input[type="checkbox"]').prop('checked',false);
-        $('#pricess').html('');
-        console.log("yeah1");
-        $.ajax({
+        function FetchBox(id){
+            console.log(id);
+            $check=false;
+            $('input[type="checkbox"]').prop('checked',false);
+            $('#pricess').html('');
+            $.ajax({
             type:'post',
             url:'R_runedit_api.php',
+            url:'R_runprice_api.php',
             data:{ Roomttype : id },
             success : function(data) {
                 // console.log(data);
-                console.log(typeof data);
+                console.log(data);
+                data = data.trim();
+                const dataArray = data.split(",");
+                console.log(typeof dataArray);
+                console.log(dataArray);
 
-                data.forEach( ( y ) => {
-                $("input:checkbox[value='${y}']").prop( 'checked' , true ); 
-                });
+                dataArray.forEach( ( y ) => {
+                    console.log(y);
+                $('input:checkbox[value="'+y+'"]').prop( 'checked' , true ); 
+                 });
+            },
+            success : function(data){
+                $('#pricess').html(data);
             }
         });
+        }FetchBox(id);
+
     }
+
+   
 
     async function sendData() {
 
