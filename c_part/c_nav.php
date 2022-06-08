@@ -18,7 +18,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./ad_add.php">會員申辦</a>
+          <a class="nav-link" href="./M_db-add.php">會員註冊</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="./c_product_2.php">商品頁</a>
