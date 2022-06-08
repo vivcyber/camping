@@ -22,22 +22,24 @@ $extMap = [
     'image/gif' => '.gif',
 ];
 
-if (empty($extMap[$_FILES['picture']['type']])) {
-    $output['error'] = '檔案類型錯誤';
-    echo json_encode($output, JSON_UNESCAPED_UNICODE);
-    exit;
-}
-$ext = $extMap[$_FILES['picture']['type']]; // 副檔名
+if (!empty($_FILES['picture']['name'])){
+    if (empty($extMap[$_FILES['picture']['type']])) {
+        $output['error'] = '檔案類型錯誤';
+        echo json_encode($output, JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+    $ext = $extMap[$_FILES['picture']['type']]; // 副檔名
 
-$filename = md5($_FILES['picture']['name'] . rand()) . $ext;
+    $filename = md5($_FILES['picture']['name'] . rand()) . $ext;
 
-$output['filename'] = $filename;
+    $output['filename'] = $filename;
 
-// 把上傳的檔案搬移到指定的位置
-if (move_uploaded_file($_FILES['picture']['tmp_name'], $folder . $filename)) {
-    $output['success'] = true;
-} else {
-    $output['error'] = '無法搬動檔案';
+    // 把上傳的檔案搬移到指定的位置
+    if (move_uploaded_file($_FILES['picture']['tmp_name'], $folder . $filename)) {
+        $output['success'] = true;
+    } else {
+        $output['error'] = '無法搬動檔案';
+    }
 }
 
 
@@ -49,7 +51,7 @@ if (empty($_POST['name'])) {
     exit;
 }
 $name = $_POST['name'] ?? '';
-$pic = $filename;
+$pic = $filename ?? $_POST['pic_origin'];
 $area = $_POST['area'] ?? '';
 $type = $_POST['type'] ?? '';
 $open_time = $_POST['open_time'] ?? '';

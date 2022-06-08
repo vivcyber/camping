@@ -69,6 +69,7 @@ if (empty($row)) {
                                 </div>
                                 <br>
                                 <img id="myimg" src="./uploaded/<?= $row['pic'] ?>" alt="" style="width: 250px;" class="pt-2" />
+                                <input type="hidden" name="pic_origin" value="<?= $row['pic'] ?>">
                             </div>
 
                             <div class="mb-3">
