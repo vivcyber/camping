@@ -34,14 +34,14 @@ $title = '加商品';
 
 
                                     <lable class="form-label">Productcategory:</lable>
-                                    <select name="productcategory" id="productcategory" class="form-control">
+                                    <select name="productcategory" id="productcategory" class="form-control"value="<?= $row['productcategory'] ?>">
                                     <option value="">--商品種類--</option>
                                     <option value="餐廚">餐廚</option>
                                     <option value="桌椅">桌椅</option>
                                     <option value="帳篷">帳篷</option>
                                     </select><br>
-                                    <lable class="form-label">Productcolor:</lable>
-                                       <div class="color1">
+                                    <lable class="form-label" >Productcolor:</lable>
+                                       <div class="color1" value="<?= $row['productcolor'] ?>">
                                            <input class="form-check-input" type="radio" id="productcolor" name="productcolor" value="黑色">
                                               <label class="form-check-label" for="flexRadioDefault1">
                                               黑色
@@ -120,6 +120,10 @@ $title = '加商品';
 
 
 
+                                    
+
+
+
 
 
 
@@ -144,6 +148,9 @@ $title = '加商品';
                                                     readURL(this);
                                                 }); -->
                                             </script><br>
+
+
+                                   
 
                                     <input class="btn btn-primary"type="submit" name="register" value="＋新增＋" />
                 

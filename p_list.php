@@ -40,7 +40,7 @@ if ($totalRows > 0) {
    
     <div class="w-100 d-flex justify-content-end">
          <!-- 新增商品按鈕 -->
-         <a class="nav-link text-dark p-3" href="p_add.php">
+         <a class="nav-link text-dark p-3" href="upload_ beta.php">
             <i class="fa-solid fa-plus"></i>
              新增商品
             </a>
@@ -97,7 +97,7 @@ if ($totalRows > 0) {
                     </td>
                     <td class="p-3"><?= $r['sid'] ?></td>
                     <td class="p-3"><?= htmlentities($r['productname']) ?></td>
-                    <td class="p-3"><img src="./imgs/product/<?= $r['productimg'] ?>.jpg" alt="" class="card-img"></td>
+                    <td class="p-3"><img src="./imgs/product/<?= $r['productimg'] ?>" alt="" class="card-img"></td>
                     <td class="p-3"><?= $r['productcategory'] ?></td>
                     <td class="p-3"><?= $r['productcolor'] ?></td>
                     <td class="p-3"><?= $r['productinfo'] ?></td>
@@ -105,8 +105,8 @@ if ($totalRows > 0) {
                     <td class="p-3"><?= $r['productleft'] ?></td>
                     <td style="display: none" class="p-3"><?= $r['productspec'] ?></td>
                     <td style="display: none" class="p-3"><?= $r['productinclude'] ?></td>
-                    <td style="display: none" class="p-3"><img src="./imgs/product/<?= $r['productimg2'] ?>.jpg" alt="" class="card-img"></td>
-                    <td style="display: none" class="p-3"><img src="./imgs/product/<?= $r['productimg3'] ?>.jpg" alt="" class="card-img"></td>
+                    <td style="display: none" class="p-3"><img src="./imgs/product/<?= $r['productimg2'] ?>" alt="" class="card-img"></td>
+                    <td style="display: none" class="p-3"><img src="./imgs/product/<?= $r['productimg3'] ?>" alt="" class="card-img"></td>
                     <td class="p-3">
                         <a href="p_edit.php?sid=<?= $r['sid'] ?>">
                             <i class="fa-solid fa-pen-to-square"></i>
