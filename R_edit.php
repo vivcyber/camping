@@ -19,6 +19,7 @@ if (empty($sid)) {
 $row = $pdo->query("SELECT * FROM room_list,room_order WHERE Room_Type='" . $sid . "'")->fetch();
 // 關於 Room_Type 本身就是title 
 $row2 = $pdo->query("SELECT * FROM room_list")->fetchAll(PDO::FETCH_ASSOC);
+$row3 = $pdo->query("SELECT * FROM room_order LEFT JOIN room_photo ON room_order.RoomType IN(room_photo.Room_Type) Group BY Room_Image")->fetchAll(PDO::FETCH_ASSOC);
 $R_Spec = $row['Room_Spec'];
 $r_spec = explode(",", $R_Spec);
 $str = "checked";
@@ -41,17 +42,36 @@ if (empty($row)) {
     .form-text .red {
         color: var(--bs-red);
     }
+    .photo-guide {
+        border-left: 1px solid black;
+        width: 45%;
+    }
+    .gallery-size {
+       
+        margin: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .img-box {
+        overflow: hidden;
+        width: 10rem;
+        height: 10rem;
+        margin: 0.5rem 0.5rem;
+    }
+    .images-size{
+        width: 100%;
+    }
 </style>
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
+        <div class="">
             <div class="card">
                 <div class=" card-body">
                     <h5 class="card-title">編輯資料</h5>
-                    <form class="d-flex justify-content-center" name="form1" enctype="multipart/form-data" onsubmit="sendData(); return false;" novalidate>
+                    <form class="d-flex justify-content-between" name="form1" enctype="multipart/form-data" onsubmit="sendData(); return false;" novalidate>
                         <!-- 如果看到data- 的開頭等於是用戶自己設定。基本上是不想把這個刪掉，所以前面加data- 是ok的 -->
                         <!-- return false 的意思是解除預設行為 -->
-                        <div >
+                        <div style="margin-right:10px">
                             <input type="hidden" name="OrderNum" value="<?= $row['SID'] ?>">
                             <div class="mb-3">
                                 <!-- 這裡的sendData 運用的方式是 AJAX的格式 -->
@@ -207,13 +227,27 @@ if (empty($row)) {
                                 <!-- html5 的功能 -->
                                 <!-- <div class="form-text"></div> -->
                             </div>
-                            <div>
-                                
+                            <div class="">
+                                <input type="file" name="image" >
+                                <div class="d-flex mt-3">
+                                        <button class="mr-2" style="margin-right: 0.5rem;">Upload Images</button>
+                                        <button>Cancel </button>
+                                </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">修改資料</button>
+                            <button type="submit" class="btn btn-primary mt-3">修改資料</button>
                         </div>
-                        <div class="col-s-3 col-m-4 col-l-6">
-                            <img src="" class="img-thumbnail" alt="">
+                        <div class="photo-guide ">
+                           
+                            <div class="gallery-img gallery-size">
+                                <?php foreach($row3['Room_Image'] as $ImgRow):?>
+                                   
+                                <div class="img-box ml-1 mr-1" id=""<?php $ImgRow['sid']?>>
+                                    <img src="./imgs/Roomimg/<?= $ImgRow['Room_Image']?>" class="images-size ml-2" alt="">
+                                    <a href="javascript:void(0)" class="badge badge-danger" onclick="deleteImage('<?php echo $ImgRow['sid']?>')"></a>
+                                </div>
+                                    <?php endforeach ?>
+                            </div>
+                           
                         </div>
                     </form>
                     <div id="info-bar" class="alert alert-success" role="alert" style="display: none;">
