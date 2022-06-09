@@ -35,15 +35,15 @@ if(empty($row)){
     <div class="card m-5 p-5 m-5">
         <div class="row  py-5">
            <div class="col-6">
-                <img src="./imgs/product/<?= $row['productimg'] ?>.jpg" alt="" class="card-img">
+                <img src="./imgs/product/<?= $row['productimg'] ?>" alt="" class="card-img">
 
               <div class="smallpic d-flex mt-3">
                  <div class="col-4">
-                        <img src="./imgs/product/<?= $row['productimg2'] ?>.jpg" alt="" class="card-img ">
+                        <img src="./imgs/product/<?= $row['productimg2'] ?>" alt="" class="card-img ">
 
                </div>
                 <div class="col-4 mx-3">
-                        <img src="./imgs/product/<?= $row['productimg3'] ?>.jpg" alt="" class="card-img ">
+                        <img src="./imgs/product/<?= $row['productimg3'] ?>" alt="" class="card-img ">
                 </div>
 
                </div>

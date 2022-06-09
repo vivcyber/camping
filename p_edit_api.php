@@ -23,7 +23,7 @@ $productcolor = $_POST['productcolor'] ?? '';
 $productinfo = $_POST['productinfo'] ?? '';
 $productinfo = $_POST['productimg'] ?? '';
 
-$productimg = $_FILES['productimg']['name']?? '';
+$productimg = $_FILES['productimg']['name'];
 $productimg_tmp = $_FILES['productimg']['tmp_name']?? '';
 // $productinfo = $_POST['productimg'] ?? '';
 $productinfo = $_POST['productprice'] ?? '';
@@ -31,12 +31,12 @@ $productleft = $_POST['productleft'] ?? '';
 $productspec = $_POST['productspec'] ?? '';
 $productinclude = $_POST['productinclude'] ?? '';
 
-$productimg2 = $_FILES['productimg2']['name']?? '';
+$productimg2 = $_FILES['productimg2']['name'];
 $productimg2_tmp = $_FILES['productimg2']['tmp_name']?? '';
 // $productimg2 = $_POST['productimg2'] ?? '';
 
 
-$productimg3 = $_FILES['productimg3']['name']?? '';
+$productimg3 = $_FILES['productimg3']['name'];
 $productimg3_tmp = $_FILES['productimg3']['tmp_name']?? '';
 // $productimg3= $_POST['productimg3'] ?? '';
 
