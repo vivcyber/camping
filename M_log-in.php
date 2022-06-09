@@ -45,11 +45,14 @@ $output = [
 
             </div>
             <button class="login-button">登入</button>
-            <div id="info-bar" class="alert alert-success mt-2" role="alert" style="display:none;">
+            <div id="info-bar" class="alert alert-success mt-2" role="alert" style="display:none;text-shadow:none">
             </div>
             <div class="register d-flex justify-content-center">
                 <p style="color: #fff;text-shadow:none;">還沒有帳號嗎？</p>
                 <a style="text-shadow:none;" href="./M_db-add.php">會員註冊</a>
+            </div>
+            <div class="mb3 mx-auto">
+                <a class="text-center w-100 d-block" href="M_log-in-admin.php" style="text-shadow:none;font-size:0.8rem;">切換至後台登入</a>
             </div>
         </form>
     </div>
