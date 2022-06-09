@@ -4,10 +4,10 @@ session_start();
 require __DIR__ . '/M_databse-connect.php';
 
 
-// if (isset($_SESSION['loginUser']['m_username'])) {
-//     header("Location:M_login-page.php");
-//     exit;
-// }
+if (isset($_SESSION['loginUser']['m_username'])) {
+    header("Location:M_login-page.php");
+    exit;
+}
 
 $output = [
     'postData' => $_POST,

@@ -24,7 +24,7 @@ $title = '會員註冊';
                             <div class="form-text red"></div>
                         </div>
                         <div class="mb-3">
-                            <label for="account" class="form-label">*帳號</label>
+                            <label for="account" class="form-label">*帳號(不可更改)</label>
                             <input type="text" class="form-control" id="username" name="username" required>
                             <div class="form-text"></div>
                         </div>
