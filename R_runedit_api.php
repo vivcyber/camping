@@ -12,12 +12,12 @@ if($_POST['Roomttype']) {
         while($row = $result->fetch(PDO::FETCH_ASSOC)){
             $R_Spec = $row['Room_Spec'];
             $r_spec = explode(',', $R_Spec);
-          
-           foreach ($r_spec as $r) {
-                // if (in_array($r, $r_spec)) {
-                    print_r($r_spec);
-                // }
-           }
+            echo $R_Spec;
+        //    foreach ($r_spec as $r) {
+        //         // if (in_array($r, $r_spec)) {
+        //             print_r($r);
+        //         // }
+        //    }
         }
     }
 }
