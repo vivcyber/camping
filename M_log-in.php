@@ -29,7 +29,7 @@ $output = [
         <div class="member-title" style="color:#fff">會員登入</div>
         <form name="form1" method="post" style="margin: auto;" onsubmit="return checkForm()">
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="login-label  form-label">account</label>
+                <label for="exampleFormControlInput1" class="login-label  form-label">username</label>
                 <input type="text" name="username" placeholder="帳號" value="<?= isset($_POST['username']) ? htmlentities($_POST['username']) : '' ?>">
             </div>
             <div class="mb-3">
@@ -38,9 +38,9 @@ $output = [
             </div>
             <div class="mb-3 captcha d-flex flex-column">
 
-                <p style="color: #fff;font-size:0.8rem">請輸入下圖字樣：(點擊圖片可更換驗證碼)</p>
+                <p style="color: #fff;font-size:0.8rem;text-shadow:none;">請輸入下圖字樣：(點擊圖片可更換驗證碼)</p>
                 <img id="imgcode" src="M_captcha.php" onclick="refresh_code()" style="width: 150px;" />
-                <label for="checkword" class="checkword-label form-label">輸入驗證碼</label>
+                <label for="checkword" class="checkword-label form-label" style="text-shadow:none;">輸入驗證碼</label>
                 <input type="text" name="checkword" size="10" maxlength="10" />
 
             </div>
@@ -48,8 +48,8 @@ $output = [
             <div id="info-bar" class="alert alert-success mt-2" role="alert" style="display:none;">
             </div>
             <div class="register d-flex justify-content-center">
-                <p style="color: #fff;">還沒有帳號嗎？</p>
-                <a href="./M_db-add.php">會員註冊</a>
+                <p style="color: #fff;text-shadow:none;">還沒有帳號嗎？</p>
+                <a style="text-shadow:none;" href="./M_db-add.php">會員註冊</a>
             </div>
         </form>
     </div>
