@@ -46,7 +46,7 @@ if ($totalRows > 0) {
             </a>
 
          <!-- 前往前台的按鈕 -->
-         <a class="nav-link text-dark p-3" href="c_product.php" target="_blank">
+         <a class="nav-link text-dark p-3" href="c_product_2.php" target="_blank">
          <i class="fa-solid fa-eye"></i>
             View Site
          </a>
