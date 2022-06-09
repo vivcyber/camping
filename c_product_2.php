@@ -66,7 +66,7 @@ $cates = $pdo->query($c_sql)->fetchAll();
                     <div class="col-md-4 product-unit my-3 " data-sid="<?= $r['sid'] ?>">
                         <div class="card">
 
-                            <img src="./imgs/product/<?= $r['productimg'] ?>.jpg" alt="" class="card-img-top">
+                            <img src="./imgs/product/<?= $r['productimg'] ?>" alt="" class="card-img-top">
 
                             <div class="card-body pb-3">
                                 <h6 class="card-title fs-5" style="height:64px;"><?= $r['productname'] ?></h6>

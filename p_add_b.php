@@ -23,7 +23,7 @@ $title = '加商品';
         <div class="container">
             <div class="card m-3 p-3 col-6">
                 <!-- <form action="upload_api_beta.php" method="post" enctype="multipart/form-data" onsubmit="javascript: return false;"> -->
-                <form id="form1" action="upload_api_beta.php" method="post" enctype="multipart/form-data">
+                <form id="form1" action="p_add_api_b.php" method="post" enctype="multipart/form-data">
                 
                 
                                     <div class="mb-3">
