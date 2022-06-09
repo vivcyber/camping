@@ -7,15 +7,15 @@ require __DIR__ . '/M_databse-connect.php';
 $pageName = 'db-edit';
 $title = '會員資料修改';
 
-$username = isset($_SESSION['username']) ? $_SESSION['username'] : 0;
+$sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
 
-if (empty($username)) {
+if (empty($sid)) {
     echo "sid empty";
     // header('Location:db-list-01.html');
     exit;
 }
 
-$sql = "SELECT * FROM `memberdata` WHERE `m_username` = '" . $_SESSION['username'] . "';";
+$sql = "SELECT * FROM `memberdata` WHERE  `m_id` = $sid";
 //edit需要回傳所以需要fetch , delete不需回傳所以不用fetch
 
 $stmt = $pdo->query($sql);
@@ -36,11 +36,11 @@ if (empty($row)) {
 
 
 <div class="container m-auto w-75 p-5">
-    <div class="row">
-        <div class="col-md-6">
+    <div class="row justify-content-center">
+        <div class="col-md-9">
             <div class="card">
                 <div class="card-body ">
-                    <h5 class="card-title">編輯資料</h5>
+                    <h5 class="admin-card-title">編輯資料</h5>
                     <form name="form1" onsubmit="sendData();return false;" novalidate>
                         <input type="hidden" name="sid" value="<?= $row['m_id'] ?>">
                         <div class="mb-3">
@@ -61,7 +61,7 @@ if (empty($row)) {
                         </div>
                         <button type="button" id="btn" onclick="uploadAvatar()">修改大頭貼</button>
                         <br />
-                        <img id="myimg" src="./uploaded/<?= $row['m_avatar'] ?>" alt="" style="display:inline;width:150px;height:150px;object-fit:cover;border-radius:50%;margin:25px 0" />
+                        <img id="myimg" src="./M_uploaded/<?= $row['m_avatar'] ?>" alt="" style="display:inline;width:150px;height:150px;object-fit:cover;border-radius:50%;margin:25px 0" />
 
 
                         <div class="mb-3">
@@ -156,7 +156,7 @@ if (empty($row)) {
         }
 
         const fd = new FormData(document.form1);
-        const r = await fetch('db-edit-api.php', {
+        const r = await fetch('M_db-edit-api.php', {
             method: 'POST',
             body: fd,
         });
@@ -172,7 +172,7 @@ if (empty($row)) {
             info_bar.innerText = '資料修改成功';
 
             setTimeout(() => {
-                location.href = 'member-list.php';
+                location.href = 'M_member-list.php';
             }, 2000);
         } else {
             info_bar.classList.remove('alert-success');

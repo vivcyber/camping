@@ -35,12 +35,12 @@ if (empty($row)) {
 <?php include __DIR__ . '/c_part/c_nav.php' ?>
 
 
-<div class="container m-auto w-75 p-5">
-    <div class="row">
+<div class="container mx-auto w-100 p-5">
+    <div class="row justify-content-center">
         <div class="col-md-6">
             <div>
-                <div class="card-body p-5 ">
-                    <h5 class="card-title">編輯資料</h5>
+                <div class="edit-card-body p-5">
+                    <h5 class="edit-card-title">修改會員資料</h5>
                     <form name="form1" onsubmit="sendData();return false;" novalidate>
                         <input type="hidden" name="sid" value="<?= $row['m_id'] ?>">
                         <div class="mb-3">

@@ -1,9 +1,9 @@
 <?php
 
-require __DIR__ . '/databse-connect.php';
+require __DIR__ . '/M_databse-connect.php';
 header('Content-Type: application/json');
 
-$folder = __DIR__ . '/uploaded/';
+$folder = __DIR__ . '/M_uploaded/';
 
 // 用來篩選檔案, 用來決定副檔名
 $extMap = [

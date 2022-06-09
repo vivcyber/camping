@@ -24,7 +24,7 @@ $output = [
 
 <div class="login-card" style="width:33rem; height:auto; margin: 5rem auto ;">
 
-    <div class="login-card card-body d-flex flex-column">
+    <div class=" login-card-body d-flex flex-column">
         <!-- <img src="./W9gIYt4h.jpeg" class="card-img-top" alt="..."> -->
         <div class="member-title" style="color:#fff">會員登入</div>
         <form name="form1" method="post" style="margin: auto;" onsubmit="return checkForm()">
