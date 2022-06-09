@@ -53,7 +53,7 @@ $Price = $_POST['Price'] ?? '';
 
 // TODO: 其他的欄位檢查
 
-$sql = "UPDATE `room_list` SET `Room_Type`=?, `Room_Spec`=?, `Price`=?, WHERE `Room_Type` = '".$sid."'";
+$sql = "UPDATE room_list SET Room_Type=?, Room_Spec=?, Price=?, WHERE Room_Type = '".$sid."'";
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute([

@@ -19,7 +19,8 @@ if (empty($sid)) {
 $row = $pdo->query("SELECT * FROM room_list,room_order WHERE Room_Type='" . $sid . "'")->fetch();
 // 關於 Room_Type 本身就是title 
 $row2 = $pdo->query("SELECT * FROM room_list")->fetchAll(PDO::FETCH_ASSOC);
-$row3 = $pdo->query("SELECT * FROM room_order LEFT JOIN room_photo ON room_order.RoomType IN(room_photo.Room_Type) Group BY Room_Image")->fetchAll(PDO::FETCH_ASSOC);
+$row3 = $pdo->query("SELECT * FROM room_list LEFT JOIN room_photo ON room_list.Room_Type IN(room_photo.Room_Type) Group BY Room_Image")->fetchAll(PDO::FETCH_ASSOC);
+// var_dump($row3['Room_Image']);
 $R_Spec = $row['Room_Spec'];
 $r_spec = explode(",", $R_Spec);
 $str = "checked";
@@ -84,7 +85,7 @@ if (empty($row)) {
                                 <select class="form-control" id="Room_Type" name="Room_Type" onchange="Fetchkey(this.value);">
                                     <option><?= $row["Room_Type"]?></option>
                                     <?php foreach ($row2 as $r) : ?>
-                                        <option value="<?= $r["SID"]; ?>"><?= $r["Room_Type"]; ?></option>
+                                        <option value="<?= $r["Room_Type"]; ?>"><?= $r["Room_Type"]; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                                     <div class="form-text text-danger"></div>
@@ -236,15 +237,16 @@ if (empty($row)) {
                             </div>
                             <button type="submit" class="btn btn-primary mt-3">修改資料</button>
                         </div>
-                        <div class="photo-guide ">
+                        <div class="photo-guide" id="imageblock">
                            
-                            <div class="gallery-img gallery-size">
-                                <?php foreach($row3['Room_Image'] as $ImgRow):?>
-                                   
+                            <div class="gallery-img gallery-size" >
+                                <?php foreach($row3 as $ImgRow):?>
+                                   <?php if(strlen($ImgRow['Room_Image']) != 0){?>
                                 <div class="img-box ml-1 mr-1" id=""<?php $ImgRow['sid']?>>
                                     <img src="./imgs/Roomimg/<?= $ImgRow['Room_Image']?>" class="images-size ml-2" alt="">
                                     <a href="javascript:void(0)" class="badge badge-danger" onclick="deleteImage('<?php echo $ImgRow['sid']?>')"></a>
                                 </div>
+                                    <?php } ?>
                                     <?php endforeach ?>
                             </div>
                            
@@ -263,15 +265,16 @@ if (empty($row)) {
     const row = <?= json_encode($row, JSON_UNESCAPED_UNICODE); ?>; // unicode 是中文
 
     function Fetchkey(id){
-        function FetchBox(id){
             console.log(id);
             $check=false;
             $('input[type="checkbox"]').prop('checked',false);
             $('#pricess').html('');
+            $('.gallery-size').html('');
             $.ajax({
             type:'post',
             url:'R_runedit_api.php',
             url:'R_runprice_api.php',
+            // url:'R_runImage_api.php',
             data:{ Roomttype : id },
             success : function(data) {
                 // console.log(data);
@@ -288,9 +291,9 @@ if (empty($row)) {
             },
             success : function(data){
                 $('#pricess').html(data);
-            }
+                $('.gallery-size').html(data);
+            },
         });
-        }FetchBox(id);
 
     }
 
