@@ -62,9 +62,24 @@ if ($result['m_level'] == 'member') {
             </form>
         </div>
     </div>
-    <a href="M_log-out.php">登出</a>
-    <a href="M_db-edit.php">修改會員資料</a>
-    <a href="">修改密碼</a>
+
+    <div id="page-wrap">
+        <div class="member-hello">
+            <span class="member-hi">Hi,<?php echo $name ?> </span>
+        </div>
+        <div id="all">
+            <ul>
+                <li> <a href="M_db-edit.php">修改會員資料</a></li>
+                <li><a href="M_edit-password.php">修改密碼</a></li>
+                <li> <a href="M_log-out.php">登出</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
 
 <?php endif; ?>
 

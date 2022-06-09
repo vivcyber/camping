@@ -51,8 +51,8 @@
                 <th scope="col">生日</th>
                 <th scope="col">地址</th>
                 <th scope="col">大頭貼</th>
-                <th scope="col">會員積分</th>
                 <th scope="col">會員等級</th>
+                <th scope="col">會員積分</th>
                 <th>修改</th>
             </tr>
         </thead>
