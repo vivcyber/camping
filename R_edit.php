@@ -82,7 +82,7 @@ if (empty($row)) {
                             </div>
                             <div class="mb-3">
                                 <label for="Room_Type" class="form-label">修改房型</label>
-                                <select class="form-control" id="Room_Type" name="Room_Type" onchange="Fetchkey(this.value);">
+                                <select class="form-control" id="Room_Type" name="Room_Type" onchange="Fetchkey(this.value);FetchPrice(this.value);FetchImages(this.value);">
                                     <option><?= $row["Room_Type"]?></option>
                                     <?php foreach ($row2 as $r) : ?>
                                         <option value="<?= $r["Room_Type"]; ?>"><?= $r["Room_Type"]; ?></option>
@@ -228,8 +228,9 @@ if (empty($row)) {
                                 <!-- html5 的功能 -->
                                 <!-- <div class="form-text"></div> -->
                             </div>
+                            <label for="Upload" class="form-label" class="mb-1">Editing Room Images</label>
                             <div class="">
-                                <input type="file" name="image" >
+                                <input type="file" name="Upload" >
                                 <div class="d-flex mt-3">
                                         <button class="mr-2" style="margin-right: 0.5rem;">Upload Images</button>
                                         <button>Cancel </button>
@@ -237,16 +238,16 @@ if (empty($row)) {
                             </div>
                             <button type="submit" class="btn btn-primary mt-3">修改資料</button>
                         </div>
-                        <div class="photo-guide" id="imageblock">
-                           
-                            <div class="gallery-img gallery-size" >
-                                <?php foreach($row3 as $ImgRow):?>
+                        <div class="photo-guide" >
+                       
+                            <div class="gallery-img gallery-size" id="imageblock">
+                            <?php foreach($row3 as $ImgRow):?>
                                    <?php if(strlen($ImgRow['Room_Image']) != 0){?>
                                 <div class="img-box ml-1 mr-1" id=""<?php $ImgRow['sid']?>>
                                     <img src="./imgs/Roomimg/<?= $ImgRow['Room_Image']?>" class="images-size ml-2" alt="">
                                     <a href="javascript:void(0)" class="badge badge-danger" onclick="deleteImage('<?php echo $ImgRow['sid']?>')"></a>
                                 </div>
-                                    <?php } ?>
+                                <?php } ?>
                                     <?php endforeach ?>
                             </div>
                            
@@ -265,18 +266,18 @@ if (empty($row)) {
     const row = <?= json_encode($row, JSON_UNESCAPED_UNICODE); ?>; // unicode 是中文
 
     function Fetchkey(id){
-            console.log(id);
+            // console.log(id);
             $check=false;
             $('input[type="checkbox"]').prop('checked',false);
-            $('#pricess').html('');
-            $('.gallery-size').html('');
+            // $('#pricess').html('');
+            // $('.gallery-size').html('');
             $.ajax({
             type:'post',
             url:'R_runedit_api.php',
-            url:'R_runprice_api.php',
+            // url:'R_runprice_api.php',
             // url:'R_runImage_api.php',
             data:{ Roomttype : id },
-            success : function(data) {
+            }).done(function(data) {
                 // console.log(data);
                 console.log(data);
                 data = data.trim();
@@ -288,13 +289,40 @@ if (empty($row)) {
                     console.log(y);
                 $('input:checkbox[value="'+y+'"]').prop( 'checked' , true ); 
                  });
-            },
-            success : function(data){
+            // }).done(function(data){
+            //     $('#pricess').html(data);
+            //     $('.gallery-size').html(data);
+            });
+    }
+    function FetchPrice(id){
+            $check=false;
+            $('#pricess').html('');
+            // $('.gallery-size').html('');
+            $.ajax({
+            type:'post',
+            url:'R_runprice_api.php',
+            // url:'R_runImage_api.php',
+            data:{ Roomttype : id },
+            }).done(function(data){
                 $('#pricess').html(data);
-                $('.gallery-size').html(data);
-            },
-        });
+                // $('.gallery-size').html(data);
+            });
+    }
 
+    function FetchImages(id){
+            $check=false;
+            $('.gallery-size').html('');
+            console.log(1);
+            $.ajax({
+            type:'post',
+            // url:'R_runprice_api.php',
+            url:'R_runImage_api.php',
+            data:{ Roomttype : id },
+            }).done(function(data){
+                // $('#pricess').html(data);
+                console.log(data);
+                $('.gallery-size').html(data);
+            });
     }
 
    
