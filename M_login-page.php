@@ -26,7 +26,14 @@ $name = $result['m_name'];
 $username = $result['m_username'];
 $birthday = $result['m_birthday'];
 $avatar = $result['m_avatar'];
+$level = '';
+$score = $result['m_score'];
 
+if ($result['m_level'] == 'member') {
+    $level = '銅級會員';
+} else {
+    $level = '金牌會員';
+}
 
 ?>
 
@@ -35,8 +42,8 @@ $avatar = $result['m_avatar'];
 <?php include __DIR__ . '/c_part/c_nav.php' ?>
 
 <?php if (isset($_SESSION['loginUser'])) : ?>
-    <div class=" login-card" style="width:33rem;margin: 5rem auto ;">
-        <div class="login-card login-card-body">
+    <div class=" login-card" style="width:30rem;margin: 5rem auto ;">
+        <div class="login-page-card-body">
             <form method="post">
                 <div class="member-card-container d-flex justify-content-between w-100">
                     <div class="mb-3">
@@ -44,6 +51,8 @@ $avatar = $result['m_avatar'];
                         <p>會員姓名：<span><?php echo $name ?></span></p>
                         <p>會員帳號：<span><?php echo $username ?></span></p>
                         <p>會員生日：<span><?php echo $birthday ?></span></p>
+                        <p>會員等級：<span><?php echo $level ?></span></p>
+                        <p>會員積分：<span><?php echo $score ?></span></p>
                         <div class="bg-img"></div>
                     </div>
                     <div class="mb-3">

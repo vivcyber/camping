@@ -51,6 +51,8 @@
                 <th scope="col">生日</th>
                 <th scope="col">地址</th>
                 <th scope="col">大頭貼</th>
+                <th scope="col">會員積分</th>
+                <th scope="col">會員等級</th>
                 <th>修改</th>
             </tr>
         </thead>
@@ -115,7 +117,9 @@
         m_email,
         m_birthday,
         m_address,
-        m_avatar
+        m_avatar,
+        m_level,
+        m_score
     }) => {
         return `<tr>
                     <td>
@@ -129,6 +133,8 @@
                         <td>${m_birthday}</td>
                         <td>${m_address}</td>
                         <td><div class="avatar"><img src="./M_uploaded/${m_avatar}"</div></td>
+                        <td>${m_level}</td>
+                        <td>${m_score}</td>
                         <td>
                         <a href="M_db-edit-admin.php?sid=${m_id}">
                             <i class="fa-solid fa-pen-to-square"></i>

@@ -15,7 +15,7 @@ $title = '會員註冊';
         <div class="col-md-6">
             <div class="register-card p-5">
                 <div class=" register-card-body ">
-                    <h5 class="card-title">會員註冊</h5>
+                    <h5 class="register-card-title">會員註冊</h5>
                     <form name="form1" onsubmit="sendData(); return false;" novalidate>
                         <!--novalidate:html不對表單進行驗證-->
                         <div class="mb-3">

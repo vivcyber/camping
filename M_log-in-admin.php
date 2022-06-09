@@ -24,9 +24,9 @@ $output = [
 
 <div class="login-card" style="width:33rem; height:auto; margin: 5rem auto ;">
 
-    <div class="login-card card-body d-flex flex-column">
+    <div class=" admin-card-body d-flex flex-column">
         <!-- <img src="./W9gIYt4h.jpeg" class="card-img-top" alt="..."> -->
-        <div class="member-title" style="color:#fff">後台管理者登入</div>
+        <div class="admin-title" style="color:#fff">後台管理者登入</div>
         <form name="form1" method="post" style="margin: auto;" onsubmit="return checkForm()">
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="login-label  form-label">account</label>

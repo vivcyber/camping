@@ -1,8 +1,20 @@
+#logo {
+    width: 30px;
+    filter: invert(1);
+}
+
+body {
+    background: url(../imgs/pexels-lumn-167685.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 .login-label {
     width: 100px;
     color: #fff;
     letter-spacing: 3px;
     font-weight: 200;
+    text-shadow: none;
 }
 
 .login-button {
@@ -12,6 +24,7 @@
     padding: 5px 20px;
     border-radius: 25px;
     margin-top: 28px;
+    margin-bottom: 28px;
     background-color: rgba(255, 255, 255, 0.7);
     letter-spacing: 3px;
 }
@@ -23,11 +36,11 @@
 }
 
 .login-card {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(2px);
-    border: 0.5px solid rgba(191, 191, 189, 0.6);
+    border: 1px solid rgba(191, 191, 189, 0.6);
     border-radius: 15px;
-    box-shadow: 0px 0px 10px 5px rgba(181, 168, 137, 0.3);
+    box-shadow: 0px 0px 10px 5px rgba(233, 230, 222, 0.3);
 }
 
 .login-card input {
@@ -60,12 +73,13 @@
 }
 
 .register-card {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.5);
     color: #fff;
     letter-spacing: 3px;
     font-weight: 200;
     padding: 20px;
     border-radius: 15px;
+    box-shadow: 0px 0px 10px 5px rgba(233, 230, 222, 0.3);
 }
 
 .register-card input,
@@ -83,9 +97,9 @@
 .login-card-body {
     position: relative;
     font-weight: 200;
-    font-style: oblique;
+    /* font-style: oblique; */
     font-size: 0.9rem;
-    padding: 4rem;
+    padding: 1rem;
     letter-spacing: 2px;
     text-shadow: 0 0 5px #eac18a;
     box-shadow: none;
@@ -121,7 +135,7 @@
     font-size: 1.5rem;
     margin: 0 auto;
     font-weight: 200;
-    padding: 10px 0 20px 0;
+    padding: 20px 0;
     letter-spacing: 3px;
 }
 
@@ -173,3 +187,41 @@
     font-weight: 200;
     border-radius: 15px;
 } */
+
+.edit-card-body {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    letter-spacing: 3px;
+    font-weight: 200;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 5px rgba(233, 230, 222, 0.3);
+}
+
+.edit-card-title {
+    color: #fff;
+    text-shadow: 0 0 5px #eac18a;
+    font-size: 1.5rem;
+    margin: 0 auto;
+    font-weight: 200;
+    padding: 10px 0 20px 0;
+    letter-spacing: 3px;
+}
+
+.register-card-title {
+    color: #fff;
+    text-shadow: 0 0 5px #eac18a;
+    font-size: 1.5rem;
+    margin: 0 auto;
+    font-weight: 200;
+    padding: 10px 0 20px 0;
+    letter-spacing: 3px;
+}
+
+.login-page-card-body {
+    font-style: oblique;
+    font-size: 0.9rem;
+    padding: 3rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px #eac18a;
+    font-weight: 200;
+}
