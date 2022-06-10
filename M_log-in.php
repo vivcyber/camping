@@ -34,7 +34,8 @@ $output = [
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class=" login-label form-label">password</label>
-                <input type="password" name="password" placeholder="密碼">
+                <input id="password-eye" type="password" name="password" placeholder="密碼">
+                <i id="checkEye" class="fas fa-eye"></i>
             </div>
             <div class="mb-3 captcha d-flex flex-column">
 
@@ -87,6 +88,25 @@ $output = [
 
         return false;
     }
+
+
+    const eye = document.querySelector('#checkEye');
+    const eyePassword = document.querySelector('#password-eye');
+
+    eye.addEventListener("click", function(e) {
+
+        if (e.target.classList.contains('fa-eye')) {
+
+            e.target.classList.remove('fa-eye');
+            e.target.classList.add('fa-eye-slash');
+            eyePassword.setAttribute('type', 'text');
+
+        } else {
+            eyePassword.setAttribute('type', 'password');
+            e.target.classList.remove('fa-eye-slash');
+            e.target.classList.add('fa-eye')
+        }
+    });
 </script>
 <script src="./js/jquery-3.4.1.js"></script>
 <?php include __DIR__ . '/c_part/c_foot.php' ?>

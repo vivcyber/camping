@@ -6,7 +6,7 @@ require __DIR__ . '/part/connect_db.php';
 $pageName = 'edit-password';
 $title = '會員卡';
 
-print_r($_SESSION);
+
 if (!isset($_SESSION)) {
     echo 'session empty!';
     exit;
@@ -93,6 +93,8 @@ if ($password == '') {
 
             if (result.success) {
 
+                cBar.style.display = 'none';
+
                 alert("修改成功！請重新登入");
 
                 setTimeout(function() {
@@ -101,7 +103,7 @@ if ($password == '') {
 
             } else {
                 cBar.style.display = 'block';
-                cBar.innerText = '無法修改密碼';
+                cBar.innerText = '舊密碼輸入錯誤';
             }
         }
     }
