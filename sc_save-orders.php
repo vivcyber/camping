@@ -77,7 +77,7 @@ unset($_SESSION['cart']); // 清除購物車內容
             <h5 class="mt-3 text-center">您的訂單編號為</h5>
             <h1 class="fs-1 text-success text-center mb-5"><?= $order_sid ?></h1>
             <a href="sc_order_detail.php" class=" m-2 mt-5 btn btn-primary">查看訂購紀錄</a>
-            <a href="index_.php" class="m-2 btn btn-outline-primary">回到首頁</a>
+            <a href="c_index_.php" class="m-2 btn btn-outline-primary">回到首頁</a>
         </div>
     </div>
 
