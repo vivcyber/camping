@@ -24,6 +24,9 @@
           <a class="nav-link" href="./M_log-in.php">會員登入/註冊</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="./as_tourist_spots_page.php">周邊景點</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="./c_product_2.php">商品頁</a>
         </li>
         <li class="nav-item">
