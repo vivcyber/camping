@@ -2,6 +2,10 @@
 session_start();
 require __DIR__ . '/M_databse-connect.php';
 
+if (!isset($_POST)) {
+    echo 'no post';
+    exit;
+}
 
 $output = [
     'success' => false,
@@ -9,8 +13,8 @@ $output = [
     'error' => '',
 ];
 
-$password = $_POST['old-password'] ? $_POST['old-password'] : '';
-$nPassword = $_POST['new-password'] ? $_POST['new-password'] : '';
+$password = $_POST['oldpassword'] ? $_POST['oldpassword'] : '';
+$nPassword = $_POST['newpassword'] ? $_POST['newpassword'] : '';
 $sid = $_SESSION['loginUser']['m_id'];
 
 if ($password == '') {
@@ -29,12 +33,30 @@ if (!password_verify($password, $_SESSION['loginUser']['m_passwd'])) {
 $password = password_hash($password, PASSWORD_BCRYPT);
 
 
-$sql = "UPDATE `memberdata` SET `m_passwd`='" . $password . "' WHERE `m_id` = '" . $sid . "';";
 
-$result = $pdo->prepare($sql);
+if ($nPassword !== '') {
 
-$result->execute(
-    [
-        $password
-    ]
-);
+
+    $nPassword = password_hash($npassword, PASSWORD_BCRYPT);
+
+    $sql = "UPDATE `memberdata` SET `m_passwd`='" . $password . "' WHERE `m_id` = '" . $sid . "';";
+
+    $result = $pdo->prepare($sql);
+
+    $result->execute(
+        [
+            $password
+        ]
+    );
+
+
+    if ($result->rowCount()) {
+        $output['success'] = true;
+
+        $_SESSION['loginuser'] = '';
+    } else {
+        $output['error'] = '資料無法新增';
+    }
+}
+
+echo json_encode($output, JSON_UNESCAPED_UNICODE);
