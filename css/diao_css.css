@@ -294,3 +294,9 @@ body {
     opacity: 1;
     cursor: default;
 }
+
+#checkEye {
+    position: absolute;
+    transform: translate(-25px, 8px);
+    text-shadow: none;
+}
