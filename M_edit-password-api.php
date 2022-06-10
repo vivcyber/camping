@@ -1,6 +1,6 @@
 <?php
 session_start();
-require __DIR__ . '/M_databse-connect.php';
+require __DIR__ . '/part/connect_db.php';
 
 if (!isset($_POST)) {
     echo 'no post';
@@ -37,7 +37,7 @@ $password = password_hash($password, PASSWORD_BCRYPT);
 if ($nPassword !== '') {
 
 
-    $nPassword = password_hash($npassword, PASSWORD_BCRYPT);
+    $nPassword = password_hash($nPassword, PASSWORD_BCRYPT);
 
     $sql = "UPDATE `memberdata` SET `m_passwd`='" . $password . "' WHERE `m_id` = '" . $sid . "';";
 
@@ -53,7 +53,8 @@ if ($nPassword !== '') {
     if ($result->rowCount()) {
         $output['success'] = true;
 
-        $_SESSION['loginuser'] = '';
+        unset($_SESSION['loginUser']);
+        unset($_SESSION['isLoggedIn']);
     } else {
         $output['error'] = '資料無法新增';
     }

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require __DIR__ . '/M_databse-connect.php';
+require __DIR__ . '/part/connect_db.php';
 
 $pageName = 'edit-password';
 $title = '會員卡';
@@ -42,10 +42,11 @@ if ($password == '') {
             <div class="new-password d-flex">
                 <div class="member-title" style="font-style:normal;font-size:1rem;margin:0 10px;align-self:center">請確認新密碼:</div>
                 <input id="confirm" type="password" style="height: 25px;align-self:center">
-                <div class="caution-bar" style="text-shadow: none; font-style:normal;color:red;align-self:center;display:none;">密碼錯誤</div>
             </div>
+            <div class="caution-bar" style="text-shadow: none; font-style:normal;color:red;align-self:center;display:none;">密碼錯誤</div>
             <button type="submit" class="login-button">提交</button>
         </form>
+
     </div>
 </div>
 
@@ -63,17 +64,15 @@ if ($password == '') {
     // console.log(document.form1);
 
 
+    async function setPassword() {
 
-    if (newPassword.value !== confirm.value) {
+        if (newPassword.value !== confirm.value) {
 
-        cBar.style.display = 'block';
-        cBar.innerText = '新密碼與確認密碼不符';
+            cBar.style.display = 'block';
+            cBar.innerText = '新密碼與確認密碼不符';
 
-    } else {
+        } else {
 
-        console.log('123');
-
-        async function setPassword() {
 
             console.log('456');
             // let isPass = true;
@@ -94,10 +93,15 @@ if ($password == '') {
 
             if (result.success) {
 
-                console.log('success');
+                alert("修改成功！請重新登入");
+
+                setTimeout(function() {
+                    location.href = 'M_log-in.php';
+                }, 1000);
 
             } else {
-                console.log('error');
+                cBar.style.display = 'block';
+                cBar.innerText = '無法修改密碼';
             }
         }
     }

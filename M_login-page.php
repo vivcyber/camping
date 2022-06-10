@@ -2,7 +2,7 @@
 
 session_start();
 
-require __DIR__ . '/M_databse-connect.php';
+require __DIR__ . '/part/connect_db.php';
 
 $pageName = 'db-login-page';
 $title = '會員卡';

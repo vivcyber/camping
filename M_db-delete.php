@@ -1,4 +1,7 @@
-<?php require __DIR__ . '/M_databse-connect.php';
+<?php require __DIR__ . '/part/connect_db.php';
+
+$title = "通訊錄列表";
+
 
 $sid = isset($_GET['m_id']) ? intval($_GET['m_id']) : 0;
 

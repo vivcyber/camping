@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/M_databse-connect.php';
+require __DIR__ . '/part/connect_db.php';
 header("Content-Type:application/json");
 
 $output = [

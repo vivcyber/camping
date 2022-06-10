@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/M_databse-connect.php';
+require __DIR__ . '/part/connect_db.php';
 
 $stmt = $pdo->query("SELECT * FROM `memberdata` LIMIT 10 ");
 

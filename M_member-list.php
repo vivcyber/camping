@@ -1,5 +1,10 @@
+<?php $title = "會員列表"; ?>
 <?php include __DIR__ . '/part/html-head.php' ?>
+
 <?php include __DIR__ . '/part/navbar.php' ?>
+
+
+
 
 
 
@@ -31,10 +36,7 @@
             </div> -->
         <div class="view-site">
             <!-- 前往前台的按鈕 -->
-            <a class="nav-link text-dark text-lg-end pt-3" href="c_product.php" target="_blank">
-                <i class="fa-solid fa-eye"></i>
-                View Site
-            </a>
+
             <a href="M_log-out-admin.php">管理者登出</a>
         </div>
         </nav>
