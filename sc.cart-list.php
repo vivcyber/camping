@@ -41,9 +41,9 @@ if (!empty($pKeys)) {
                         ?>
                             <tr class="p-item" data-sid="<?= $item['sid'] ?>">
                                 <td><a href="#" onclick="removeProductItem(event)"><i class="fas fa-trash-alt"></i></a></td>
-                                <td><img src="imgs/product/<?= $item['productimg'] ?>" alt="" style="width:300px"></td>
-                                <td><?= $item['productname'] ?></td>
-                                <td class="price" data-price="<?= $item['productprice'] ?>"></td>
+                                <td><img src="imgs/product/<?= $item['productimg'] ?>" alt="" style="width:100px"></td>
+                                <td class="pt-3"><?= $item['productname'] ?></td>
+                                <td class="price pt-3" data-price="<?= $item['productprice'] ?>"></td>
                                 <td>
                                     <select class="form-control quantity" data-qty="<?= $item['quantity'] ?>" onchange="changeQty(event)">
                                         <?php for ($i = 1; $i <= 20; $i++) : ?>
@@ -51,7 +51,7 @@ if (!empty($pKeys)) {
                                         <?php endfor; ?>
                                     </select>
                                 </td>
-                                <td class="sub-total"></td>
+                                <td class="sub-total pt-3"></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
