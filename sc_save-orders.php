@@ -45,7 +45,7 @@ $_SESSION['loginUser']['nickname'] = 3;
 
 $order_sid = $pdo->lastInsertId(); // 最近新增資料的 PK
 
-$od_sql = "INSERT INTO `order_details`(`order_sid`, `product_sid`, `productprice`, `quantity`) VALUES (?, ?, ?, ?)";
+$od_sql = "INSERT INTO `order_details`(`order_sid`, `product_sid`, `price`, `quantity`) VALUES (?, ?, ?, ?)";
 $od_stmt = $pdo->prepare($od_sql);
 
 foreach ($_SESSION['cart'] as $p_sid => $qty) {
