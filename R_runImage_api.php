@@ -18,9 +18,9 @@ if($_POST['Roomttype']) {
             foreach($row as $ImgRow){
                 if(strlen($ImgRow['Room_Image']) != 0){
                     // print_r($ImgRow);
-                    echo '<div class="img-box ml-1 mr-1" id="'.$ImgRow['sid'].'">
+                    echo ' <div class="img-box ml-1 mr-1 position-relative" id="'.$ImgRow['sid'].'">
                     <img src="./imgs/Roomimg/'.$ImgRow['Room_Image'].'" class="images-size ml-2" alt="">
-                    <a href="javascript:void(0)" class="badge badge-danger" onclick="deleteImage("'.$ImgRow['sid'].'")"></a>
+                    <button class="badge badge-danger circleflow" onclick="deleteImage('.$ImgRow['sid'].')"> X </button>
                     </div>';
                 }
             }
@@ -28,6 +28,7 @@ if($_POST['Roomttype']) {
     }else {
         echo '<input>No image was selected</input>';
     }
+    exit();
 }
 ?>
 

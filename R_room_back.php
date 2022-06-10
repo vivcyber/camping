@@ -50,6 +50,12 @@ if (!empty($_GET['search'])) {
 ?>
 
 <?php include __DIR__ . '/part/html-head.php' ?>
+<style>
+    td,th{
+        text-align: left;
+    }
+
+</style>
 <?php include __DIR__ . '/part/navbar.php' ?>
 
 <div class="container">
@@ -110,7 +116,7 @@ if (!empty($_GET['search'])) {
                 <!-- </th> -->
                 <!-- <th scope="col">房間配備</th> -->
                 <!-- </th> -->
-                <th scope="col">價格</th>
+                <th scope="col">價 格</th>
                 <th scope="col">會員留言</th>
                 <th scope="col">建立日期</th>
 
