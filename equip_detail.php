@@ -43,7 +43,7 @@ if (empty($row)) {
 
                         <div class="my-5">
                             <h6 class="m-0">裝備照片</h6>
-                            <img src="./imgs/product/<?= $row['img'] ?>.jpg" alt="" class="card-img" style="width:200px;"> 
+                            <img src="./ae_uploaded/<?= $row['img'] ?>" alt="" class="card-img" style="width:200px;"> 
                         </div>
 
                         <div class="my-4">
@@ -67,11 +67,11 @@ if (empty($row)) {
                         </div>
                         <div class="my-4">
                             <h6 class="m-0">照片2</h6>
-                            <img src="./imgs/product/<?= $row['img2'] ?>.jpg" alt="" class="card-img" style="width:200px;"> 
+                            <img src="./ae_uploaded/<?= $row['img2'] ?>" alt="" class="card-img" style="width:200px;"> 
                         </div>
                         <div class="my-4">
                             <h6 class="m-0">照片3</h6>
-                            <img src="./imgs/product/<?= $row['img3'] ?>.jpg" alt="" class="card-img" style="width:200px;"> 
+                            <img src="./ae_uploaded/<?= $row['img3'] ?>" alt="" class="card-img" style="width:200px;"> 
                         </div>
 
                     </form>
