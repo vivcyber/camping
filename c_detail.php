@@ -50,7 +50,7 @@ if(empty($row)){
          
             
           </div>
-          <div class="col-6">
+          <div class="col-6 product-unit"  data-sid="<?= $row['sid'] ?>">
 
           <div class="discrib ">
               <h4> <?= $row['productname'] ?>   </h4>
@@ -75,10 +75,15 @@ if(empty($row)){
                 <br><br><br>
 
                  <p class="">數量</p>
-                 <input type="number" class="form-control ">
+                 <!-- <input type="number" class="form-control "> -->
+                 <select class="form-control qty mr-3" style="display: inline-block; width:100%">
+                                            <?php for ($i = 1; $i <= 10; $i++) { ?>
+                                                <option value="<?= $i ?>"><?= $i ?></option>
+                                            <?php } ?>
+                                        </select>
                  <p class="text-secondary "> 尚餘 <span><?= $row['productleft'] ?></span>個</p>
 
-                 <button type="button" class="btn btn-primary mt-2">+加入購物車</button>
+                 <button type="button" class="btn btn-primary add-to-cart-btn mt-2">+加入購物車</button>
 
          </div>
 
@@ -93,6 +98,53 @@ if(empty($row)){
               <p class="mt-3"><?= $row['productinclude'] ?></p>
     </div>
 </div>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+    $.get('sc-add-to-cart-api.php', function(data) {
+        countCartObj(data);
+    }, 'json');
+
+    function countCartObj(data) {
+        let total = 0;
+        for (let i in data) {
+            total += data[i];
+        }
+        $('.cart-count').text(total);
+    }
+</script>
+<script>
+    const btn = $('.add-to-cart-btn');
+
+    btn.click(function() {
+        const sid = $(this).closest('.product-unit').attr('data-sid');
+        //const qty = $(this).prev().val();
+        const qty = $(this).closest('.product-unit').find('.qty').val();
+
+        console.log({
+            sid,
+            qty
+        });
+
+        $.get('sc-add-to-cart-api.php', {
+            sid,
+            qty
+        }, function(data) {
+            countCartObj(data);
+        }, 'json');
+    });
+</script>
+
+
+
+
+
+
+
+
+    
+
+<?php include __DIR__ . '/c_part/c_scripts.php' ?>
+<?php include __DIR__ . '/c_part/c_foot.php' ?>
 
 
 
