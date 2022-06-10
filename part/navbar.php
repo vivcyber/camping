@@ -50,7 +50,7 @@ if (!isset($pageName)) {
           </a>
         </button>
         <button type="button" class="btn btn-outline-light w-100 border-0">
-          <a class="text-dark text-decoration-none <?= $pageName == 'ab-list' ? 'active' : '' ?>" href="recipes_list.php">
+          <a class="text-dark text-decoration-none <?= $pageName == 'ab-list' ? 'active' : '' ?>" href="j_list.php">
             <i class="fa-solid fa-utensils"></i>
             食譜教學
           </a>
