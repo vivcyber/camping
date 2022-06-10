@@ -56,11 +56,16 @@ if (!isset($pageName)) {
           </a>
         </button>
         <button type="button" class="btn btn-outline-light w-100 border-0">
-          <a class="text-dark text-decoration-none <?= $pageName == 'ab-list' ? 'active' : '' ?>" href="activities_list.php">
+          <a class="text-dark text-decoration-none <?= $pageName == 'ab-list' ? 'active' : '' ?>" href="act_list.php">
             <i class="fa-solid fa-person-hiking"></i>
             活動加購
           </a>
         </button>
+        <button type="button" class="btn btn-outline-light w-100 border-0">
+          <a class="text-dark text-decoration-none <?= $pageName == 'ab-list' ? 'active' : '' ?>" href="equip_list.php">
+            <i class="fa-solid fa-binoculars"></i>
+            裝備租賃
+          </a>
         <button type="button" class="btn btn-outline-light w-100 border-0">
           <a class="text-dark text-decoration-none <?= $pageName == 'p-list' ? 'active' : '' ?>" href="p_list.php">
             <i class="fa-solid fa-basket-shopping"></i>

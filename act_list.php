@@ -1,8 +1,8 @@
 <?php require __DIR__ . '/part/connect_db.php';
-$pageName = 'activities_list';
+$pageName = 'act_list';
 $title = '活動加購';
 
-$perPage = 1; // 每一頁有幾筆
+$perPage = 5; // 每一頁有幾筆
 
 // 用戶要看第幾頁
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -11,7 +11,7 @@ if ($page < 1) {
     exit;
 }
 
-$t_sql = "SELECT COUNT(1) FROM activities";
+$t_sql = "SELECT COUNT(1) FROM act";
 $totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0]; // 總筆數
 
 $totalPages = ceil($totalRows / $perPage); // 總共有幾頁
@@ -25,7 +25,7 @@ if ($totalRows > 0) {
         exit;
     }
 
-    $sql = sprintf("SELECT * FROM activities ORDER BY sid DESC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
+    $sql = sprintf("SELECT * FROM act ORDER BY act_id LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
     $rows = $pdo->query($sql)->fetchAll();
 }
 
@@ -36,25 +36,28 @@ if ($totalRows > 0) {
 <div class="container">
 
     <div class="w-100 d-flex justify-content-end">
-         <!-- 新增商品按鈕 -->
-         <a class="nav-link text-dark p-3" href="index_.php">
+        <!-- 新增商品按鈕 -->
+        <a class="nav-link text-dark p-3" href="act_add.php">
             <i class="fa-solid fa-plus"></i>
-             新增商品
+            新增活動
             </a>
 
-         <!-- 前往前台的按鈕 -->
-         <a class="nav-link text-dark p-3" href="c_index.php" target="_blank">
-         <i class="fa-solid fa-eye"></i>
+        <!-- 前往前台的按鈕 -->
+        <a class="nav-link text-dark p-3" href="c_index.php" target="_blank">
+        <i class="fa-solid fa-eye"></i>
             View Site
-         </a>
-     </div>
+        </a>
+    </div>
 
 
 
     <div class="card p-5">
     <div class="row">
         <div class="col-6">
-            
+        <a class="nav-link text-dark p-3" href="leader_list.php">
+        <i class="fa-solid fa-eye"></i>
+            教練資料
+        </a>
         </div>
     </div>
 
@@ -66,10 +69,13 @@ if ($totalRows > 0) {
                 <th scope="col">#</th>
                 <th scope="col">活動名稱</th>
                 <th scope="col">活動價格</th>
-                <th scope="col"></th>活動描述</th>
-                <th scope="col">活動行程</th>
-                <th scope="col">注意事項</th>
-                <th scope="col">活動時間</th>
+                <th scope="col">開始時間</th>
+                <th scope="col">結束時間</th>
+                <th scope="col">開團人數</th>
+                <th scope="col">人數限制</th>
+                <th scope="col">最小年齡</th>
+                <th scope="col">最大年齡</th>
+                <th scope="col">詳情介紹</th>
                 <th scope="col"><i class="fa-solid fa-pen-to-square"></i></th>
             </tr>
         </thead>
@@ -81,22 +87,30 @@ if ($totalRows > 0) {
                         <a href="ab-delete.php?sid=<?= $r['sid'] ?>" onclick="return confirm('確定要刪除編號為 <?= $r['sid'] ?> 的資料嗎?')">
                         */ ?>
 
-                        <a href="javascript: delete_it(<?= $r['sid'] ?>)">
+                        <a href="javascript: delete_it(<?= $r['act_id'] ?>)">
                             <i class="fa-solid fa-trash-can"></i>
                         </a>
                     </td>
-                    <td><?= $r['sid'] ?></td>
-                    <td><?= htmlentities($r['ac_name']) ?></td>
-                    <td><?= $r['ac_price'] ?></td>
-                    <td><?= $r['ac_info'] ?></td>
-                    <td><?= $r['ac_schdule'] ?></td>
-                    <td><?= $r['ac_notice'] ?></td>
-                    <td><?= $r['ac_time'] ?></td>
-                    <td>
-                        <a href="ad_edit.php?sid=<?= $r['sid'] ?>">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </a>
+                    <td><?= $r['act_id'] ?></td>
+                    <td><?= htmlentities($r['act_name']) ?></td>
+                    <td><?= $r['act_price'] ?></td>
+                    <td><?= $r['act_s_time'] ?></td>
+                    <td><?= $r['act_e_time'] ?></td>
+                    <td><?= $r['min_people'] ?></td>
+                    <td><?= $r['max_people'] ?></td>
+                    <td><?= $r['min_age'] ?></td>
+                    <td><?= $r['max_age'] ?></td>
+                    <td class="p-3">
+                    <a  href="act_detail.php?act_id=<?= $r['act_id'] ?>">
+                        <i class="fa-solid fa-list"></i>
+                    </a>
                     </td>
+                    <td>
+                    <a href="act_edit.php?act_id=<?= $r['act_id'] ?>">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
+                    </td>
+                    
                 </tr>
             <?php endforeach; ?>
         </tbody>
@@ -146,9 +160,9 @@ if ($totalRows > 0) {
 <?php include __DIR__ . '/part/scripts.php' ?>
 
 <script>
-    function delete_it(sid) {
-        if (confirm(`確定要刪除編號為 ${sid} 的資料嗎?`)) {
-            location.href = `ad_delete.php?sid=${sid}`;
+    function delete_it(act_id) {
+        if (confirm(`確定要刪除編號為 ${act_id} 的資料嗎?`)) {
+            location.href = `act_delete.php?act_id=${act_id}`;
         }
     }
 </script>

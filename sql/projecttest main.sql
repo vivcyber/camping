@@ -2,9 +2,9 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- 主機： localhost
--- 產生時間： 2022 年 06 月 09 日 09:40
--- 伺服器版本： 10.4.21-MariaDB
+-- 主機： 127.0.0.1
+-- 產生時間： 2022-06-10 09:44:34
+-- 伺服器版本： 10.4.24-MariaDB
 -- PHP 版本： 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -65,11 +65,8 @@ INSERT INTO `act` (`act_id`, `act_name`, `act_s_time`, `act_e_time`, `min_people
 
 CREATE TABLE `act_img` (
   `act_img_id` int(255) NOT NULL,
-  `act_rf_img` varchar(255) NOT NULL,
-  `act_atv_img` varchar(255) NOT NULL,
-  `act_ups_img` varchar(255) NOT NULL,
-  `act_nt_img` varchar(255) NOT NULL,
-  `act_leaders_img` varchar(255) NOT NULL
+  `act_id` int(255) NOT NULL,
+  `filename` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -398,12 +395,12 @@ CREATE TABLE `equip` (
 --
 
 INSERT INTO `equip` (`equip_id`, `name`, `cate_id`, `info`, `img`, `price`, `rest`, `spec`, `include`, `img2`, `img3`) VALUES
-(1, 'OneTigris壹虎 啟示自立帳 CE-HZP01-CB', 1, '堅固的防風和遮蔽結構的穩定性\r\n防止側風影響露營者的睡眠\r\n帶有尼龍網狀內帳\r\n', 'tent_onetiger', 1800, 10, '尺寸：220cm*132cm*110cm\r\n重量：2.4kg\r\n包裝：50cm*16cm\r\n材質：20D 格子防撕裂聚酯外帳篷、70D 尼龍帳篷底部、40D 尼龍網內帳篷、YKK® 拉鍊、#7001 鋁合金帳篷桿\r\n防水等級：1500mm\r\n', '帳篷*1，帳篷支架*3，營繩帶調節器*4，地釘*10，收納袋*1', 'tent_onetiger_1', 'tent_onetiger_2'),
-(2, 'tent-Mark DESIGNS 馬戲團帳篷TC-DX', 1, 'tent-Mark最著名的是他們所使用的特殊布料-TC科技棉，\r\n', 'tent_mark', 1000, 8, '品名：tent-Mark DESIGNS 馬戲團帳篷TC-DX\r\n材質：\r\n帳篷本體：科技棉TC(65%聚酯纖維、35%棉)/ 加工:表面顏料塗層\r\n下擺：防撕裂聚酯纖維150D/ 加工:PU塗層 \r\n營柱：鋼製5段式主營柱(Φ32mm/280cm) x1/ 鋼製4段式副營柱(Φ22mm/200cm) x1\r\n收納袋：防撕裂聚酯纖維150D、聚酯纖維網布\r\n耐水壓：1500mm \r\n尺寸：442×420×(H)280cm\r\n收納尺寸：Φ27×63cm\r\n重量：12.3kg(包含營釘、營繩、營柱、收納袋)', '副營柱*1、營釘(主體用)*16、營釘(定位用)*1、營繩*5、收納袋*4、搭設定位用套件', 'tent_mark_1', 'tent_mark_2'),
-(3, 'Naturehike 亙 戶外加厚棉布屋式帳篷4.8 Glamping系列', 1, 'Glamping系列，亙4.8 享受戶外美學\r\n雙人寬敞設計，約4.8平方公尺\r\n主要材質是經過特別的防霉處理後的棉布材質，\r\n優點是能將防潑水與透氣性合理平衡，舒適不悶熱\r\n以此材質製作的帳篷質感與吸睛程度也非常的高\r\n但小編不建議長期在雨中使用哦~', 'tent_naturehike', 1500, 23, '品牌: 挪客 材質: 外帳:混紡棉布 拉鍊: YKK拉鍊 紗網:滌綸網紗 底帳:耐磨PVC複合布 縫線:膨脹線 尺寸:展開: 235X210X145cm、收納: 78X25X35cm  顏色:流沙金 重量:約16.2kg(含配件和收納袋)', '支撐杆X4,天幕杆X2,風繩X14,鋼釘X18', 'tent_naturehike_2', 'tent_naturehike_3'),
-(4, 'ANGLE HIRO 戰術桌全套 Helinox Tactical Table M戰術桌 ', 2, '搭配Helinox Table M提升桌面的實用性\r\n桌邊增設機能掛桿可掛裝備及餐具\r\n桌面四角設計M8尺寸固定孔洞\r\n可搭配燈桿與角度多功能擴充鋁桿\r\n耐用鋁合金框架輕量便攜組裝快速', 'desk_angelhiro', 200, 30, '品名：ANGLE HIRO 戰術桌板 適用Helinox Tactical Table M戰術桌 尺寸：41 X 61cm (桌板固定處同Helinox Table M) 重量：1.3kg 包裝：63 x 43 x 8.5cm / 1.5kg 款式：單一款式 材質：鋁 ', '戰術桌板 x 1、收納袋 x 1', 'desk_angelhiro_1', 'desk_angelhiro_3'),
-(5, 'Coleman 扶手休閒椅 CM-38829/CM-38831 ', 2, '兩側皆有飲料架方便存放手機飲料\r\n大小適中配色百搭可輕鬆收進束袋\r\n耐用及穩固的基本椅子且便於攜帶\r\n基本入門款椅子，多種場合皆適用\r\n附收納袋便於收納攜帶', 'chair_coleman\r\n', 200, 45, '使用尺寸：約81×51×高87cm 收納尺寸：約14×14×高87cm 重量：約2.95kg 材質：座布 ／聚酯纖維、骨架 ／鋼 座面幅：約53cm 座面高：約43cm 附屬配件：收納袋  最大承載重量：約80kg', '配有寬大的扶手。 扶手上各有一個杯架。', 'chair_coleman_1', 'chair_coleman_2'),
-(6, 'ANGLE露營風格保冰桶 10QT / 方形飲料桶 Water Jug Cooler', 3, '5cm 雙層厚實 PU 隔熱設\r\n360度防漏水密封膠條長效保冰\r\n上蓋防滑墊置物安穩也能做為椅子', 'cook_angle_black', 250, 33, '品名：ANGLE 露營風格保冰桶 10QT / 方形飲料桶 Water Jug Cooler 尺寸：外部尺寸 : 27 x 24 x 35 cm / 內部尺寸 : 19 x 18 x 27 cm 重量：4.5 kg 容量：約 9.5 L / 2.5 Gallon / 10 QT 規格：黑色、沙色 材質：LLDPE 內外一體、PU 發泡保溫層、尼龍塑料手柄、矽膠密封條、304 不鏽鋼水龍頭 內容：保冰桶 x 1、304 不鏽鋼水龍頭 x 1、旋塞 x 1 保冰保冷：裝滿冰塊，在25°室內，最長7天化完。', '替換式配件 水龍頭＋塞蓋  - 保冰桶 / 飲水桶 功能任意轉換 - ．304食品級不鏽鋼水龍頭 - 飲用水、各式飲品安全無虞 ．保冰用旋式塞蓋 - 完全阻塞，液體不易漏出', 'cook_angle_black1', 'cook_angle_black2');
+(1, 'OneTigris壹虎 啟示自立帳 CE-HZP01-CB', 1, '堅固的防風和遮蔽結構的穩定性\r\n防止側風影響露營者的睡眠\r\n帶有尼龍網狀內帳\r\n', 'tent_onetiger.jpg', 1800, 10, '尺寸：220cm*132cm*110cm\r\n重量：2.4kg\r\n包裝：50cm*16cm\r\n材質：20D 格子防撕裂聚酯外帳篷、70D 尼龍帳篷底部、40D 尼龍網內帳篷、YKK® 拉鍊、#7001 鋁合金帳篷桿\r\n防水等級：1500mm\r\n', '帳篷*1，帳篷支架*3，營繩帶調節器*4，地釘*10，收納袋*1', 'tent_onetiger_1.jpg', 'tent_onetiger_2.jpg'),
+(2, 'tent-Mark DESIGNS 馬戲團帳篷TC-DX', 1, 'tent-Mark最著名的是他們所使用的特殊布料-TC科技棉，\r\n', 'tent_mark.jpg', 1000, 8, '品名：tent-Mark DESIGNS 馬戲團帳篷TC-DX\r\n材質：\r\n帳篷本體：科技棉TC(65%聚酯纖維、35%棉)/ 加工:表面顏料塗層\r\n下擺：防撕裂聚酯纖維150D/ 加工:PU塗層 \r\n營柱：鋼製5段式主營柱(Φ32mm/280cm) x1/ 鋼製4段式副營柱(Φ22mm/200cm) x1\r\n收納袋：防撕裂聚酯纖維150D、聚酯纖維網布\r\n耐水壓：1500mm \r\n尺寸：442×420×(H)280cm\r\n收納尺寸：Φ27×63cm\r\n重量：12.3kg(包含營釘、營繩、營柱、收納袋)', '副營柱*1、營釘(主體用)*16、營釘(定位用)*1、營繩*5、收納袋*4、搭設定位用套件', 'tent_mark_1.jpg', 'tent_mark_2.jpg'),
+(3, 'Naturehike 亙 戶外加厚棉布屋式帳篷4.8 Glamping系列', 1, 'Glamping系列，亙4.8 享受戶外美學\r\n雙人寬敞設計，約4.8平方公尺\r\n主要材質是經過特別的防霉處理後的棉布材質，\r\n優點是能將防潑水與透氣性合理平衡，舒適不悶熱\r\n以此材質製作的帳篷質感與吸睛程度也非常的高\r\n但小編不建議長期在雨中使用哦~', 'tent_naturehike.jpg', 1500, 23, '品牌: 挪客 材質: 外帳:混紡棉布 拉鍊: YKK拉鍊 紗網:滌綸網紗 底帳:耐磨PVC複合布 縫線:膨脹線 尺寸:展開: 235X210X145cm、收納: 78X25X35cm  顏色:流沙金 重量:約16.2kg(含配件和收納袋)', '支撐杆X4,天幕杆X2,風繩X14,鋼釘X18', 'tent_naturehike_2.jpg', 'tent_naturehike_3.jpg'),
+(4, 'ANGLE HIRO 戰術桌全套 Helinox Tactical Table M戰術桌 ', 2, '搭配Helinox Table M提升桌面的實用性\r\n桌邊增設機能掛桿可掛裝備及餐具\r\n桌面四角設計M8尺寸固定孔洞\r\n可搭配燈桿與角度多功能擴充鋁桿\r\n耐用鋁合金框架輕量便攜組裝快速', 'desk_angelhiro.jpg', 200, 30, '品名：ANGLE HIRO 戰術桌板 適用Helinox Tactical Table M戰術桌 尺寸：41 X 61cm (桌板固定處同Helinox Table M) 重量：1.3kg 包裝：63 x 43 x 8.5cm / 1.5kg 款式：單一款式 材質：鋁 ', '戰術桌板 x 1、收納袋 x 1', 'desk_angelhiro_1.jpg', 'desk_angelhiro_3.jpg'),
+(5, 'Coleman 扶手休閒椅 CM-38829/CM-38831 ', 2, '兩側皆有飲料架方便存放手機飲料\r\n大小適中配色百搭可輕鬆收進束袋\r\n耐用及穩固的基本椅子且便於攜帶\r\n基本入門款椅子，多種場合皆適用\r\n附收納袋便於收納攜帶', 'chair_coleman.jpg', 200, 45, '使用尺寸：約81×51×高87cm 收納尺寸：約14×14×高87cm 重量：約2.95kg 材質：座布 ／聚酯纖維、骨架 ／鋼 座面幅：約53cm 座面高：約43cm 附屬配件：收納袋  最大承載重量：約80kg', '配有寬大的扶手。 扶手上各有一個杯架。', 'chair_coleman_1.jpg', 'chair_coleman_2.jpg'),
+(6, 'ANGLE露營風格保冰桶 10QT / 方形飲料桶 Water Jug Cooler', 3, '5cm 雙層厚實 PU 隔熱設\r\n360度防漏水密封膠條長效保冰\r\n上蓋防滑墊置物安穩也能做為椅子', 'cook_angle_black.jpg', 250, 33, '品名：ANGLE 露營風格保冰桶 10QT / 方形飲料桶 Water Jug Cooler 尺寸：外部尺寸 : 27 x 24 x 35 cm / 內部尺寸 : 19 x 18 x 27 cm 重量：4.5 kg 容量：約 9.5 L / 2.5 Gallon / 10 QT 規格：黑色、沙色 材質：LLDPE 內外一體、PU 發泡保溫層、尼龍塑料手柄、矽膠密封條、304 不鏽鋼水龍頭 內容：保冰桶 x 1、304 不鏽鋼水龍頭 x 1、旋塞 x 1 保冰保冷：裝滿冰塊，在25°室內，最長7天化完。', '替換式配件 水龍頭＋塞蓋  - 保冰桶 / 飲水桶 功能任意轉換 - ．304食品級不鏽鋼水龍頭 - 飲用水、各式飲品安全無虞 ．保冰用旋式塞蓋 - 完全阻塞，液體不易漏出', 'cook_angle_black1.jpg', 'cook_angle_black2.jpg');
 
 -- --------------------------------------------------------
 
@@ -750,7 +747,8 @@ ALTER TABLE `act`
 -- 資料表索引 `act_img`
 --
 ALTER TABLE `act_img`
-  ADD PRIMARY KEY (`act_img_id`);
+  ADD PRIMARY KEY (`act_img_id`),
+  ADD KEY `act_id` (`act_id`);
 
 --
 -- 資料表索引 `act_leaders`
