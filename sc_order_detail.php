@@ -40,7 +40,7 @@ if($totalRows>0){
 <?php include __DIR__ . '/c_part/c_nav.php'; ?>
 <style>
     body{
-        background: url(./imgs/bg/pexels-olya-kobruseva-6954825.jpg);
+        background: url(./imgs/pexels-lumn-167685.jpg);
         background-size: cover;
     }
 </style>
