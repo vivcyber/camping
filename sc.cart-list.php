@@ -21,7 +21,7 @@ if (!empty($pKeys)) {
 <part>
 
     <div class="container">
-        <div class="row mt-5 card p-5">
+        <div class="row mt-5 card p-5 mb-5">
             <div class="col">
                 <table class="table table-striped table-bordered">
                     <thead>
