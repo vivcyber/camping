@@ -84,6 +84,7 @@ if($totalRows>0){
                    <th scope="."row"."></th>
                    <td><img src="."imgs/product/".$r['productimg']." class="."card-img"." style="."width:100px;"."></td>
                    <td style="."text-align:left".">".$r['productname']."</td>
+                   <td style="."".">數量：".$r['quantity']."</td>
                    <td>NT".$r['productprice']."</td>
               </tbody>
               </table>
