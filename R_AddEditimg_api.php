@@ -21,7 +21,7 @@ if($_POST['Roomttype']) {
     $files_arr = array();
 
     //Prepared statement to mySQL
-    $sql = "INSERT INTO room_photo(Room_Type,Room_Image) VALUES (?,?)";
+    $sql = "INSERT INTO room_photo(Room_Type,Room_Image,Created_at) VALUES (?,?,Now())";
     $stmt = $pdo->prepare($sql);
 
     //Loop all files

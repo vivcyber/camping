@@ -119,46 +119,46 @@ if (empty($row)) {
                                     ?>>冰箱
                                 <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Hotpot" <?php
 
-                                                                                                        if (in_array("Hotpot", $r_spec)) {
-                                                                                                            echo $str;
-                                                                                                        }
-                                                                                                        ?>>電熱水壺
+                                    if (in_array("Hotpot", $r_spec)) {
+                                        echo $str;
+                                    }
+                                    ?>>電熱水壺
                                 <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Sheep" <?php
 
-                                                                                                        if (in_array("Sheep", $r_spec)) {
-                                                                                                            echo $str;
-                                                                                                        }
-                                                                                                        ?>>床單
+                                    if (in_array("Sheep", $r_spec)) {
+                                        echo $str;
+                                    }
+                                    ?>>床單
                                 <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Wardrobe" <?php
 
-                                                                                                            if (in_array("Wardrobe", $r_spec)) {
-                                                                                                                echo $str;
-                                                                                                            }
-                                                                                                            ?>>衣櫃
+                                    if (in_array("Wardrobe", $r_spec)) {
+                                        echo $str;
+                                    }
+                                    ?>>衣櫃
                                 <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Toiletpaper" <?php
 
-                                                                                                                if (in_array("Toiletpaper", $r_spec)) {
-                                                                                                                    echo $str;
-                                                                                                                }
-                                                                                                                ?>>衛生紙
+                                    if (in_array("Toiletpaper", $r_spec)) {
+                                        echo $str;
+                                    }
+                                    ?>>衛生紙
                                 <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Toilet" <?php
 
-                                                                                                        if (in_array("Toilet", $r_spec)) {
-                                                                                                            echo $str;
-                                                                                                        }
-                                                                                                        ?>>廁所
+                                    if (in_array("Toilet", $r_spec)) {
+                                        echo $str;
+                                    }
+                                    ?>>廁所
                                 <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Hairdryer" <?php
 
-                                                                                                            if (in_array("Hairdryer", $r_spec)) {
-                                                                                                                echo $str;
-                                                                                                            }
-                                                                                                            ?>>吹風機
+                                    if (in_array("Hairdryer", $r_spec)) {
+                                        echo $str;
+                                    }
+                                    ?>>吹風機
                                 <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Tub" <?php
 
-                                                                                                        if (in_array("Tub", $r_spec)) {
-                                                                                                            echo $str;
-                                                                                                        }
-                                                                                                        ?>>浴缸 </br>
+                                if (in_array("Tub", $r_spec)) {
+                                    echo $str;
+                                }
+                                ?>>浴缸 </br>
                                 <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Washroom" <?php
 
                                                                                                             if (in_array("Washroom", $r_spec)) {
