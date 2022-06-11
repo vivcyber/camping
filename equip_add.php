@@ -113,7 +113,7 @@ $title = '新增租賃裝備';
         });
         const result = await r.json();
         console.log(result);
-
+        
 
         info_bar.style.display = 'block'; // 顯示訊息列
         if (result.success) {
