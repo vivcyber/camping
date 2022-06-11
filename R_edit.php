@@ -220,6 +220,7 @@ if (empty($row)) {
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary mt-3">修改資料</button>
+                            <button class="btn btn-primary mt-3" id="backhome">返回</button>
                         </div>
                         <div class="photo-guide">
 
@@ -380,10 +381,13 @@ if (empty($row)) {
                 FetchImages(roomnow);
                 fileclick.value = '';
         }
-    });
-       
-        
+    }); 
     }
+
+    $('#backhome').click((e)=>{
+        e.preventDefault();
+        window.location.href='R_room_back.php';
+    });
 
 
     async function sendData() {

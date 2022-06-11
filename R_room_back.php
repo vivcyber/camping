@@ -61,7 +61,7 @@ if (!empty($_GET['search'])) {
 <div class="container">
     <div class="pt-5 pb-5 d-flex justify-content-between">
                 <h2 style="font-size: 2rem; font-weight:500;">訂房資料頁  &  房型修改頁</h2>
-                <button class="btn btn-primary"> <a href="R_Add.php"></a>新增房間類型</button>
+                <a href="R_Add.php" class="btn btn-primary">新增房間類型</a>
             </div>
     <div class="row">
         <div class="col d-flex justify-content-between">
@@ -99,7 +99,7 @@ if (!empty($_GET['search'])) {
                 </ul>
             </nav>
             <form action="R_room_back.php" method="get">
-                <div class="d-flex" style="height:40px; margin-top: 10px;">
+                <div class="d-flex mb-3" style="height:40px; margin-top: 10px;">
 
                     <input type="text" class="form-control" name="search" id="search" placeholder="搜需資料">
 

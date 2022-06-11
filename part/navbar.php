@@ -44,7 +44,7 @@ if (!isset($pageName)) {
           </a>
         </button>
         <button type="button" class="btn btn-outline-light w-100 border-0">
-          <a class="text-dark text-decoration-none<?= $pageName == 'ab-list' ? 'active' : '' ?>" href="tentroom_list.php">
+          <a class="text-dark text-decoration-none<?= $pageName == 'ab-list' ? 'active' : '' ?>" href="R_room_back.php">
             <i class="fa-solid fa-campground"></i>
             訂房系統
           </a>
