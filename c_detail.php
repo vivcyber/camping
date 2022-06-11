@@ -60,7 +60,7 @@ if(empty($row)){
               
 
               <h5 class="border-bottom border-primary py-3 text-primary">商品描述</h5>
-              <p class="mt-3"><?= $row['productinfo'] ?></p>
+              <p class="mt-3"><pre><?= $row['productinfo'] ?></pre></p>
 
 
               <h3 class="badge bg-white text-wrap px-4 fs-6 fw-normal border border-dark text-dark" ><?= $row['productcolor'] ?></h3>
@@ -93,9 +93,9 @@ if(empty($row)){
     </div>
 
             <h5 class="border-bottom border-primary py-3 text-primary">商品規格</h5>
-              <p class="mt-3"><?= $row['productspec'] ?></p>
+              <p class="mt-3"><pre><?= $row['productspec'] ?></pre></p>
             <h5 class="border-bottom border-primary py-3 text-primary">商品包含</h5>
-              <p class="mt-3"><?= $row['productinclude'] ?></p>
+              <p class="mt-3"><pre><?= $row['productinclude'] ?></pre></p>
     </div>
 </div>
 <script src="js/jquery-3.4.1.js"></script>
