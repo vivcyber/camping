@@ -40,7 +40,7 @@ if(empty($row)){
 <body>
 
         <div class="container">
-            <div class="card m-3 p-3 col-6">
+            <div class="card m-3 p-5 col-6">
                 <!-- <form action="upload_api_beta.php" method="post" enctype="multipart/form-data" onsubmit="javascript: return false;"> -->
                 <form id="form1" action="p_edit_api_beta.php" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="sid" value="<?= $row['sid'] ?>">

@@ -66,14 +66,14 @@ if(empty($row)){
 
                         <div class="my-4">
                             <h6 class="">商品封面</h6>
-                            <img src="./imgs/product/<?= $row['productimg'] ?>.jpg" alt="" class="card-img" style="width:200px;"> 
+                            <img src="./imgs/product/<?= $row['productimg'] ?>" alt="" class="card-img" style="width:200px;"> 
                         </div>
 
 
                         <div class="my-4">
                             <h6 class="">內頁圖片</h6>
-                            <img src="./imgs/product/<?= $row['productimg2'] ?>.jpg" alt="" class="card-img" style="width:200px;"> 
-                            <img src="./imgs/product/<?= $row['productimg3'] ?>.jpg" alt="" class="card-img" style="width:200px;"> 
+                            <img src="./imgs/product/<?= $row['productimg2'] ?>" alt="" class="card-img" style="width:200px;"> 
+                            <img src="./imgs/product/<?= $row['productimg3'] ?>" alt="" class="card-img" style="width:200px;"> 
                         </div>
 
 
