@@ -49,33 +49,55 @@ $row = $pdo->query($sql2)->fetch();
                                     <div class="form-text red"></div>
                                 </div>
                             </div>
+                            <div class="f_pic_box d-flex">
+                                <div class="mb-3" style="width: 100%;">
+                                    <!-- <label for="d_frame_pic" class="form-label">商品封面</label> -->
+                                    <!-- <input type="text" class="form-control" id="d_frame_pic" name="d_frame_pic">
+                                    <div class="form-text red"></div> -->
+                                    <input type="file" name="d_frame_pic1" accept="image/*" style="display: none;" />
+                                    <button class="btn btn-outline-primary rounded-pill" type="button" id="btn" onclick="uploadFramepic()">上傳商品首圖</button>
+                                    <br />
+                                    <img class="my-3 rounded-circle d-block" id="myimg" src="./CP_imgs/<?= $row['d_frame_pic'] ?>" alt="" style="display:none; width:150px;height:150px;object-fit:cover;" />
+                                </div>
+                            </div>
                             <div class="pic_box d-flex">
                                 <div class="mb-3" style="width: 33%;">
-                                    <label for="pic_name1" class="form-label">商品圖片1</label>
-                                    <input type="text" class="form-control" id="pic_name1" name="pic_name1" value="<?= $row['pic_name1'] ?>">
-                                    <div class="form-text red"></div>
+                                    <!-- <label for="pic_name1" class="form-label">商品圖片1</label>
+                                    <input type="text" class="form-control" id="pic_name1" name="pic_name1">
+                                    <div class="form-text red"></div> -->
+                                    <input type="file" name="pic_name1" accept="image/*" style="display: none;" />
+                                    <button class="btn btn-outline-primary rounded-pill" type="button" id="btn1" onclick="uploadPic1()">上傳商品圖1</button>
+                                    <br />
+                                    <img class="my-3 mx-1 rounded-circle d-block" id="pic1" src="./CP_imgs/<?= $row['pic_name1'] ?>" alt="" style="display:none; width:150px;height:150px;object-fit:cover;" />
                                 </div>
                                 <div class="mb-3" style="width: 33%;">
-                                    <label for="pic_name2" class="form-label">商品圖片2</label>
-                                    <input type="text" class="form-control" id="pic_name2" name="pic_name2" value="<?= $row['pic_name2'] ?>">
-                                    <div class="form-text red"></div>
+                                    <!-- <label for="pic_name2" class="form-label">商品圖片2</label>
+                                    <input type="text" class="form-control" id="pic_name2" name="pic_name2">
+                                    <div class="form-text red"></div> -->
+                                    <input type="file" name="pic_name2" accept="image/*" style="display: none;" />
+                                    <button class="btn btn-outline-primary rounded-pill" type="button" id="btn2" onclick="uploadPic2()">上傳商品圖2</button>
+                                    <br />
+                                    <img class="my-3 mx-1 rounded-circle d-block" id="pic2" src="./CP_imgs/<?= $row['pic_name2'] ?>" alt="" style="display:none; width:150px;height:150px;object-fit:cover;" />
                                 </div>
                                 <div class="mb-3" style="width: 33%;">
-                                    <label for="pic_name3" class="form-label">商品圖片3</label>
-                                    <input type="text" class="form-control" id="pic_name3" name="pic_name3" value="<?= $row['pic_name3'] ?>">
-                                    <div class="form-text red"></div>
+                                    <!-- <label for="pic_name3" class="form-label">商品圖片3</label>
+                                    <input type="text" class="form-control" id="pic_name3" name="pic_name3">
+                                    <div class="form-text red"></div> -->
+                                    <input type="file" name="pic_name3" accept="image/*" style="display: none;" />
+                                    <button class="btn btn-outline-primary rounded-pill" type="button" id="btn3" onclick="uploadPic3()">上傳商品圖3</button>
+                                    <br />
+                                    <img class="my-3  mx-1 rounded-circle d-inline" id="pic3" src="./CP_imgs/<?= $row['pic_name3'] ?>" alt="" style="display:none; width:150px;height:150px;object-fit:cover;" />
                                 </div>
-                            </div>
-                            <div class="stock mb-3">
-                                <label for="stock" class="form-label">庫存</label>
-                                <input type="text" class="form-control" id="stock" name="stock" value="<?= $row['stock'] ?>">
+
                                 <div class="form-text red"></div>
                             </div>
-
+                            <br>
+                        </div>
+                        <div class="stock mb-3">
+                            <label for="stock" class="form-label">庫存</label>
+                            <input type="text" class="form-control" id="stock" name="stock" value="<?= $row['stock'] ?>">
                             <div class="form-text red"></div>
                         </div>
-
-
                         <div class="font mb-3">
                             <h5 class=" my-3">字體</h5>
                             <div class="font_box d-flex">
@@ -192,14 +214,16 @@ $row = $pdo->query($sql2)->fetch();
                                 <a href="CP_product_detail.php" class=" text-decoration-none">返回</a>
                             </button>
                         </div>
-
-                    </form>
-                    <div id="info-bar" class="alert alert-success p-2" role="alert" style="display:none;">
-                    </div>
                 </div>
+            </div>
+
+            </form>
+            <div id="info-bar" class="alert alert-success p-2" role="alert" style="display:none;">
             </div>
         </div>
     </div>
+
+</div>
 
 </div>
 <?php include __DIR__ . '/part/scripts.php' ?>
@@ -460,6 +484,103 @@ $row = $pdo->query($sql2)->fetch();
             info_bar.innerText = result.error ?? '資料修改失敗';
 
         }
+    }
+
+
+    const btn = document.querySelector("#btn");
+    const btn1 = document.querySelector("#btn1");
+    const btn2 = document.querySelector("#btn2");
+    const btn3 = document.querySelector("#btn3");
+    const myimg = document.querySelector("#myimg");
+    const pic1 = document.querySelector("#pic1");
+    const pic2 = document.querySelector("#pic2");
+    const pic3 = document.querySelector("#pic3");
+    const d_frame_pic1 = document.form1.d_frame_pic1;
+    const pic_name1 = document.form1.pic_name1;
+    const pic_name2 = document.form1.pic_name2;
+    const pic_name3 = document.form1.pic_name3;
+
+
+    d_frame_pic1.addEventListener("change", async function() {
+        // 上傳表單
+        const file = this.files[0];
+        console.log(file);
+        const reader = new FileReader();
+
+        // 資料載入後 (讀取完成後)
+        reader.onload = function() {
+            console.log(reader.result);
+            myimg.src = reader.result;
+            myimg.style = "width:150px;height:150px;object-fit:cover;"
+
+        };
+        reader.readAsDataURL(file);
+    });
+
+
+    function uploadFramepic() {
+        d_frame_pic1.click(); // 模擬點擊
+    }
+
+    pic_name1.addEventListener("change", async function() {
+        // 上傳表單
+        const file = this.files[0];
+        console.log(file);
+        const reader = new FileReader();
+
+        // 資料載入後 (讀取完成後)
+        reader.onload = function() {
+            console.log(reader.result);
+            pic1.src = reader.result;
+            pic1.style = "width:150px;height:150px;object-fit:cover;"
+
+        };
+        reader.readAsDataURL(file);
+    });
+
+
+    function uploadPic1() {
+        pic_name1.click(); // 模擬點擊
+    }
+    pic_name2.addEventListener("change", async function() {
+        // 上傳表單
+        const file = this.files[0];
+        console.log(file);
+        const reader = new FileReader();
+
+        // 資料載入後 (讀取完成後)
+        reader.onload = function() {
+            console.log(reader.result);
+            pic2.src = reader.result;
+            pic2.style = "width:150px;height:150px;object-fit:cover;"
+
+        };
+        reader.readAsDataURL(file);
+    });
+
+
+    function uploadPic2() {
+        pic_name2.click(); // 模擬點擊
+    }
+    pic_name3.addEventListener("change", async function() {
+        // 上傳表單
+        const file = this.files[0];
+        console.log(file);
+        const reader = new FileReader();
+
+        // 資料載入後 (讀取完成後)
+        reader.onload = function() {
+            console.log(reader.result);
+            pic3.src = reader.result;
+            pic3.style = "width:150px;height:150px;object-fit:cover;"
+
+        };
+        reader.readAsDataURL(file);
+    });
+
+
+    function uploadPic3() {
+        pic_name3.click(); // 模擬點擊
     }
 </script>
 <?php include __DIR__ . '/part/html-foot.php' ?>

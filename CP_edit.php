@@ -46,9 +46,16 @@ if (empty($row)) {
                         </div>
 
                         <div class="frame_pic mb-3">
-                            <label for="frame_pic" class="form-label">商品封面</label>
-                            <input type="text" class="form-control" id="frame_pic" name="frame_pic" value="<?= $row['frame_pic'] ?>">
+                            <!-- <label for="frame_pic" class="form-label">商品封面</label>
+                            <input type="text" class="form-control" id="frame_pic" name="frame_pic">
                             <div class="form-text red"></div>
+                            <div> -->
+                            <input type="file" name="frame_pic1" accept="image/*" style="display: none;" />
+
+
+                            <button class="btn btn-outline-primary rounded-pill" type="button" id="btn" onclick="uploadAvatar()">上傳封面圖片</button>
+                            <br />
+                            <img class="mt-3 mb-3 rounded-circle d-block" id="myimg" src="./CP_imgs/<?= $row['frame_pic'] ?>" alt="" style="display:none; width:150px; height:150px;" />
                         </div>
 
                         <div class="customize mb-3">
@@ -156,7 +163,31 @@ if (empty($row)) {
             // info_bar.innerText = result.error || '資料無法修改';
 
         }
+        const btn = document.querySelector("#btn");
+        const myimg = document.querySelector("#myimg");
+        const frame_pic1 = document.form1.frame_pic1;
 
+
+        frame_pic1.addEventListener("change", async function() {
+            // 上傳表單
+            const file = this.files[0];
+            console.log(file);
+            const reader = new FileReader();
+
+            // 資料載入後 (讀取完成後)
+            reader.onload = function() {
+                console.log(reader.result);
+                myimg.src = reader.result;
+                myimg.style = "width:150px;height:150px;object-fit:cover;"
+
+            };
+            reader.readAsDataURL(file);
+        });
+
+
+        function uploadAvatar() {
+            frame_pic1.click(); // 模擬點擊
+        }
     }
 </script>
 <?php include __DIR__ . '/part/html-foot.php' ?>
