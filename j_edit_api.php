@@ -15,6 +15,32 @@ $output = [
 //     echo json_encode($output, JSON_UNESCAPED_UNICODE);
 //     exit;
 // }
+$folder = __DIR__ . '/imgs/recipesimg/';
+
+$extMap = [
+    'image/jpeg' => '.jpg',
+    'image/png' => '.png',
+    'image/gif' => '.gif',
+];
+
+if (empty($extMap[$_FILES['resimg']['type']])) {
+    $output['error'] = '檔案類型錯誤';
+    echo json_encode($output, JSON_UNESCAPED_UNICODE);
+    exit;
+}
+$ext = $extMap[$_FILES['resimg']['type']]; 
+
+$filename = md5($_FILES['resimg']['name'] . rand()) . $ext;
+
+$output['filename'] = $filename;
+
+
+if (move_uploaded_file($_FILES['resimg']['tmp_name'], $folder . $filename)) {
+    $output['success'] = true;
+} else {
+    $output['error'] = '無法搬動檔案';
+}
+
 $sid = isset($_POST['sid']) ? intval($_POST['sid']) : 0;
 
 $resname = $_POST['resname'];
@@ -24,7 +50,8 @@ $tutorial = $_POST['tutorial'] ?? '';
 $serves = $_POST['serves'] ?? '';
 $cook_time = $_POST['cook_time'] ?? '';
 $recipetype = $_POST['recipetype'] ?? '';
-$resimg = $_POST['resimg'] ?? '';
+$resimgtext = $_POST['resimgtext'] ?? '';
+$resimg = $filename;
 
 
 // if (!empty($email) and filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
@@ -38,7 +65,7 @@ $resimg = $_POST['resimg'] ?? '';
 
 
 
-$sql= "UPDATE `recipes` SET `resname`=?,`tool`=?,`ingredient`=?,`tutorial`=?,`serves`=?,`cook_time`=?,`recipetype`=?,`resimg`=? WHERE `sid`=$sid ";
+$sql= "UPDATE `recipes` SET `resname`=?,`tool`=?,`ingredient`=?,`tutorial`=?,`serves`=?,`cook_time`=?,`recipetype`=?,`resimgtext`=?,`resimg`=? WHERE `sid`=$sid ";
 
 
 
@@ -52,7 +79,8 @@ $stmt->execute([
     $_POST['serves'],
     $_POST['cook_time'],
     $_POST['recipetype'],
-    $_POST['resimg'],
+    $_POST['resimgtext'],
+    $resimg = $filename,
 ]);
 
 

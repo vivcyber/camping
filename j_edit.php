@@ -39,7 +39,7 @@ if (empty($row)) {
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">編輯商品</h5>
+                    <h5 class="card-title">編輯食譜</h5>
                     <form name="form1" onsubmit="sendData();return false;" novalidate>
                         <input type="hidden" name="sid" value="<?= $row['sid'] ?>">
                         <div class="mb-3">
@@ -78,11 +78,18 @@ if (empty($row)) {
                             <div class="form-text red"></div>
                         </div>
                         <div class="mb-3">
-                            <label for="resimg" class="form-label">成品圖片</label>
-                            <input type="text" class="form-control" id="resimg" name="resimg" required value="<?= $row['resimg'] ?>">
+                            <label for="resimgtext" class="form-label">圖片描述</label>
+                            <input type="text" class="form-control" id="resimgtext" name="resimgtext" required value="<?= $row['resimgtext'] ?>">
                             <div class="form-text red"></div>
                         </div>
-
+                        <div class="mb-3">
+                            <label for="resimg" class="form-label">圖片</label>
+                            <div method="post" enctype="multipart/form-data" style="width: 250px;">
+                                <input type="file" id="resimg" name="resimg" class="form-control" accept="image/*"/>
+                            </div>
+                            <br>
+                            <img id="myimg" src="" alt="" style="width: 250px;" class="pt-2" />
+                        </div>
                         <button type="submit" class="btn btn-primary text-white">修改</button>
                     </form>
                     <div id="info-bar" class="alert alert-success p-2" role="alert" style="display:none;">
@@ -99,6 +106,27 @@ if (empty($row)) {
     const row = <?= json_encode($row, JSON_UNESCAPED_UNICODE); ?>;
     const info_bar = document.querySelector('#info-bar');
     const name_f = document.form1.resname;
+
+    const pic = document.querySelector('#resimg');
+    const myimg = document.querySelector('#myimg');
+    const picture = document.form1.resimg;
+
+    picture.addEventListener('change', async function() {
+        const file = this.files[0];
+        console.log(file);
+        const reader = new FileReader();
+
+        reader.onload = function() {
+            console.log(reader.result);
+            myimg.src = reader.result;
+            myimg.style = "display:inline; width: 250px;"
+        }
+        reader.readAsDataURL(file);
+    });
+
+    function uploadPicture() {
+        picture.click();
+    }
 
     const fields = [name_f];
     const fieldTexts = [];
@@ -122,7 +150,7 @@ if (empty($row)) {
             // name_f.nextElementSibling.classList.add('red');
             // name_f.closest('.mb-3').querySelector('.form-text').classList.add('red');
             fields[0].classList.add('red');
-            fieldTexts[0].innerText = '姓名至少兩個字';
+            fieldTexts[0].innerText = '食譜至少兩個字';
             isPass = false;
         }
 
@@ -149,7 +177,7 @@ if (empty($row)) {
         } else {
             info_bar.classList.remove('alert-success');
             info_bar.classList.add('alert-danger');
-            info_bar.innerText = result.error || '資料無法新增';
+            info_bar.innerText = result.error || '資料無法修改';
         }
 
     }

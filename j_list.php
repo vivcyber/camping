@@ -1,8 +1,8 @@
 <?php require __DIR__ . '/part/connect_db.php';
-$pageName = 'p-list';
+$pageName = 'j-list';
 $title = '商品頁';
 
-$perPage = 3; // 每一頁有幾筆
+$perPage = 5; // 每一頁有幾筆
 
 // 用戶要看第幾頁
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -67,7 +67,7 @@ if ($totalRows > 0) {
         <thead>
             <tr>
                 <th scope="col p-3"><i class="fa-solid fa-trash-can"></i></th>
-                <th scope="col p-3">#</th>
+                <th scope="col p-3">序號</th>
                 <th scope="col p-3">食譜名稱</th>
                 <th scope="col p-3">所需鍋具</th>
                 <th scope="col p-3">食材</th>
@@ -75,9 +75,9 @@ if ($totalRows > 0) {
                 <th scope="co p-3l">人數</th>
                 <th scope="col p-3">烹煮時間</th>
                 <th scope="col p-3">葷素</th>
-                <th scope="col p-3">成品圖片</th>
+                <th scope="col p-3">圖片描述</th>
+                <th scope="col p-3">圖片</th>
                 <th scope="col p-3"><i class="fa-solid fa-pen-to-square"></i></th>
-                <th scope="col p-3"> <i class="fa-solid fa-list"></i></th>
             </tr>
         </thead>
         <tbody>
@@ -100,15 +100,11 @@ if ($totalRows > 0) {
                     <td class="p-3"><?= $r['serves'] ?></td>
                     <td class="p-3"><?= $r['cook_time'] ?></td>
                     <td class="p-3"><?= $r['recipetype'] ?></td>
-                    <td class="p-3"><img src="./imgs/product/<?= $r['resimg'] ?>.jpg" alt="" class="card-img"></td>
+                    <td class="p-3"><?= $r['resimgtext'] ?></td>
+                    <td class="p-3"><img src="./imgs/recipesimg/<?= $r['resimg'] ?>" alt="" class="card-img" style="width: 150px;"></td>
                     <td class="p-3">
                         <a href="j_edit.php?sid=<?= $r['sid'] ?>">
                             <i class="fa-solid fa-pen-to-square"></i>
-                        </a>
-                    </td>
-                    <td class="p-3">
-                        <a  href="j_detail.php?sid=<?= $r['sid'] ?>">
-                         <i class="fa-solid fa-list"></i>
                         </a>
                     </td>
                 </tr>          
