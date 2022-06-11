@@ -4,15 +4,15 @@ $title = '舒營 - 客製化商品後台詳情';
 
 $sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
 if (empty($sid)) {
-    echo "nononononononsid";
-    // header('Location:CP_product_detail.php');
+
+    header('Location:CP_product_detail.php');
     exit;
 }
 
 $d_sid = isset($_GET['d_sid']) ? intval($_GET['d_sid']) : 0;
 if (empty($d_sid)) {
-    // header('Location:CP_product_detail.php');
-    echo "no d_sid";
+    header('Location:CP_product_detail.php');
+
     exit;
 }
 $rows = [];
@@ -39,7 +39,7 @@ if (empty($rows)) {
             <div class="card-body">
                 <h5 class="card-title"><?= $rows['p_code'],
                                         $rows['c_code'] ?></h5>
-                <img src="./CP_imgs/<?= $rows['frame_pic'] ?>" class="card-img-bottom" alt="" />
+                <img src="./CP_imgs/<?= $rows['d_frame_pic'] ?>" class="card-img-bottom" alt="" />
             </div>
         </div>
         <div class="card" style="width: 33%">

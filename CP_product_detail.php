@@ -17,7 +17,7 @@ $rows = []; //先建立預設值
 
 
 
-$sql = sprintf("SELECT cp.*, d.color ,d.stock , d.c_code, d.d_sid
+$sql = sprintf("SELECT cp.*, d.*
     FROM `customize_product` cp 
     JOIN `details` d
     ON d.product_id = cp.sid 
@@ -91,7 +91,7 @@ $name = $row['name'] ?? '';
                     <td class="p-3">
                         <pre><?= ($r['name']) ?></pre>
                     </td>
-                    <td class="p-3" style="height: 200px; width: 200px; "><img src="./CP_imgs/<?= $r['frame_pic'] ?>" alt="" class="card-img img-thumbnail"></td>
+                    <td class="p-3" style="height: 200px; width: 200px; "><img src="./CP_imgs/<?= $r['d_frame_pic'] ?>" alt="" class="card-img img-thumbnail"></td>
                     <td class="p-3">
                         <pre><?= ($r['customize']) ?></pre>
                         <pre><?= ($r['customize2']) ?></pre>
