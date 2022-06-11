@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 10, 2022 at 09:46 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- 主機： localhost
+-- 產生時間： 2022 年 06 月 11 日 13:22
+-- 伺服器版本： 10.4.21-MariaDB
+-- PHP 版本： 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `projecttest`
+-- 資料庫: `projecttest`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `room_order`
+-- 資料表結構 `room_order`
 --
 
 CREATE TABLE `room_order` (
@@ -36,7 +36,7 @@ CREATE TABLE `room_order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `room_order`
+-- 傾印資料表的資料 `room_order`
 --
 
 INSERT INTO `room_order` (`OrderNum`, `Date`, `RoomType`, `ID_Comments`, `Create_at`) VALUES
@@ -71,21 +71,21 @@ INSERT INTO `room_order` (`OrderNum`, `Date`, `RoomType`, `ID_Comments`, `Create
 (61, '2021-03-14', 'Room1', 'NULL', '2022-06-04');
 
 --
--- Indexes for dumped tables
+-- 已傾印資料表的索引
 --
 
 --
--- Indexes for table `room_order`
+-- 資料表索引 `room_order`
 --
 ALTER TABLE `room_order`
   ADD PRIMARY KEY (`OrderNum`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- 在傾印的資料表使用自動遞增(AUTO_INCREMENT)
 --
 
 --
--- AUTO_INCREMENT for table `room_order`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `room_order`
 --
 ALTER TABLE `room_order`
   MODIFY `OrderNum` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;

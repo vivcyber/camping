@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 10, 2022 at 09:46 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- 主機： localhost
+-- 產生時間： 2022 年 06 月 11 日 13:22
+-- 伺服器版本： 10.4.21-MariaDB
+-- PHP 版本： 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `projecttest`
+-- 資料庫: `projecttest`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `room_photo`
+-- 資料表結構 `room_photo`
 --
 
 CREATE TABLE `room_photo` (
@@ -35,7 +35,7 @@ CREATE TABLE `room_photo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `room_photo`
+-- 傾印資料表的資料 `room_photo`
 --
 
 INSERT INTO `room_photo` (`sid`, `Room_Type`, `Room_Image`, `Created_at`) VALUES
@@ -61,28 +61,36 @@ INSERT INTO `room_photo` (`sid`, `Room_Type`, `Room_Image`, `Created_at`) VALUES
 (42, 'Room3', 'campRoom3-1.jpg', '0000-00-00'),
 (43, 'Room4', 'campRoom4-0.jpg', '0000-00-00'),
 (46, 'Room4', 'campRoom4-1.jpg', '0000-00-00'),
-(47, 'Room4', 'campRoom4-2.jpg', '0000-00-00'),
-(66, 'Room4', 'campRoom4-3.jpg', '0000-00-00');
+(66, 'Room4', 'campRoom4-3.jpg', '0000-00-00'),
+(67, 'Room4', 'campRoom4-2.jpg', '2022-06-11'),
+(76, 'Room5', 'campRoom1-4.jpg', '2022-06-11'),
+(77, 'Room5', 'campRoom1-5.jpg', '2022-06-11'),
+(78, 'Room5', 'campRoom2-0.jpg', '2022-06-11'),
+(79, 'Room5', 'campRoom2-1.jpg', '2022-06-11'),
+(80, 'Room5', 'campRoom2-0.jpg', '2022-06-11'),
+(81, 'Room5', 'campRoom2-1.jpg', '2022-06-11'),
+(82, 'Room5', 'campRoom2-2.jpg', '2022-06-11'),
+(83, 'Room5', 'campRoom2-3.jpg', '2022-06-11');
 
 --
--- Indexes for dumped tables
+-- 已傾印資料表的索引
 --
 
 --
--- Indexes for table `room_photo`
+-- 資料表索引 `room_photo`
 --
 ALTER TABLE `room_photo`
   ADD PRIMARY KEY (`sid`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- 在傾印的資料表使用自動遞增(AUTO_INCREMENT)
 --
 
 --
--- AUTO_INCREMENT for table `room_photo`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `room_photo`
 --
 ALTER TABLE `room_photo`
-  MODIFY `sid` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `sid` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
