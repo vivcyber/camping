@@ -47,7 +47,7 @@
             <tr>
                 <th>刪除</th>
                 <th scope="col">#</th>
-                <th scope="col">姓名</th>
+                <th scope="col" style="width: 80px;">姓名</th>
                 <th scope="col">手機</th>
                 <th scope="col">電郵</th>
                 <th scope="col">生日</th>
