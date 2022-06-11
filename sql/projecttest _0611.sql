@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- 主機： localhost
--- 產生時間： 2022 年 06 月 11 日 15:41
--- 伺服器版本： 10.4.21-MariaDB
--- PHP 版本： 7.4.29
+-- Host: 127.0.0.1
+-- Generation Time: Jun 11, 2022 at 03:50 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 資料庫： `projecttest`
+-- Database: `projecttest`
 --
 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `act`
+-- Table structure for table `act`
 --
 
 CREATE TABLE `act` (
@@ -44,7 +44,7 @@ CREATE TABLE `act` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `act`
+-- Dumping data for table `act`
 --
 
 INSERT INTO `act` (`act_id`, `act_name`, `act_s_time`, `act_e_time`, `min_people`, `max_people`, `min_age`, `max_age`, `act_price`, `act_desc`, `act_notice`, `act_schedule`, `act_prepare`) VALUES
@@ -60,7 +60,7 @@ INSERT INTO `act` (`act_id`, `act_name`, `act_s_time`, `act_e_time`, `min_people
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `act_img`
+-- Table structure for table `act_img`
 --
 
 CREATE TABLE `act_img` (
@@ -75,7 +75,7 @@ CREATE TABLE `act_img` (
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `act_leaders`
+-- Table structure for table `act_leaders`
 --
 
 CREATE TABLE `act_leaders` (
@@ -88,7 +88,7 @@ CREATE TABLE `act_leaders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 傾印資料表的資料 `act_leaders`
+-- Dumping data for table `act_leaders`
 --
 
 INSERT INTO `act_leaders` (`act_l_id`, `act_l_name`, `act_l_age`, `act_l_mobile`, `act_l_address`, `act_l_license`) VALUES
@@ -98,7 +98,7 @@ INSERT INTO `act_leaders` (`act_l_id`, `act_l_name`, `act_l_age`, `act_l_mobile`
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `act_order`
+-- Table structure for table `act_order`
 --
 
 CREATE TABLE `act_order` (
@@ -114,7 +114,7 @@ CREATE TABLE `act_order` (
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `address_book`
+-- Table structure for table `address_book`
 --
 
 CREATE TABLE `address_book` (
@@ -128,7 +128,7 @@ CREATE TABLE `address_book` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 傾印資料表的資料 `address_book`
+-- Dumping data for table `address_book`
 --
 
 INSERT INTO `address_book` (`sid`, `name`, `email`, `mobile`, `birthday`, `address`, `created_at`) VALUES
@@ -163,7 +163,7 @@ INSERT INTO `address_book` (`sid`, `name`, `email`, `mobile`, `birthday`, `addre
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `admin_list`
+-- Table structure for table `admin_list`
 --
 
 CREATE TABLE `admin_list` (
@@ -173,7 +173,7 @@ CREATE TABLE `admin_list` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `admin_list`
+-- Dumping data for table `admin_list`
 --
 
 INSERT INTO `admin_list` (`admin_id`, `admin_account`, `admin_password`) VALUES
@@ -182,7 +182,7 @@ INSERT INTO `admin_list` (`admin_id`, `admin_account`, `admin_password`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `camproduct1`
+-- Table structure for table `camproduct1`
 --
 
 CREATE TABLE `camproduct1` (
@@ -201,7 +201,7 @@ CREATE TABLE `camproduct1` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `camproduct1`
+-- Dumping data for table `camproduct1`
 --
 
 INSERT INTO `camproduct1` (`sid`, `productname`, `productcategory`, `productcolor`, `productinfo`, `productimg`, `productprice`, `productleft`, `productspec`, `productinclude`, `productimg2`, `productimg3`) VALUES
@@ -215,7 +215,7 @@ INSERT INTO `camproduct1` (`sid`, `productname`, `productcategory`, `productcolo
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `camproduct2`
+-- Table structure for table `camproduct2`
 --
 
 CREATE TABLE `camproduct2` (
@@ -234,7 +234,7 @@ CREATE TABLE `camproduct2` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `camproduct2`
+-- Dumping data for table `camproduct2`
 --
 
 INSERT INTO `camproduct2` (`sid`, `productname`, `productcategory`, `productcolor`, `productinfo`, `productimg`, `productprice`, `productleft`, `productspec`, `productinclude`, `productimg2`, `productimg3`) VALUES
@@ -249,7 +249,7 @@ INSERT INTO `camproduct2` (`sid`, `productname`, `productcategory`, `productcolo
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `cart`
+-- Table structure for table `cart`
 --
 
 CREATE TABLE `cart` (
@@ -262,7 +262,7 @@ CREATE TABLE `cart` (
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `categories`
+-- Table structure for table `categories`
 --
 
 CREATE TABLE `categories` (
@@ -272,7 +272,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 傾印資料表的資料 `categories`
+-- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`sid`, `name`, `parent_sid`) VALUES
@@ -290,7 +290,7 @@ INSERT INTO `categories` (`sid`, `name`, `parent_sid`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `customize_product`
+-- Table structure for table `customize_product`
 --
 
 CREATE TABLE `customize_product` (
@@ -306,7 +306,7 @@ CREATE TABLE `customize_product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `customize_product`
+-- Dumping data for table `customize_product`
 --
 
 INSERT INTO `customize_product` (`sid`, `p_code`, `frame_pic`, `name`, `customize`, `customize2`, `customize3`, `introduction`, `price`) VALUES
@@ -321,7 +321,7 @@ INSERT INTO `customize_product` (`sid`, `p_code`, `frame_pic`, `name`, `customiz
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `details`
+-- Table structure for table `details`
 --
 
 CREATE TABLE `details` (
@@ -351,7 +351,7 @@ CREATE TABLE `details` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 傾印資料表的資料 `details`
+-- Dumping data for table `details`
 --
 
 INSERT INTO `details` (`d_sid`, `c_code`, `color`, `color_code`, `stock`, `product_id`, `ink1`, `ink2`, `ink3`, `ink4`, `ink_price`, `font_style1`, `font_type1`, `font_style2`, `font_type2`, `font_style3`, `font_type3`, `word`, `font_price`, `d_frame_pic`, `pic_name1`, `pic_name2`, `pic_name3`) VALUES
@@ -380,7 +380,7 @@ INSERT INTO `details` (`d_sid`, `c_code`, `color`, `color_code`, `stock`, `produ
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `equip`
+-- Table structure for table `equip`
 --
 
 CREATE TABLE `equip` (
@@ -398,7 +398,7 @@ CREATE TABLE `equip` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 傾印資料表的資料 `equip`
+-- Dumping data for table `equip`
 --
 
 INSERT INTO `equip` (`equip_id`, `name`, `cate_id`, `info`, `img`, `price`, `rest`, `spec`, `include`, `img2`, `img3`) VALUES
@@ -412,7 +412,7 @@ INSERT INTO `equip` (`equip_id`, `name`, `cate_id`, `info`, `img`, `price`, `res
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `equip_cate`
+-- Table structure for table `equip_cate`
 --
 
 CREATE TABLE `equip_cate` (
@@ -422,7 +422,7 @@ CREATE TABLE `equip_cate` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `equip_cate`
+-- Dumping data for table `equip_cate`
 --
 
 INSERT INTO `equip_cate` (`cate_id`, `name`, `parent_id`) VALUES
@@ -433,7 +433,7 @@ INSERT INTO `equip_cate` (`cate_id`, `name`, `parent_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `equip_order`
+-- Table structure for table `equip_order`
 --
 
 CREATE TABLE `equip_order` (
@@ -448,7 +448,7 @@ CREATE TABLE `equip_order` (
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `memberdata`
+-- Table structure for table `memberdata`
 --
 
 CREATE TABLE `memberdata` (
@@ -466,7 +466,7 @@ CREATE TABLE `memberdata` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- 傾印資料表的資料 `memberdata`
+-- Dumping data for table `memberdata`
 --
 
 INSERT INTO `memberdata` (`m_id`, `m_name`, `m_username`, `m_passwd`, `m_birthday`, `m_level`, `m_email`, `m_phone`, `m_address`, `m_avatar`, `m_score`) VALUES
@@ -490,7 +490,7 @@ INSERT INTO `memberdata` (`m_id`, `m_name`, `m_username`, `m_passwd`, `m_birthda
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `members`
+-- Table structure for table `members`
 --
 
 CREATE TABLE `members` (
@@ -507,7 +507,7 @@ CREATE TABLE `members` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 傾印資料表的資料 `members`
+-- Dumping data for table `members`
 --
 
 INSERT INTO `members` (`id`, `email`, `password`, `mobile`, `address`, `birthday`, `hash`, `activated`, `nickname`, `create_at`) VALUES
@@ -520,7 +520,7 @@ INSERT INTO `members` (`id`, `email`, `password`, `mobile`, `address`, `birthday
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `orders`
+-- Table structure for table `orders`
 --
 
 CREATE TABLE `orders` (
@@ -531,7 +531,7 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 傾印資料表的資料 `orders`
+-- Dumping data for table `orders`
 --
 
 INSERT INTO `orders` (`sid`, `member_sid`, `amount`, `order_date`) VALUES
@@ -546,7 +546,7 @@ INSERT INTO `orders` (`sid`, `member_sid`, `amount`, `order_date`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `order_details`
+-- Table structure for table `order_details`
 --
 
 CREATE TABLE `order_details` (
@@ -558,7 +558,7 @@ CREATE TABLE `order_details` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 傾印資料表的資料 `order_details`
+-- Dumping data for table `order_details`
 --
 
 INSERT INTO `order_details` (`sid`, `order_sid`, `product_sid`, `price`, `quantity`) VALUES
@@ -579,7 +579,7 @@ INSERT INTO `order_details` (`sid`, `order_sid`, `product_sid`, `price`, `quanti
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `products`
+-- Table structure for table `products`
 --
 
 CREATE TABLE `products` (
@@ -597,7 +597,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 傾印資料表的資料 `products`
+-- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`sid`, `author`, `bookname`, `category_sid`, `book_id`, `publish_date`, `pages`, `price`, `isbn`, `on_sale`, `introduction`) VALUES
@@ -628,7 +628,7 @@ INSERT INTO `products` (`sid`, `author`, `bookname`, `category_sid`, `book_id`, 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `product_color`
+-- Table structure for table `product_color`
 --
 
 CREATE TABLE `product_color` (
@@ -641,7 +641,7 @@ CREATE TABLE `product_color` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 傾印資料表的資料 `product_color`
+-- Dumping data for table `product_color`
 --
 
 INSERT INTO `product_color` (`sid`, `product_sid`, `color`, `size`, `p_no`, `imgs`) VALUES
@@ -653,7 +653,7 @@ INSERT INTO `product_color` (`sid`, `product_sid`, `color`, `size`, `p_no`, `img
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `recipes`
+-- Table structure for table `recipes`
 --
 
 CREATE TABLE `recipes` (
@@ -668,7 +668,7 @@ CREATE TABLE `recipes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `recipes`
+-- Dumping data for table `recipes`
 --
 
 INSERT INTO `recipes` (`sid`, `resname`, `tool`, `ingredient`, `tutorial`, `serves`, `recipetype`, `resimg`) VALUES
@@ -678,34 +678,34 @@ INSERT INTO `recipes` (`sid`, `resname`, `tool`, `ingredient`, `tutorial`, `serv
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `room_list`
+-- Table structure for table `room_list`
 --
 
 CREATE TABLE `room_list` (
   `SID` int(11) NOT NULL,
   `Room_Type` varchar(40) NOT NULL,
   `Room_Spec` varchar(255) NOT NULL,
-  `Price` int(11) NOT NULL,
-  `RImage_ID` int(11) NOT NULL
+  `Price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `room_list`
+-- Dumping data for table `room_list`
 --
 
-INSERT INTO `room_list` (`SID`, `Room_Type`, `Room_Spec`, `Price`, `RImage_ID`) VALUES
-(1, 'Room1', 'cleaningStaff,Fridge,Hotpot,sheep,Toiletpaper,Toilet,Wardrobe,Hairdryer,Tub,Washroom,Towel,Sliper,Desk,Television,Phone,Channel', 5000, 1),
-(2, 'Room2', 'cleaningStaff,Fridge,Hotpot,sheep,Toiletpaper,Toilet,Hairdryer,Towel,Sliper,Desk,Phone,Washroom', 4000, 2),
-(3, 'Room3', 'cleaningStaff,Hotpot,sheep,Toiletpaper,Toilet,Wardrobe,Hairdryer,Towel,Sliper,Desk,Phone,Television', 3500, 3),
-(4, 'Room4', 'cleaningStaff,Hotpot,sheep,Toiletpaper,Wardrobe,Hairdryer,Towel,Sliper,Desk,Phone', 2000, 4),
-(5, 'Car1', 'cleaningStaff,Fridge,Hotpot,Sheep,Wardrob,Toiletpapere,Toilet,Hairdryer,Tub,Washroom,Towel,Sliper,Desk,Television,Phone,Channel', 6000, 5),
-(6, 'Car2', 'cleaningStaff,Fridge,Hotpot,Sheep,Wardrob,Toiletpapere,Hairdryer,Towel,Sliper,Desk,Television,Phone,Channel', 4000, 6),
-(7, 'Car3', 'cleaningStaff,Fridge,Hotpot,Sheep,Wardrob,Toiletpapere,Hairdryer,Towel,Sliper,Phone', 1800, 7);
+INSERT INTO `room_list` (`SID`, `Room_Type`, `Room_Spec`, `Price`) VALUES
+(1, 'Room1', 'cleaningStaff,Fridge,Hotpot,Wardrobe,Toiletpaper,Toilet,Hairdryer,Tub,Washroom,Towel,Sliper,Desk,Television,Phone,Channel', 5000),
+(2, 'Room2', 'cleaningStaff,Fridge,Hotpot,sheep,Toiletpaper,Toilet,Hairdryer,Towel,Sliper,Desk,Phone,Washroom', 4000),
+(3, 'Room3', 'cleaningStaff,Hotpot,sheep,Toiletpaper,Toilet,Wardrobe,Hairdryer,Towel,Sliper,Desk,Phone,Television', 3500),
+(4, 'Room4', 'cleaningStaff,Hotpot,Wardrobe,Toiletpaper,Hairdryer,Towel,Sliper,Desk,Phone', 2000),
+(5, 'Car1', 'cleaningStaff,Fridge,Hotpot,Sheep,Wardrob,Toiletpapere,Toilet,Hairdryer,Tub,Washroom,Towel,Sliper,Desk,Television,Phone,Channel', 6000),
+(6, 'Car2', 'cleaningStaff,Fridge,Hotpot,Sheep,Wardrob,Toiletpapere,Hairdryer,Towel,Sliper,Desk,Television,Phone,Channel', 4000),
+(7, 'Car3', 'cleaningStaff,Fridge,Hotpot,Sheep,Wardrob,Toiletpapere,Hairdryer,Towel,Sliper,Phone', 1800),
+(10, 'Room5', 'Fridge,Wardrobe,Desk,Channel', 1800);
 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `room_order`
+-- Table structure for table `room_order`
 --
 
 CREATE TABLE `room_order` (
@@ -717,7 +717,7 @@ CREATE TABLE `room_order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `room_order`
+-- Dumping data for table `room_order`
 --
 
 INSERT INTO `room_order` (`OrderNum`, `Date`, `RoomType`, `ID_Comments`, `Create_at`) VALUES
@@ -754,7 +754,7 @@ INSERT INTO `room_order` (`OrderNum`, `Date`, `RoomType`, `ID_Comments`, `Create
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `room_photo`
+-- Table structure for table `room_photo`
 --
 
 CREATE TABLE `room_photo` (
@@ -765,7 +765,7 @@ CREATE TABLE `room_photo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `room_photo`
+-- Dumping data for table `room_photo`
 --
 
 INSERT INTO `room_photo` (`sid`, `Room_Type`, `Room_Image`, `Created_at`) VALUES
@@ -776,34 +776,36 @@ INSERT INTO `room_photo` (`sid`, `Room_Type`, `Room_Image`, `Created_at`) VALUES
 (5, 'Room1', 'campRoom1-4.jpg', '2022-06-09'),
 (6, 'Room1', 'campRoom1-5.jpg', '2022-06-09'),
 (7, 'Room2', 'campRoom2-0.jpg', '0000-00-00'),
-(8, 'Room2', '', '0000-00-00'),
-(9, 'Room2', '', '0000-00-00'),
-(10, 'Room2', '', '0000-00-00'),
-(11, 'Room2', '', '0000-00-00'),
-(12, 'Room2', '', '0000-00-00'),
-(13, 'Room3', '', '0000-00-00'),
-(14, 'Room3', '', '0000-00-00'),
-(15, 'Room3', '', '0000-00-00'),
-(16, 'Room3', '', '0000-00-00'),
-(17, 'Room3', '', '0000-00-00'),
-(18, 'Room3', '', '0000-00-00'),
-(20, 'Room4', '', '0000-00-00'),
-(21, 'Room4', '', '0000-00-00'),
-(22, 'Room4', '', '0000-00-00'),
-(23, 'Room4', '', '0000-00-00'),
-(24, 'Room4', '', '0000-00-00'),
-(25, 'Room4', '', '0000-00-00'),
 (26, 'car1', '', '0000-00-00'),
 (27, 'car1', '', '0000-00-00'),
 (28, 'car1', '', '0000-00-00'),
 (29, 'car1', '', '0000-00-00'),
 (30, 'car1', '', '0000-00-00'),
-(31, 'car1', '', '0000-00-00');
+(31, 'car1', '', '0000-00-00'),
+(34, 'Room2', 'campRoom2-1.jpg', '0000-00-00'),
+(35, 'Room2', 'campRoom2-2.jpg', '0000-00-00'),
+(36, 'Room2', 'campRoom2-3.jpg', '0000-00-00'),
+(39, 'Room2', 'campRoom2-4.jpg', '0000-00-00'),
+(40, 'Room2', 'campRoom2-5.jpg', '0000-00-00'),
+(41, 'Room3', 'campRoom3-0.jpg', '0000-00-00'),
+(42, 'Room3', 'campRoom3-1.jpg', '0000-00-00'),
+(43, 'Room4', 'campRoom4-0.jpg', '0000-00-00'),
+(46, 'Room4', 'campRoom4-1.jpg', '0000-00-00'),
+(66, 'Room4', 'campRoom4-3.jpg', '0000-00-00'),
+(67, 'Room4', 'campRoom4-2.jpg', '2022-06-11'),
+(76, 'Room5', 'campRoom1-4.jpg', '2022-06-11'),
+(77, 'Room5', 'campRoom1-5.jpg', '2022-06-11'),
+(78, 'Room5', 'campRoom2-0.jpg', '2022-06-11'),
+(79, 'Room5', 'campRoom2-1.jpg', '2022-06-11'),
+(80, 'Room5', 'campRoom2-0.jpg', '2022-06-11'),
+(81, 'Room5', 'campRoom2-1.jpg', '2022-06-11'),
+(82, 'Room5', 'campRoom2-2.jpg', '2022-06-11'),
+(83, 'Room5', 'campRoom2-3.jpg', '2022-06-11');
 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `tourist_spot`
+-- Table structure for table `tourist_spot`
 --
 
 CREATE TABLE `tourist_spot` (
@@ -821,7 +823,7 @@ CREATE TABLE `tourist_spot` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `tourist_spot`
+-- Dumping data for table `tourist_spot`
 --
 
 INSERT INTO `tourist_spot` (`sid`, `pic`, `area`, `name`, `type`, `open_time`, `close_day`, `tel`, `address`, `description`, `event_site`) VALUES
@@ -839,29 +841,29 @@ INSERT INTO `tourist_spot` (`sid`, `pic`, `area`, `name`, `type`, `open_time`, `
 (17, '8afef5c723e83578704f9e35efc29c60.jpg', '頭城鎮', '龜山島', '島嶼', '全年無休', '', '03-1111-2222', '頭城鎮龜山島', '龜山島，又稱龜山嶼，最早的名字叫煙斗嶼；國際海圖名稱為五獅嶼，頭城人常稱為龜島或龜嶼。台灣外海、太平洋中的島嶼，位於蘭陽平原東面的太平洋上一座火山島。', '');
 
 --
--- 已傾印資料表的索引
+-- Indexes for dumped tables
 --
 
 --
--- 資料表索引 `act`
+-- Indexes for table `act`
 --
 ALTER TABLE `act`
   ADD PRIMARY KEY (`act_id`);
 
 --
--- 資料表索引 `act_img`
+-- Indexes for table `act_img`
 --
 ALTER TABLE `act_img`
   ADD PRIMARY KEY (`act_img_id`);
 
 --
--- 資料表索引 `act_leaders`
+-- Indexes for table `act_leaders`
 --
 ALTER TABLE `act_leaders`
   ADD PRIMARY KEY (`act_l_id`);
 
 --
--- 資料表索引 `act_order`
+-- Indexes for table `act_order`
 --
 ALTER TABLE `act_order`
   ADD PRIMARY KEY (`order_id`),
@@ -869,68 +871,68 @@ ALTER TABLE `act_order`
   ADD KEY `act_l_id` (`act_l_id`);
 
 --
--- 資料表索引 `address_book`
+-- Indexes for table `address_book`
 --
 ALTER TABLE `address_book`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `admin_list`
+-- Indexes for table `admin_list`
 --
 ALTER TABLE `admin_list`
   ADD PRIMARY KEY (`admin_id`);
 
 --
--- 資料表索引 `camproduct1`
+-- Indexes for table `camproduct1`
 --
 ALTER TABLE `camproduct1`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `camproduct2`
+-- Indexes for table `camproduct2`
 --
 ALTER TABLE `camproduct2`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `cart`
+-- Indexes for table `cart`
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `categories`
+-- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `customize_product`
+-- Indexes for table `customize_product`
 --
 ALTER TABLE `customize_product`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `details`
+-- Indexes for table `details`
 --
 ALTER TABLE `details`
   ADD PRIMARY KEY (`d_sid`);
 
 --
--- 資料表索引 `equip`
+-- Indexes for table `equip`
 --
 ALTER TABLE `equip`
   ADD PRIMARY KEY (`equip_id`),
   ADD KEY `cate_id` (`cate_id`);
 
 --
--- 資料表索引 `equip_cate`
+-- Indexes for table `equip_cate`
 --
 ALTER TABLE `equip_cate`
   ADD PRIMARY KEY (`cate_id`);
 
 --
--- 資料表索引 `memberdata`
+-- Indexes for table `memberdata`
 --
 ALTER TABLE `memberdata`
   ADD PRIMARY KEY (`m_id`),
@@ -939,20 +941,20 @@ ALTER TABLE `memberdata`
   ADD KEY `m_phone` (`m_phone`);
 
 --
--- 資料表索引 `members`
+-- Indexes for table `members`
 --
 ALTER TABLE `members`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- 資料表索引 `orders`
+-- Indexes for table `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `order_details`
+-- Indexes for table `order_details`
 --
 ALTER TABLE `order_details`
   ADD PRIMARY KEY (`sid`),
@@ -960,198 +962,198 @@ ALTER TABLE `order_details`
   ADD KEY `product_sid` (`product_sid`);
 
 --
--- 資料表索引 `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `product_color`
+-- Indexes for table `product_color`
 --
 ALTER TABLE `product_color`
   ADD PRIMARY KEY (`sid`),
   ADD KEY `product_sid` (`product_sid`);
 
 --
--- 資料表索引 `recipes`
+-- Indexes for table `recipes`
 --
 ALTER TABLE `recipes`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `room_list`
+-- Indexes for table `room_list`
 --
 ALTER TABLE `room_list`
   ADD PRIMARY KEY (`SID`);
 
 --
--- 資料表索引 `room_order`
+-- Indexes for table `room_order`
 --
 ALTER TABLE `room_order`
   ADD PRIMARY KEY (`OrderNum`);
 
 --
--- 資料表索引 `room_photo`
+-- Indexes for table `room_photo`
 --
 ALTER TABLE `room_photo`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `tourist_spot`
+-- Indexes for table `tourist_spot`
 --
 ALTER TABLE `tourist_spot`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 在傾印的資料表使用自動遞增(AUTO_INCREMENT)
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `act`
+-- AUTO_INCREMENT for table `act`
 --
 ALTER TABLE `act`
   MODIFY `act_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `act_img`
+-- AUTO_INCREMENT for table `act_img`
 --
 ALTER TABLE `act_img`
   MODIFY `act_img_id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `act_leaders`
+-- AUTO_INCREMENT for table `act_leaders`
 --
 ALTER TABLE `act_leaders`
   MODIFY `act_l_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `act_order`
+-- AUTO_INCREMENT for table `act_order`
 --
 ALTER TABLE `act_order`
   MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `address_book`
+-- AUTO_INCREMENT for table `address_book`
 --
 ALTER TABLE `address_book`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `admin_list`
+-- AUTO_INCREMENT for table `admin_list`
 --
 ALTER TABLE `admin_list`
   MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `camproduct1`
+-- AUTO_INCREMENT for table `camproduct1`
 --
 ALTER TABLE `camproduct1`
   MODIFY `sid` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `camproduct2`
+-- AUTO_INCREMENT for table `camproduct2`
 --
 ALTER TABLE `camproduct2`
   MODIFY `sid` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `cart`
+-- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `categories`
+-- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `customize_product`
+-- AUTO_INCREMENT for table `customize_product`
 --
 ALTER TABLE `customize_product`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `details`
+-- AUTO_INCREMENT for table `details`
 --
 ALTER TABLE `details`
   MODIFY `d_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `equip`
+-- AUTO_INCREMENT for table `equip`
 --
 ALTER TABLE `equip`
   MODIFY `equip_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `equip_cate`
+-- AUTO_INCREMENT for table `equip_cate`
 --
 ALTER TABLE `equip_cate`
   MODIFY `cate_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `memberdata`
+-- AUTO_INCREMENT for table `memberdata`
 --
 ALTER TABLE `memberdata`
   MODIFY `m_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `members`
+-- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `orders`
+-- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `order_details`
+-- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `products`
+-- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `product_color`
+-- AUTO_INCREMENT for table `product_color`
 --
 ALTER TABLE `product_color`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `recipes`
+-- AUTO_INCREMENT for table `recipes`
 --
 ALTER TABLE `recipes`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `room_list`
+-- AUTO_INCREMENT for table `room_list`
 --
 ALTER TABLE `room_list`
-  MODIFY `SID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `SID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `room_order`
+-- AUTO_INCREMENT for table `room_order`
 --
 ALTER TABLE `room_order`
   MODIFY `OrderNum` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `room_photo`
+-- AUTO_INCREMENT for table `room_photo`
 --
 ALTER TABLE `room_photo`
-  MODIFY `sid` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `sid` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `tourist_spot`
+-- AUTO_INCREMENT for table `tourist_spot`
 --
 ALTER TABLE `tourist_spot`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
