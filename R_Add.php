@@ -107,16 +107,16 @@ if (empty($row)) {
                             <div class="mb-3" id="room_spec">
                                 <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="cleaningStaff" <?php
 
-                                    if (in_array("cleaningStaff", $r_spec)) {
-                                        echo $str;
-                                    }
-                                    ?>>清潔用品
+                                                                                                                if (in_array("cleaningStaff", $r_spec)) {
+                                                                                                                    echo $str;
+                                                                                                                }
+                                                                                                                ?>>清潔用品
                                 <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Fridge" <?php
 
-                                    if (in_array("Fridge", $r_spec)) {
-                                    echo $str;
-                                    }
-                                    ?>>冰箱
+                                                                                                        if (in_array("Fridge", $r_spec)) {
+                                                                                                            echo $str;
+                                                                                                        }
+                                                                                                        ?>>冰箱
                                 <input type="checkbox" id="Room_Spec" name="Room_spec[]" value="Hotpot" <?php
 
                                                                                                         if (in_array("Hotpot", $r_spec)) {
