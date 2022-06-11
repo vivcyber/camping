@@ -17,6 +17,11 @@ if (!isset($pageName)) {
     width: 40px;
 
   }
+
+  .home{
+    margin-bottom: 0 !important;
+  }
+ 
 </style>
 
 <body class="bg-light">
@@ -25,8 +30,9 @@ if (!isset($pageName)) {
   <div class="all d-flex">
     <div class="col-auto min-vh-100 col-2 bg-info ">
       <div class=" d-flex  align-items-baseline justify-content-center  mt-5">
-        <img src="./imgs/tent (1).png" alt="" class="logo">
-        <h6 class="home<?= $pageName == 'index' ? 'active' : '' ?>" href="index_.php">舒營</h6>
+        <div class="svg logo" id="svg"></div>
+        <!-- <img src="./imgs/tent (1).png" alt="" class="logo"> -->
+        <h6 class="home <?= $pageName == 'index' ? 'active' : '' ?>" href="index_.php">舒營</h6>
       </div>
       <br>
       <ul class="p-0">
