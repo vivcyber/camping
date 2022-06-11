@@ -34,6 +34,7 @@ $sql = sprintf("SELECT cp.*, d.*
 
 $row = $pdo->query($sql)->fetch();
 
+$ink = [$row['ink1'], $row['ink2'], $row['ink3'], $row['ink4']];
 
 $rows = [];
 
@@ -131,73 +132,27 @@ $rows = $pdo->query($sql2)->fetchAll();
                     </h6>
                     <div class="ink_box mt-3">
 
-                        <div class="ink_card d-flex w-100">
-                            <div class="btn btn-outline-primary w-100 mx-1">
-                                <div class="m-auto d-flex " style="
+                        <div class="ink_card d-flex flex-wrap w-100">
+
+                            <?php foreach ($ink as $i) : ?>
+                                <div class="btn btn-outline-primary w-25 px-1">
+                                    <div class="m-auto d-flex " style="
                                                 width: 50px;
                                                 height: 50px;
                                                 
                                             ">
-                                    <i class="fa-solid fa-<?= $row['ink1'] ?> m-auto"></i>
-                                </div>
-                                <h5 class="text-secondary text-center m-0 p-0" style="line-height: 3rem;">
+                                        <i class="fa-solid fa-<?= $i ?> m-auto"></i>
+                                    </div>
+                                    <h5 class=" text-center my-0 ">
+                                        <?= $i ?>
+                                    </h5>
+                                    <p class="text-secondary text-center">
+                                        + NT. <?= $row['ink_price'] ?>
 
-                                    <?= $row['ink1'] ?>
-                                </h5>
-                                <p class="text-secondary text-center">
-                                    + NT. 100
-                                    <!-- $r['ink_price']-->
-                                </p>
-                            </div>
-                            <div class="btn btn-outline-primary w-100 mx-1">
-                                <div class="m-auto d-flex " style="
-                                                width: 50px;
-                                                height: 50px;
-                                                
-                                            ">
-                                    <i class="fa-solid fa-<?= $row['ink2'] ?> m-auto"></i>
+                                    </p>
                                 </div>
-                                <h5 class="text-secondary text-center m-0 p-0" style="line-height: 3rem;">
+                            <?php endforeach; ?>
 
-                                    <?= $row['ink2'] ?>
-                                </h5>
-                                <p class="text-secondary text-center">
-                                    + NT. 100
-                                    <!-- $r['ink_price']-->
-                                </p>
-                            </div>
-                            <div class="btn btn-outline-primary w-100 mx-1">
-                                <div class="m-auto d-flex" style="
-                                                width: 50px;
-                                                height: 50px;
-                                                
-                                            ">
-                                    <i class="fa-solid fa-<?= $row['ink3'] ?> m-auto"></i>
-                                </div>
-                                <h5 class="text-secondary text-center m-0 p-0">
-                                    <?= $row['ink3'] ?>
-                                </h5>
-                                <p class="text-secondary text-center">
-                                    + NT. 100
-                                    <!-- $r['ink_price']-->
-                                </p>
-                            </div>
-                            <div class="btn btn-outline-primary w-100 mx-1">
-                                <div class="m-auto d-flex " style="
-                                                width: 50px;
-                                                height: 50px;
-
-                                            ">
-                                    <i class="fa-solid fa-<?= $row['ink4'] ?> m-auto"></i>
-                                </div>
-                                <h5 class="text-secondary text-center m-0 p-0" style="line-height: 3rem;">
-                                    <?= $row['ink4'] ?>
-                                </h5>
-                                <p class="text-secondary text-center">
-                                    + NT. 100
-                                    <!-- $r['ink_price']-->
-                                </p>
-                            </div>
                         </div>
                     </div>
                     <h6 class="border-bottom border-secondary pb-2 text-secondary mt-5">
@@ -214,7 +169,7 @@ $rows = $pdo->query($sql2)->fetchAll();
                                     <?= $row['font_style1'] ?>
                                 </p>
                                 <p class="text-secondary m-0 p-0">
-                                    + NT. 500
+                                    + NT. <?= $row['font_price'] ?>
                                 </p>
                             </div>
                             <div class="btn btn-outline-primary w-100 mx-1">
@@ -225,7 +180,7 @@ $rows = $pdo->query($sql2)->fetchAll();
                                     <?= $row['font_style2'] ?>
                                 </p>
                                 <p class="text-secondary m-0 p-0">
-                                    + NT. 500
+                                    + NT. <?= $row['font_price'] ?>
                                 </p>
                             </div>
                             <div class="btn btn-outline-primary w-100 mx-1">
@@ -236,7 +191,7 @@ $rows = $pdo->query($sql2)->fetchAll();
                                     <?= $row['font_style3'] ?>
                                 </p>
                                 <p class="text-secondary m-0 p-0">
-                                    + NT. 500
+                                    + NT. <?= $row['font_price'] ?>
                                 </p>
                             </div>
 
