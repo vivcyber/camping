@@ -60,13 +60,13 @@ if ($totalRows > 0) {
         <thead>
             <tr>
                 <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
-                <th scope="col">#</th>
-                <th scope="col">裝備名稱</th>
-                <th scope="col">裝備介紹</th>
-                <th scope="col">裝備照片</th>
-                <th scope="col">價錢/天</th>
-                <th scope="col">庫存</th>
-                <th scope="col"><i class="fa-solid fa-list"></i></th>
+                <th class="text-nowrap" scope="col">#</th>
+                <th class="text-nowrap" scope="col">裝備名稱</th>
+                <th class="text-nowrap" scope="col">裝備介紹</th>
+                <th class="text-nowrap" scope="col">裝備照片</th>
+                <th class="text-nowrap" scope="col">價錢/天</th>
+                <th class="text-nowrap" scope="col">庫存</th>
+                <th class="text-nowrap" scope="col"><i class="fa-solid fa-list"></i></th>
                 <th scope="col"><i class="fa-solid fa-pen-to-square"></i></th>
             </tr>
         </thead>

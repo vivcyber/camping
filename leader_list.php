@@ -64,11 +64,11 @@ if ($totalRows > 0) {
             <tr>
                 <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
                 <th scope="col">#</th>
-                <th scope="col">教練名稱</th>
-                <th scope="col">教練年齡</th>
-                <th scope="col">教練手機</th>
-                <th scope="col">教練住址</th>
-                <th scope="col">教練證照</th>
+                <th class="text-nowrap" scope="col">教練名稱</th>
+                <th class="text-nowrap" scope="col">教練年齡</th>
+                <th class="text-nowrap" scope="col">教練手機</th>
+                <th class="text-nowrap" scope="col">教練住址</th>
+                <th class="text-nowrap" scope="col">教練證照</th>
                 <th scope="col"><i class="fa-solid fa-pen-to-square"></i></th>
             </tr>
         </thead>

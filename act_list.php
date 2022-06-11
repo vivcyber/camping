@@ -67,15 +67,15 @@ if ($totalRows > 0) {
             <tr>
                 <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
                 <th scope="col">#</th>
-                <th scope="col">活動名稱</th>
-                <th scope="col">活動價格</th>
-                <th scope="col">開始時間</th>
-                <th scope="col">結束時間</th>
-                <th scope="col">開團人數</th>
-                <th scope="col">人數限制</th>
-                <th scope="col">最小年齡</th>
-                <th scope="col">最大年齡</th>
-                <th scope="col">詳情介紹</th>
+                <th class="text-nowrap" scope="col">活動名稱</th>
+                <th class="text-nowrap" scope="col">活動價格</th>
+                <th class="text-nowrap" scope="col">開始時間</th>
+                <th class="text-nowrap" scope="col">結束時間</th>
+                <th class="text-nowrap" scope="col">開團人數</th>
+                <th class="text-nowrap" scope="col">人數限制</th>
+                <th class="text-nowrap" scope="col">最小年齡</th>
+                <th class="text-nowrap" scope="col">最大年齡</th>
+                <th class="text-nowrap" scope="col">詳情介紹</th>
                 <th scope="col"><i class="fa-solid fa-pen-to-square"></i></th>
             </tr>
         </thead>
