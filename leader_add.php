@@ -6,6 +6,13 @@ $title = '新增教練';
 <?php include __DIR__ . '/part/html-head.php' ?>
 <?php include __DIR__ . '/part/navbar.php' ?>
 <style>
+    .form-control.red {
+        border: 1px solid red;
+    }
+
+    .form-text.red {
+        color: red;
+    }
 </style>
 <div class="container">
     <div class="row">
@@ -27,17 +34,17 @@ $title = '新增教練';
                         <div class="mb-3">
                             <label for="act_l_mobile" class="form-label">教練手機</label>
                             <input type="text" class="form-control" id="act_l_mobile" name="act_l_mobile" pattern="09\d{8}">
-                            <div class="form-text"></div>
+                            <div class="form-text red"></div>
                         </div>
                         <div class="mb-3">
                             <label for="act_l_address" class="form-label">教練住址</label>
                             <input type="text" class="form-control" id="act_l_address" name="act_l_address">
-                            <div class="form-text"></div>
+                            <div class="form-text red"></div>
                         </div>
                         <div class="mb-3">
                             <label for="act_l_license" class="form-label">教練證照</label>
                             <input type="text" class="form-control" id="act_l_license" name="act_l_license">
-                            <div class="form-text"></div>
+                            <div class="form-text red"></div>
                         </div>
                         <button type="submit" class="btn btn-primary text-white">新增</button>
                         <a href="leader_list.php" class="btn btn-primary text-white">取消</a>
@@ -59,9 +66,62 @@ $title = '新增教練';
 </div>
 <?php include __DIR__ . '/part/scripts.php' ?>
 <script>
+    const name_f = document.form1.name;
+    const act_l_name_f = document.form1.act_l_name;
+    const act_l_age_f = document.form1.act_l_age;
+    const act_l_mobile_f = document.form1.act_l_mobile;
+    const act_l_address_f = document.form1.act_l_address;
+    const act_l_license_f = document.form1.act_l_license;
+    const fields = [act_l_name_f, act_l_age_f, act_l_mobile_f, act_l_address_f, act_l_license_f];
+    const fieldTexts = [];
+    for (let f of fields) {
+        fieldTexts.push(f.nextElementSibling);
+    }
     async function sendData() {
+        // 讓欄位的外觀回復原來的狀態
+        for (let i in fields) {
+            fields[i].classList.remove('red');
+            fieldTexts[i].innerText = '';
+        }
         info_bar.style.display = 'none'; // 隱藏訊息列
+
+        let isPass = true; // 預設是通過檢查的
+
         // TODO: 欄位檢查, 前端的檢查
+
+        if (act_l_name_f.value.length < 1) {
+            // alert('姓名至少兩個字');
+            // name_f.classList.add('red');
+            // name_f.nextElementSibling.classList.add('red');
+            // name_f.closest('.mb-3').querySelector('.form-text').classList.add('red');
+            fields[0].classList.add('red');
+            fieldTexts[0].innerText = '請輸入教練名字';
+            isPass = false;
+        }
+        if (act_l_age_f.value.length < 1) {
+            fields[1].classList.add('red');
+            fieldTexts[1].innerText = '請輸入教練年齡';
+            isPass = false;
+        }
+        if (act_l_mobile_f.value.length < 1) {
+            fields[2].classList.add('red');
+            fieldTexts[2].innerText = '請輸入教練手機';
+            isPass = false;
+        }
+        if (act_l_address_f.value.length < 1) {
+            fields[3].classList.add('red');
+            fieldTexts[3].innerText = '請輸入教練地址';
+            isPass = false;
+        }
+        if (act_l_license_f.value.length < 1) {
+            fields[4].classList.add('red');
+            fieldTexts[4].innerText = '請輸入教練證照';
+            isPass = false;
+        }
+        if (!isPass) {
+            return; // 結束函式
+        }
+
         const fd = new FormData(document.form1);
         const r = await fetch('leader_add_api.php', {
             method: 'POST',

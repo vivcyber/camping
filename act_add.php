@@ -81,6 +81,10 @@ $title = '增加活動';
                             <textarea class="form-control" name="act_prepare" id="act_prepare" cols="30" rows="3"></textarea>
                             <div class="form-text red"></div>
                         </div>
+                        <div class="mb-3">
+                            <input type="file" class="form-control" name="act_img" id="act_img" multiple></input>
+                            <div class="form-text red"></div>
+                        </div>
                         <button type="submit" class="btn btn-primary text-white">新增</button>
                         <a href="act_list.php" class="btn btn-primary text-white">取消</a>
                     </form>

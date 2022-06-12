@@ -52,13 +52,13 @@ $cates = $pdo->query($c_sql)->fetchAll();
 
 
             <!-- 分類選單 -->
-            <div class=" mt-5" style="width: 100%">
+            <!-- <div class=" mt-5" style="width: 100%">
                 <a type="button" href="?" class="fs-6 px-5 text-decoration-none <?= empty($cate) ? 'btn btn-outline-primary text-white' : 'btn-outline-primary' ?>">+ All</a>
                 <?php foreach ($cates as $c) : ?>
                     <a type="button" href="?cate=<?= $c['sid'] ?>" class="fs-6 px-5 text-decoration-none <?= $cate == $c['sid'] ? 'btn btn-outline-primary text-white' : 'btn-outline-primary' ?>">
                         +<?= $c['name'] ?></a>
                 <?php endforeach; ?>
-            </div>
+            </div> -->
         </div>
         <div class=" mt-5 ">
             <div class="row p-3">
