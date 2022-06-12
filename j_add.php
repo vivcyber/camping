@@ -16,7 +16,7 @@ $title = '加食譜';
     }
 </style>
 <div class="container">
-    <button class="btn btn-primary" id="fasttext">一鍵輸入</button>
+    <button class="btn btn-light mb-2" id="fasttext"></button>
     <div class="row">
         <div class="col-md-6">
             <div class="card">
@@ -96,6 +96,7 @@ $title = '加食譜';
 <?php include __DIR__ . '/part/scripts.php' ?>
 <script>
     const info_bar = document.querySelector('#info-bar');
+    
     const name_f = document.form1.resname;
     const tool_f = document.form1.tool;
     const ingredient_f = document.form1.ingredient;
@@ -126,7 +127,7 @@ $title = '加食譜';
         picture.click();
     }
 
-    const fields = [name_f];
+    const fields = [name_f, tool_f, ingredient_f, tutorial_f, serves_f, cook_time_f, recipetype_f, resimgtext_f];
     const fieldTexts = [];
     for (let f of fields) {
         fieldTexts.push(f.nextElementSibling);
@@ -155,13 +156,50 @@ $title = '加食譜';
         // TODO: 欄位檢查, 前端的檢查
         let isPass = true; // 預設是通過檢查的
 
-        if (name_f.value.length < 2) {
+        if (name_f.value.length < 1) {
             // alert('姓名至少兩個字');
             // name_f.classList.add('red');
             // name_f.nextElementSibling.classList.add('red');
             // name_f.closest('.mb-3').querySelector('.form-text').classList.add('red');
             fields[0].classList.add('red');
-            fieldTexts[0].innerText = '食譜至少兩個字';
+            fieldTexts[0].innerText = '今晚,我想要來點...';
+            isPass = false;
+        }
+
+        if (tool_f.value.length < 1) {
+            fields[1].classList.add('red');
+            fieldTexts[1].innerText = '要用什麼瘋狂做菜呢?';
+            isPass = false;
+        }
+
+        if (tutorial_f.value.length < 1) {
+            fields[3].classList.add('red');
+            fieldTexts[3].innerText = '給點步驟吧!';
+            isPass = false;
+        }
+        if (ingredient_f.value.length < 1) {
+            fields[2].classList.add('red');
+            fieldTexts[2].innerText = '想要料理什麼呢?';
+            isPass = false;
+        }
+        if (serves_f.value.length < 1) {
+            fields[4].classList.add('red');
+            fieldTexts[4].innerText = '佳餚是幾人份?';
+            isPass = false;
+        }
+        if (cook_time_f.value.length < 1) {
+            fields[5].classList.add('red');
+            fieldTexts[5].innerText = '需要等多久呢?';
+            isPass = false;
+        }
+        if (recipetype_f.value.length < 1) {
+            fields[6].classList.add('red');
+            fieldTexts[6].innerText = '確定沒有出家人嗎';
+            isPass = false;
+        }
+        if (resimgtext_f.value.length < 1) {
+            fields[7].classList.add('red');
+            fieldTexts[7].innerText = '吃完形容一下口感吧';
             isPass = false;
         }
 
@@ -183,7 +221,7 @@ $title = '加食譜';
             info_bar.innerText = '新增成功';
 
             setTimeout(() => {
-                // location.href = 'ab-list.php'; // 跳轉到列表頁
+                location.href = 'j_list.php'; // 跳轉到列表頁
             }, 2000);
         } else {
             info_bar.classList.remove('alert-success');
