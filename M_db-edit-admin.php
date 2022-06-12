@@ -86,6 +86,7 @@ if (empty($row)) {
                         </div>
 
                         <button type="submit" class="btn btn-primary">修改</button>
+                        <button type="button" onclick="window.history.back()" class="btn btn-primary">取消</button>
                     </form>
                     <div id="info-bar" class="alert alert-success mt-2" role="alert" style="display:none;">
                         資料編輯成功

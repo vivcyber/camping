@@ -42,7 +42,7 @@ if ($result['m_level'] == 'member') {
 <?php include __DIR__ . '/c_part/c_nav.php' ?>
 
 <?php if (isset($_SESSION['loginUser'])) : ?>
-    <div class=" login-card" style="width:30rem;margin: 5rem auto ;">
+    <div class=" login-card " style="width:34rem;margin: 5rem auto ;">
         <div class="login-page-card-body">
             <form method="post">
                 <div class="member-card-container d-flex justify-content-between w-100">

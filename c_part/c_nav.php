@@ -30,6 +30,9 @@
           <a class="nav-link" href="./c_product_2.php">商品頁</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="./c_act.php">加購活動</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="./CP_f_product.php">客製化商品</a>
         </li>
         <li class="nav-item">

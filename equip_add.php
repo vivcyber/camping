@@ -5,6 +5,15 @@ $title = '新增租賃裝備';
 
 <?php include __DIR__ . '/part/html-head.php' ?>
 <?php include __DIR__ . '/part/navbar.php' ?>
+<style>
+    .form-control.red {
+        border: 1px solid red;
+    }
+
+    .form-text.red {
+        color: red;
+    }
+</style>
 <div class="container">
     <div class="row">
         <div class="col-md-6">
@@ -34,12 +43,12 @@ $title = '新增租賃裝備';
                         <div class="mb-3">
                             <label for="price" class="form-label">價錢/天</label>
                             <input type="number" class="form-control" id="price" name="price">
-                            <div class="form-text"></div>
+                            <div class="form-text red"></div>
                         </div>
                         <div class="mb-3">
                             <label for="rest" class="form-label">庫存</label>
                             <input type="number" class="form-control" id="rest" name="rest">
-                            <div class="form-text"></div>
+                            <div class="form-text red"></div>
                         </div>
                         <button type="submit" class="btn btn-primary text-white">新增</button>
                         <a href="equip_list.php" class="btn btn-primary text-white">取消</a>
@@ -101,11 +110,56 @@ $title = '新增租賃裝備';
         // document.form1.img.value = JSON.stringify(photoAr);
     });
 
-
+    const name_f = document.form1.name; 
+    const info_f = document.form1.info; 
+    const price_f = document.form1.price; 
+    const rest_f = document.form1.rest;  
+    const fields = [name_f, info_f, price_f, rest_f];
+    const fieldTexts = [];
+    for (let f of fields) {
+        fieldTexts.push(f.nextElementSibling);
+    }
     async function sendData() {
+        // 讓欄位的外觀回復原來的狀態
+        for (let i in fields) {
+            fields[i].classList.remove('red');
+            fieldTexts[i].innerText = '';
+        }
         info_bar.style.display = 'none'; // 隱藏訊息列
+        
+        let isPass = true; // 預設是通過檢查的
 
         // TODO: 欄位檢查, 前端的檢查
+
+        if (name_f.value.length < 1) {
+            // alert('姓名至少兩個字');
+            // name_f.classList.add('red');
+            // name_f.nextElementSibling.classList.add('red');
+            // name_f.closest('.mb-3').querySelector('.form-text').classList.add('red');
+            fields[0].classList.add('red');
+            fieldTexts[0].innerText = '請輸入裝備名稱';
+            isPass = false;
+        }
+        if (info_f.value.length < 1) {
+            fields[1].classList.add('red');
+            fieldTexts[1].innerText = '請輸入裝備介紹';
+            isPass = false;
+        }
+        if (price_f.value.length < 1) {
+            fields[2].classList.add('red');
+            fieldTexts[2].innerText = '請輸入裝備價錢';
+            isPass = false;
+        }
+        if (rest_f.value.length < 1) {
+            fields[3].classList.add('red');
+            fieldTexts[3].innerText = '請輸入裝備庫存';
+            isPass = false;
+        }
+
+        if (!isPass) {
+            return; // 結束函式
+        }
+        
         const fd = new FormData(document.form1);
         const r = await fetch('equip_add_api.php', {
             method: 'POST',
