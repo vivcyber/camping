@@ -53,12 +53,12 @@ if (empty($rows)) {
         <div class="card" style="width: 33%">
             <h5 class="card-header">Color</h5>
             <div class="card-body">
-                <div class="color_box d-flex">
-
-                    <div class="colors img-thumbnail border-2" style="
+                <div class="btn btn-outline-secondary">
+                    <h5><?= $rows['color'] ?></h5>
+                    <div class="colors rounded-circle border-2 m-auto" style="
                                     background-color: <?= $rows['color_code'] ?>;
-                                    height: 30px;
-                                    width: 30px;
+                                    height: 50px;
+                                    width: 50px;
                                 "></div>
                 </div>
             </div>
@@ -85,7 +85,7 @@ if (empty($rows)) {
         </div>
     </div>
 
-    <div class="ink d-flex">
+    <div class="ink">
         <div class="card" style="width: 100%">
             <h5 class="card-header">圖案</h5>
             <div class="card-body">
@@ -112,7 +112,7 @@ if (empty($rows)) {
             </div>
         </div>
     </div>
-    <div class="font d-flex">
+    <div class="font">
         <div class="card" style="width: 100%">
             <h5 class="card-header">字體</h5>
             <div class="card-body">
@@ -161,5 +161,16 @@ if (empty($rows)) {
         </button>
     </div>
     <?php include __DIR__ . '/part/scripts.php' ?>
-
+    <script>
+        const ink = document.querySelector('.ink');
+        const font = document.querySelector('.font');
+        const c2 = <?= json_encode($rows['customize2'], JSON_UNESCAPED_UNICODE); ?>;
+        const c3 = <?= json_encode($rows['customize3'], JSON_UNESCAPED_UNICODE); ?>;
+        if (c2 == "") {
+            ink.style.display = 'none';
+        }
+        if (c3 == "") {
+            font.style.display = 'none';
+        }
+    </script>
     <?php include __DIR__ . '/part/html-foot.php' ?>

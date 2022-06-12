@@ -35,7 +35,7 @@ $name = $row['name'] ?? '';
 ?>
 <?php include __DIR__ . "/part/html-head.php"; ?>
 <?php include __DIR__ . "/part/navbar.php"; ?>
-<div class="container w-75">
+<div class="container ">
 
 
     <h2 class=" text-center mt-3"><?= $name ?></h2>
@@ -49,7 +49,7 @@ $name = $row['name'] ?? '';
         </a>
 
         <!-- 前往前台的按鈕 -->
-        <a class="nav-link text-dark p-3" href="CP_f_product.php" target="_blank">
+        <a class="nav-link text-dark p-3" href="CP_f_detail.php?sid=<?= $sid ?>" target="_blank">
             <i class="fa-solid fa-eye"></i>
             View Site
         </a>
@@ -65,7 +65,7 @@ $name = $row['name'] ?? '';
                 <th scope="col">#</th>
                 <th scope="col">item_code</th>
                 <th scope="col">Name</th>
-                <th scope="col">Picture</th>
+                <th scope="col ">Picture</th>
                 <th scope="col">Customize</th>
                 <th scope="col">Introduction</th>
                 <th scope="col">Color</th>
@@ -131,7 +131,7 @@ $name = $row['name'] ?? '';
 <?php include __DIR__ . "/part/scripts.php"; ?>
 <script>
     function delete_it(d_sid) {
-        if (confirm(`確定要刪除編號${d_sid}的資料?`)) {
+        if (confirm(`確定要刪除商品編號${d_sid}的資料?`)) {
             location.href = `CP_delete_detail.php?d_sid=${d_sid}`;
         }
     }

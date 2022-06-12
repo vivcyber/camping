@@ -34,17 +34,17 @@ $row = $pdo->query($sql2)->fetch();
                             <h5 class=" my-3 ">顏色</h5>
                             <div class="color_box ">
                                 <div class="color1">
-                                    <label for="productcolor" class="form-label">商品顏色1</label>
+                                    <label for="productcolor" class="form-label">商品顏色</label>
                                     <input type="text" class="form-control" id="color" name="color" placeholder="顏色名稱" value="<?= $row['color'] ?>" required>
                                     <div class="form-text text-danger fw-bold mb-1"></div>
                                 </div>
                                 <div class="color1">
-                                    <label for="productcolor" class="form-label">顏色代碼1</label>
+                                    <label for="productcolor" class="form-label">顏色代碼</label>
                                     <input type="text" class="form-control" id="color_code" name="color_code" placeholder="#000000" value="<?= $row['color_code'] ?>" required>
                                     <div class="form-text text-danger fw-bold mb-1"></div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="c_code" class="form-label">商品代碼1</label>
+                                    <label for="c_code" class="form-label">商品代碼</label>
                                     <input type="text" class="form-control" id="c_code" name="c_code" maxlength="6" placeholder="六個數字" value="<?= $row['c_code'] ?>" required>
                                     <div class="form-text text-danger fw-bold mb-1"></div>
                                 </div>

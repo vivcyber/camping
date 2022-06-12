@@ -116,7 +116,7 @@ $title = '新增倉品';
             fieldText[i].innerText = '';
         }
 
-        info_bar.style.display = 'none'; //隱藏訊息列
+
 
         //欄位檢查，前端的檢查
 
