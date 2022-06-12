@@ -29,7 +29,7 @@ $act_desc = $_POST['act_desc'] ?? '';
 $act_notice = $_POST['act_notice'] ?? '';
 $act_schedule = $_POST['act_schedule'] ?? '';
 $act_prepare = $_POST['act_prepare'] ?? '';
-$act_img = $_POST['act_img'] ?? '';
+// $act_img = $_POST['act_img'] ?? '';
 
 
 // if (!empty($email) and filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
@@ -42,7 +42,7 @@ $act_img = $_POST['act_img'] ?? '';
 
 
 
-$sql= "INSERT INTO `act`(`act_name`, `act_s_time`, `act_e_time`, `min_people`, `max_people`, `min_age`, `max_age`, `act_price`, `act_desc`, `act_notice`, `act_schedule`, `act_prepare`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?); SELECT @@identity AS `i`;";
+$sql= "INSERT INTO `act`(`act_name`, `act_s_time`, `act_e_time`, `min_people`, `max_people`, `min_age`, `max_age`, `act_price`, `act_desc`, `act_notice`, `act_schedule`, `act_prepare`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);";
 
 
 
@@ -64,13 +64,13 @@ $stmt->execute([
 ]);
 
 
-foreach($act_img as $i){
-    $img = "INSERT INTO `act_img`(`act_id`, `filename`) VALUE (`i`,?)";
-    $stmtimg = $pdo->prepare($img);
-    $stmtimg->execute([
-    $_POST['act_img']
-]);
-}
+// foreach($act_img as $i){
+//     $img = "INSERT INTO `act_img`(`act_id`, `filename`) VALUE (`i`,?)";
+//     $stmtimg = $pdo->prepare($img);
+//     $stmtimg->execute([
+//     $_POST['act_img']
+// ]);
+// }
 
 
 
