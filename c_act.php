@@ -1,8 +1,12 @@
 <?php require __DIR__ . '/part/connect_db.php';
 
-$pageName = 'c-index';
-$title = '前台首頁';
+$pageName = 'c_act';
+$title = '活動加購前台首頁';
 
+
+$rows = [];
+    $sql = sprintf("SELECT act.*, act_cover.filename FROM act JOIN act_cover ON act.act_id = act_cover.act_id");
+    $rows = $pdo->query($sql)->fetchAll();
 ?>
 <?php include __DIR__ . '/c_part/c_head.php' ?>
 <?php include __DIR__ . '/c_part/c_nav.php' ?>
@@ -12,24 +16,26 @@ $title = '前台首頁';
                 background-size: cover;
                 background-repeat: no-repeat;
             }
-            /* #logo{
-                width: 30px;
-                filter: invert(1);
-            } */
 </style>
 
 <div class="container">
-    <div class=" border border-primary p-5 m-5">
-        <h2 class="text-white p-5 m-5 text-center">
-        <i class="fa-solid fa-robot"></i>
-        <br><br>
-        這個是前台首頁
-        <br><br>
-        開始前往你想去的頁面
-        </h2>
-    </div>
-
+    <div class="mt-5">
+        <div class="row p-3">
+            <?php foreach ($rows as $r) : ?>
+                <div class="col-md-3 product-unit my-3">
+                    <div class="card" style="width: 18rem; height:650px;">
+                        <img src="./imgs/act_img/<?= $r['filename']?>" class="card-img-top" alt="" style="height: 250px; object-fit:cover">
+                        <div class="card-body">
+                            <h2 class="mt-2"><?= htmlentities($r['act_name']) ?></h2>
+                            <p class="card-text mt-4"><?= $r['act_desc'] ?></p>
+                        </div>
+                        <a href="c_act_detail.php?act_id=<?= $r['act_id'] ?>" class="btn btn-outline-secondary mt-2  mb-2 m-3">活動詳細介紹</a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
+    </div>
+</div>
 
 
 
