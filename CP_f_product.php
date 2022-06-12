@@ -118,7 +118,10 @@ if ($totalRows > 0) {
                                     <?= $r['customize2'] ?>
                                     <?= $r['customize3'] ?>
                                 </p>
-                                <p class="card-text fs-3 ">NT. <?= $r['price'] ?></p>
+                                <p class="card-text fs-3 ">
+                                    NT. <?= $r['price'] ?>
+                                </p>
+
 
                                 <a href="CP_f_detail.php?sid=<?= $r['sid'] ?>" class="btn btn-outline-secondary mt-2 w-100">商品詳情</a>
                             </div>
@@ -132,12 +135,7 @@ if ($totalRows > 0) {
             <div class="col d-flex justify-content-center mt-5">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
-                        <!-- 製作回到第一頁的按鈕 -->
-                        <!-- <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>">
-                            <a class="page-link" href="?page=1">
-                                <i class="fa-solid fa-backward-fast"></i>
-                            </a>
-                        </li> -->
+
 
                         <!-- 判斷當前頁數已經為第一頁時，新增 disabled 這個class 讓Previous按鈕失去功能 -->
                         <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>">
@@ -161,12 +159,7 @@ if ($totalRows > 0) {
                                 <i class="fa-solid fa-caret-right"></i>
                             </a>
                         </li>
-                        <!-- 製作到最後一頁的按鈕 -->
-                        <!-- <li class="page-item <?= $page == $totalPages ? 'disabled' : '' ?>">
-                            <a class="page-link" href="?page=<?= $totalPages ?>">
-                                <i class="fa-solid fa-forward-fast"></i>
-                            </a>
-                        </li> -->
+
                     </ul>
                 </nav>
             </div>
@@ -175,39 +168,5 @@ if ($totalRows > 0) {
 
 </div>
 
-<!-- <script src="js/jquery-3.4.1.js"></script>
-<script>
-    $.get('sc-add-to-cart-api.php', function(data) {
-        countCartObj(data);
-    }, 'json');
 
-    function countCartObj(data) {
-        let total = 0;
-        for (let i in data) {
-            total += data[i];
-        }
-        $('.cart-count').text(total);
-    }
-</script> -->
-<!-- <script>
-    const btn = $('.add-to-cart-btn');
-
-    btn.click(function() {
-        const sid = $(this).closest('.product-unit').attr('data-sid');
-        //const qty = $(this).prev().val();
-        const qty = $(this).closest('.product-unit').find('.qty').val();
-
-        console.log({
-            sid,
-            qty
-        });
-
-        $.get('sc-add-to-cart-api.php', {
-            sid,
-            qty
-        }, function(data) {
-            countCartObj(data);
-        }, 'json');
-    });
-</script> -->
 <?php include __DIR__ . '/c_part/c_foot.php' ?>

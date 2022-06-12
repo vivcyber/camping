@@ -32,21 +32,21 @@ $row = $pdo->query($sql2)->fetch();
 
                         <div class="color mb-3">
                             <h5 class=" my-3 ">顏色</h5>
-                            <div class="color_box d-flex">
-                                <div class="color1" style="width: 33%;">
-                                    <label for="productcolor" class="form-label">商品顏色1</label>
+                            <div class="color_box ">
+                                <div class="color1">
+                                    <label for="productcolor" class="form-label">商品顏色</label>
                                     <input type="text" class="form-control" id="color" name="color" placeholder="顏色名稱" value="<?= $row['color'] ?>" required>
-                                    <div class="form-text red"></div>
+                                    <div class="form-text text-danger fw-bold mb-1"></div>
                                 </div>
-                                <div class="color1" style="width: 33%;">
-                                    <label for="productcolor" class="form-label">顏色代碼1</label>
+                                <div class="color1">
+                                    <label for="productcolor" class="form-label">顏色代碼</label>
                                     <input type="text" class="form-control" id="color_code" name="color_code" placeholder="#000000" value="<?= $row['color_code'] ?>" required>
-                                    <div class="form-text red"></div>
+                                    <div class="form-text text-danger fw-bold mb-1"></div>
                                 </div>
-                                <div class="mb-3" style="width: 33%;">
-                                    <label for="c_code" class="form-label">商品代碼1</label>
+                                <div class="mb-3">
+                                    <label for="c_code" class="form-label">商品代碼</label>
                                     <input type="text" class="form-control" id="c_code" name="c_code" maxlength="6" placeholder="六個數字" value="<?= $row['c_code'] ?>" required>
-                                    <div class="form-text red"></div>
+                                    <div class="form-text text-danger fw-bold mb-1"></div>
                                 </div>
                             </div>
                             <div class="f_pic_box d-flex">
@@ -89,14 +89,14 @@ $row = $pdo->query($sql2)->fetch();
                                     <img class="my-3  mx-1 rounded-circle d-inline" id="pic3" src="./CP_imgs/<?= $row['pic_name3'] ?>" alt="" style="display:none; width:150px;height:150px;object-fit:cover;" />
                                 </div>
 
-                                <div class="form-text red"></div>
+
                             </div>
                             <br>
                         </div>
                         <div class="stock mb-3">
                             <label for="stock" class="form-label">庫存</label>
                             <input type="text" class="form-control" id="stock" name="stock" value="<?= $row['stock'] ?>">
-                            <div class="form-text red"></div>
+                            <div class="form-text text-danger fw-bold mb-1"></div>
                         </div>
                         <div class="font mb-3">
                             <h5 class=" my-3">字體</h5>
@@ -205,14 +205,13 @@ $row = $pdo->query($sql2)->fetch();
 
                         </div>
 
-
-
-
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary text-white">修改</button>
-                            <button type="submit" class="btn border-1 border-primary">
-                                <a href="CP_product_detail.php" class=" text-decoration-none">返回</a>
-                            </button>
+                            <a href="CP_product_detail.php?sid=<?= $sid ?>">
+                                <div class="btn btn-outline-primary">
+                                    返回
+                                </div>
+                            </a>
                         </div>
                 </div>
             </div>
@@ -228,6 +227,20 @@ $row = $pdo->query($sql2)->fetch();
 </div>
 <?php include __DIR__ . '/part/scripts.php' ?>
 <script>
+    // 判斷是否有該客製化內容
+    const ink = document.querySelector('.ink');
+    const font = document.querySelector('.font');
+    const c2 = <?= json_encode($row['customize2'], JSON_UNESCAPED_UNICODE); ?>;
+    const c3 = <?= json_encode($row['customize3'], JSON_UNESCAPED_UNICODE); ?>;
+    // 如果沒有就不要顯示
+    if (c2 == "") {
+        ink.style.display = 'none';
+    }
+    if (c3 == "") {
+        font.style.display = 'none';
+    }
+
+
     const font1 = document.querySelector('.font_style1');
     const font2 = document.querySelector('.font_style2');
     const font3 = document.querySelector('.font_style3');
@@ -454,8 +467,59 @@ $row = $pdo->query($sql2)->fetch();
     // ink4.addEventListener('change', (event) => {
     //     ink_price.value = 200;
     // });
+
+
+    //前端驗證
+
+    const color_code_re = /^#[a-fA-F0-9]{6}$/;
+    const c_code_re = /^\d{6}$/;
+    const stock_re = /^\d*$/;
+
+    const info_bar = document.querySelector('#info-bar');
+    const color_codef = document.form1.color_code;
+    const c_codef = document.form1.c_code;
+    const stockf = document.form1.stock;
+
+    const fields = [c_codef, color_codef, stockf];
+    const fieldText = [];
+    for (let f of fields) {
+        fieldText.push(f.nextElementSibling);
+    }
+
     async function sendData() {
         // TODO: 欄位檢查, 前端的檢查
+        //讓欄位外觀回復原來狀態
+        for (let i in fields) {
+            fields[i].classList.remove('text-danger');
+            fieldText[i].innerText = '';
+        }
+
+        let isPass = true; //預設通過檢查
+
+        // 商品編號
+        if (!c_code_re.test(c_codef.value)) {
+            fieldText[0].innerText = '請輸入六個阿拉伯數字';
+            isPass = false;
+        }
+        // 顏色代碼
+
+        if (!color_code_re.test(color_codef.value)) {
+            fieldText[1].innerText = '請輸入正確的顏色代碼';
+            isPass = false;
+        }
+        //庫存
+
+        if (!stock_re.test(stockf.value)) {
+            fieldText[2].innerText = '請輸入阿拉伯數字';
+            isPass = false;
+
+        }
+
+        //若驗證不通過
+
+        if (!isPass) {
+            return; //結束sendData();
+        }
         const fd = new FormData(document.form1);
         const r = await fetch('CP_edit_detail_api.php?sid=<?= $sid ?>&d_sid=<?= $d_sid ?>', {
             method: 'POST',
@@ -473,7 +537,7 @@ $row = $pdo->query($sql2)->fetch();
             info_bar.classList.add('alert-success');
             info_bar.innerText = "資料修改成功";
             setTimeout(() => {
-                location.href = 'CP_product_detail.php';
+                location.href = 'CP_product_detail.php?sid= <?= $sid ?>';
             }, 1000);
             // 設定1秒後跳轉
 

@@ -14,9 +14,7 @@ $output = [
     'pic_name3' => ''
 ];
 
-$pic_name1 = $_POST['pic_name1'] ?? '';
-$pic_name2 = $_POST['pic_name2'] ?? '';
-$pic_name3 = $_POST['pic_name3'] ?? '';
+
 
 $font_style1 = $_POST['font_style1'] ?? '';
 $font_type1 = $_POST['font_type1'] ?? '';
@@ -33,26 +31,26 @@ $ink4 = $_POST['ink4'] ?? '';
 $folder = __DIR__ . '/CP_imgs/';
 
 // 用來篩選檔案, 用來決定副檔名
-$extMap = [
-    'image/jpeg' => '.jpg',
-    'image/png' => '.png',
-    'image/gif' => '.gif',
-];
+// $extMap = [
+//     'image/jpeg' => '.jpg',
+//     'image/png' => '.png',
+//     'image/gif' => '.gif',
+// ];
 
-if (empty($extMap[$_FILES['d_frame_pic1']['type']])) {
-    $output['error'] = '檔案類型錯誤';
-    echo json_encode($output, JSON_UNESCAPED_UNICODE);
-    exit;
-}
-$ext = $extMap[$_FILES['d_frame_pic1']['type']]; // 副檔名
-$ext1 = $extMap[$_FILES['pic_name1']['type']]; // 副檔名
-$ext2 = $extMap[$_FILES['pic_name2']['type']]; // 副檔名
-$ext3 = $extMap[$_FILES['pic_name3']['type']]; // 副檔名
+// if (empty($extMap[$_FILES['d_frame_pic1']['type']])) {
+//     $output['error'] = '檔案類型錯誤';
+//     echo json_encode($output, JSON_UNESCAPED_UNICODE);
+//     exit;
+// }
+// $ext = $extMap[$_FILES['d_frame_pic1']['type']]; // 副檔名
+// $ext1 = $extMap[$_FILES['pic_name1']['type']]; // 副檔名
+// $ext2 = $extMap[$_FILES['pic_name2']['type']]; // 副檔名
+// $ext3 = $extMap[$_FILES['pic_name3']['type']]; // 副檔名
 
-$filename = $_FILES['d_frame_pic1']['name'] . $ext;
-$pic_name1 = $_FILES['pic_name1']['name'] . $ext;
-$pic_name2 = $_FILES['pic_name2']['name'] . $ext;
-$pic_name3 = $_FILES['pic_name3']['name'] . $ext;
+$filename = $_FILES['d_frame_pic1']['name'];
+$pic_name1 = $_FILES['pic_name1']['name'];
+$pic_name2 = $_FILES['pic_name2']['name'];
+$pic_name3 = $_FILES['pic_name3']['name'];
 
 $output['filename'] = $filename;
 $output['pic_name1'] = $pic_name1;

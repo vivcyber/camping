@@ -72,7 +72,7 @@ if ($totalRows > 0) {
 
                 <th scope="col">#</th>
                 <th scope="col">item_code</th>
-                <th scope="col" style="width: 5rem;">Name</th>
+                <th scope="col">Name</th>
                 <th scope="col">Picture</th>
                 <th scope="col">Customize</th>
                 <th scope="col">Introduction</th>
