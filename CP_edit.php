@@ -96,9 +96,11 @@ if (empty($row)) {
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary text-white">修改</button>
-                            <button type="submit" class="btn border-1 border-primary">
-                                <a href="CP_product_list.php" class=" text-decoration-none">返回</a>
-                            </button>
+                            <a href="CP_product_detail.php">
+                                <div class="btn btn-outline-primary">
+                                    返回
+                                </div>
+                            </a>
                         </div>
                     </form>
                     <div id="info-bar" class="alert alert-success p-2" role="alert" style="display:none;">
@@ -129,10 +131,55 @@ if (empty($row)) {
             }
         })
     });
+    const price_re = /^\d*$/;
+    const p_code_re = /^[A-Z]{2}$/;
 
+    const info_bar = document.querySelector('#info-bar');
+    const p_codef = document.form1.p_code;
+    const pricef = document.form1.price;
+
+    const fields = [p_codef, pricef];
+    const fieldText = [];
+    for (let f of fields) {
+        fieldText.push(f.nextElementSibling);
+    }
 
     async function sendData() {
         // TODO: 欄位檢查, 前端的檢查
+        //讓欄位外觀回復原來狀態
+        for (let i in fields) {
+            fields[i].classList.remove('text-danger');
+            fieldText[i].innerText = '';
+        }
+
+
+
+        //欄位檢查，前端的檢查
+
+        let isPass = true; //預設通過檢查
+
+        // 商品編碼
+
+        if (!p_code_re.test(p_codef.value)) {
+            fieldText[0].innerText = '請輸入兩個大寫英文字母';
+            isPass = false;
+        }
+
+        //價格
+
+        if (!price_re.test(pricef.value)) {
+            fieldText[1].innerText = '請輸入阿拉伯數字';
+            isPass = false;
+
+        }
+
+        //若驗證不通過
+
+        if (!isPass) {
+            return; //結束sendData();
+        }
+
+
         const fd = new FormData(document.form1);
         const r = await fetch('CP_edit_api.php?sid=<?= $sid ?>', {
             method: 'POST',

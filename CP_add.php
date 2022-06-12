@@ -15,15 +15,15 @@ $title = '新增倉品';
                     <h5 class="card-title">新增商品</h5>
                     <form name="form1" onsubmit="sendData();return false;">
                         <div class="name mb-3">
-                            <label for="name" class="form-label">* 商品名稱</label>
+                            <label for="name" class="form-label">商品名稱</label>
                             <input type="text" class="form-control" id="name" name="name" required>
-                            <div class="form-text red"></div>
+                            <div class="form-text text-danger"></div>
                         </div>
 
                         <div class="pcode mb-3">
                             <label for="p_code" class="form-label">產品檢索碼</label>
                             <input type="text" class="form-control" id="p_code" name="p_code" placeholder="兩個大寫英文字母" maxlength="2" required>
-                            <div class="form-text red"></div>
+                            <div class="form-text text-danger"></div>
                         </div>
 
                         <div class="frame_pic mb-3">
@@ -67,13 +67,13 @@ $title = '新增倉品';
                         <div class="introduction mb-3">
                             <label for="introduction" class="form-label">商品介紹</label>
                             <textarea class="form-control" name="introduction" id="introduction" cols="30" rows="5"></textarea>
-                            <div class="form-text red"></div>
+                            <div class="form-text text-danger"></div>
                         </div>
 
                         <div class="price mb-3">
                             <label for="price" class="form-label">商品價格</label>
                             <input type="text" class="form-control" id="price" name="price">
-                            <div class="form-text red"></div>
+                            <div class="form-text text-danger"></div>
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary text-white">新增</button>
@@ -93,8 +93,55 @@ $title = '新增倉品';
 </div>
 <?php include __DIR__ . '/part/scripts.php' ?>
 <script>
+    // TODO: 欄位檢查, 前端的檢查
+    //前端驗證
+    const price_re = /^\d*$/;
+    const p_code_re = /^[A-Z]{2}$/;
+
+    const info_bar = document.querySelector('#info-bar');
+    const p_codef = document.form1.p_code;
+    const pricef = document.form1.price;
+
+    const fields = [p_codef, pricef];
+    const fieldText = [];
+    for (let f of fields) {
+        fieldText.push(f.nextElementSibling);
+    }
+
+    //
     async function sendData() {
-        // TODO: 欄位檢查, 前端的檢查
+        //讓欄位外觀回復原來狀態
+        for (let i in fields) {
+            fields[i].classList.remove('text-danger');
+            fieldText[i].innerText = '';
+        }
+
+        info_bar.style.display = 'none'; //隱藏訊息列
+
+        //欄位檢查，前端的檢查
+
+        let isPass = true; //預設通過檢查
+
+        // 商品編碼
+
+        if (!p_code_re.test(p_codef.value)) {
+            fieldText[0].innerText = '請輸入兩個大寫英文字母';
+            isPass = false;
+        }
+
+        //價格
+
+        if (!price_re.test(pricef.value)) {
+            fieldText[1].innerText = '請輸入阿拉伯數字';
+            isPass = false;
+
+        }
+
+        //若驗證不通過
+
+        if (!isPass) {
+            return; //結束sendData();
+        }
 
         const fd = new FormData(document.form1);
         const r = await fetch('CP_add_api.php', {
@@ -126,8 +173,8 @@ $title = '新增倉品';
 
         }
 
-    }
 
+    }
     const btn = document.querySelector("#btn");
     const myimg = document.querySelector("#myimg");
     const frame_pic1 = document.form1.frame_pic1;
