@@ -39,13 +39,13 @@ if ($nPassword !== '') {
 
     $nPassword = password_hash($nPassword, PASSWORD_BCRYPT);
 
-    $sql = "UPDATE `memberdata` SET `m_passwd`='" . $password . "' WHERE `m_id` = '" . $sid . "';";
+    $sql = "UPDATE `memberdata` SET `m_passwd`='" . $nPassword . "' WHERE `m_id` = '" . $sid . "';";
 
     $result = $pdo->prepare($sql);
 
     $result->execute(
         [
-            $password
+            $nPassword
         ]
     );
 

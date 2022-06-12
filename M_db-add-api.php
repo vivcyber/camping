@@ -95,6 +95,8 @@ $result->execute(
 
 if ($result->rowCount() == 1) {
 
+    $output['success'] = false;
+
     $output['error'] = '使用者名稱已存在';
     echo json_encode($output, JSON_UNESCAPED_UNICODE);
     exit;
