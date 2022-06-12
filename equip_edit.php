@@ -48,7 +48,6 @@ if(empty($row)){
                             <input type="hidden" name="img" id="img" value="[]" />
                             <br />
                             <div id="photo_container" style="width: 600px; display:flex;"></div>
-                            <div id="pastimg" style="width: 600px; display:flex;"></div>
                         </div>
                         <div class="mb-3">
                             <label for="price" class="form-label">價格/天</label>
