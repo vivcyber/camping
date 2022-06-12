@@ -16,20 +16,20 @@ $customize3 = $_POST['customize3'] ?? '';
 $folder = __DIR__ . '/CP_imgs/';
 
 // 用來篩選檔案, 用來決定副檔名
-$extMap = [
-    'image/jpeg' => '.jpg',
-    'image/png' => '.png',
-    'image/gif' => '.gif',
-];
+// $extMap = [
+//     'image/jpeg' => '.jpg',
+//     'image/png' => '.png',
+//     'image/gif' => '.gif',
+// ];
 
-if (empty($extMap[$_FILES['frame_pic1']['type']])) {
-    $output['error'] = '檔案類型錯誤';
-    echo json_encode($output, JSON_UNESCAPED_UNICODE);
-    exit;
-}
-$ext = $extMap[$_FILES['frame_pic1']['type']]; // 副檔名
+// if (empty($extMap[$_FILES['frame_pic1']['type']])) {
+//     $output['error'] = '檔案類型錯誤';
+//     echo json_encode($output, JSON_UNESCAPED_UNICODE);
+//     exit;
+// }
+// $ext = $extMap[$_FILES['frame_pic1']['type']]; // 副檔名
 
-$filename = $_FILES['frame_pic1']['name'] . $ext;
+$filename = $_FILES['frame_pic1']['name'];
 
 $output['filename'] = $filename;
 
