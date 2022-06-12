@@ -93,7 +93,7 @@ if ($_POST['username'] == $result['m_username'] && password_verify($password, $r
         }
     }
 } else {
-    $output['error'] = '登入失敗，請檢查帳號和密碼';
+    $output['error'] = '帳號或密碼錯誤';
     $output['success'] = false;
     echo json_encode($output);
     exit;

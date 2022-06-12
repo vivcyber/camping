@@ -98,6 +98,9 @@ if(empty($row)){
               <p class="mt-3"><pre><?= $row['productinclude'] ?></pre></p>
     </div>
 </div>
+
+
+
 <script src="js/jquery-3.4.1.js"></script>
 <script>
     $.get('sc-add-to-cart-api.php', function(data) {

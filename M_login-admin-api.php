@@ -64,7 +64,7 @@ if ($_POST['admin'] == $result['admin_account'] && $_POST['password'] == $result
         // exit;
     }
 } else {
-    $output['error'] = '登入失敗，請檢查帳號和密碼';
+    $output['error'] = '帳號或密碼錯誤';
     $output['success'] = false;
     echo json_encode($output);
     exit;

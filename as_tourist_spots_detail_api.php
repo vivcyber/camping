@@ -1,4 +1,4 @@
-<?php require __DIR__ . './part/connect_db.php';
+<?php require __DIR__ . '/part/connect_db.php';
 header('Content-Type: application/json');
 
 $output = [

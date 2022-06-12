@@ -67,6 +67,7 @@ $output = [
         $.post('M_login-admin-api.php', $(document.form1).serialize(), function(data) {
 
             if (data.success) {
+                $('#info-bar').removeClass('alert-danger').addClass("alert-success");
                 $('#info-bar').show().text('登入成功');
 
                 setTimeout(function() {
@@ -74,8 +75,8 @@ $output = [
                 }, 1000);
 
             } else {
-
-                $('#info-bar').show().text(JSON.stringify(data.error));
+                $('#info-bar').removeClass('alert-success').addClass("alert-danger");
+                $('#info-bar').show().text(data.error);
             }
         }, 'json');
 

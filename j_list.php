@@ -66,7 +66,7 @@ if ($totalRows > 0) {
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th scope="col p-3"><i class="fa-solid fa-trash-can"></i></th>
+                <th scope="col p-3">刪除</i></th>
                 <th scope="col p-3">序號</th>
                 <th scope="col p-3">食譜名稱</th>
                 <th scope="col p-3">所需鍋具</th>
@@ -77,7 +77,7 @@ if ($totalRows > 0) {
                 <th scope="col p-3">葷素</th>
                 <th scope="col p-3">圖片描述</th>
                 <th scope="col p-3">圖片</th>
-                <th scope="col p-3"><i class="fa-solid fa-pen-to-square"></i></th>
+                <th scope="col p-3">修改</i></th>
             </tr>
         </thead>
         <tbody>
