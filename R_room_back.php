@@ -101,7 +101,7 @@ if (!empty($_GET['search'])) {
             <form action="R_room_back.php" method="get">
                 <div class="d-flex mb-3" style="height:40px; margin-top: 10px;">
 
-                    <input type="text" class="form-control" name="search" id="search" placeholder="搜需資料">
+                    <input type="text" class="form-control" name="search" id="search" placeholder="搜尋資料">
 
                     <button type="submit" value="Submit" name="submit" class="btn btn-primary " style="width:80px; margin-left:10px;">搜尋</button>
                 </div>
