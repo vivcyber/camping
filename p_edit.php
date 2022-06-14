@@ -56,9 +56,9 @@ if(empty($row)){
                                     <lable class="form-label">Productcategory:</lable>
                                     <select name="productcategory" id="productcategory" class="form-control" value="<?= $row['productcategory'] ?>">
                                     <option value="">--商品種類--</option>
-                                    <option value="餐廚">餐廚</option>
-                                    <option value="桌椅">桌椅</option>
-                                    <option value="帳篷">帳篷</option>
+                                    <option value="3">餐廚</option>
+                                    <option value="2">桌椅</option>
+                                    <option value="1">帳篷</option>
                                     </select><br>
                                     <lable class="form-label">Productcolor:</lable>
                                        <div class="color1">

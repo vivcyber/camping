@@ -8,8 +8,8 @@ $cate = isset($_GET['cate']) ? intval($_GET['cate']) : 0;
 $pageBtnQS = [];
 
 $where = ' WHERE 1 ';
-if (!empty($cate)) {
-    $where .= " AND category_sid=$cate ";
+if(! empty($cate)){
+    $where .= " AND productcategory=$cate ";
     $pageBtnQS['cate'] = $cate;
 }
 
@@ -18,14 +18,14 @@ if (!empty($cate)) {
 $t_sql = "SELECT COUNT(1) FROM camproduct2 $where ";
 $totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0];
 
-$totalPages = ceil($totalRows / $perPage); // 總頁數
-if ($page < 1) $page = 1;
-if ($page > $totalPages) $page = $totalPages;
+$totalPages = ceil($totalRows/$perPage); // 總頁數
+if($page<1) $page=1;
+if($page>$totalPages) $page=$totalPages;
 
 $rows = [];
 // 如果有資料
-if ($totalRows > 0) {
-    $sql = sprintf("SELECT * FROM camproduct2 $where LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
+if($totalRows>0){
+    $sql = sprintf("SELECT * FROM camproduct2 $where LIMIT %s, %s", ($page-1)*$perPage, $perPage);
     $stmt = $pdo->query($sql);
     $rows = $stmt->fetchAll();
 }
@@ -52,13 +52,13 @@ $cates = $pdo->query($c_sql)->fetchAll();
 
 
             <!-- 分類選單 -->
-            <!-- <div class=" mt-5" style="width: 100%">
+            <div class=" mt-5" style="width: 100%">
                 <a type="button" href="?" class="fs-6 px-5 text-decoration-none <?= empty($cate) ? 'btn btn-outline-primary text-white' : 'btn-outline-primary' ?>">+ All</a>
                 <?php foreach ($cates as $c) : ?>
                     <a type="button" href="?cate=<?= $c['sid'] ?>" class="fs-6 px-5 text-decoration-none <?= $cate == $c['sid'] ? 'btn btn-outline-primary text-white' : 'btn-outline-primary' ?>">
                         +<?= $c['name'] ?></a>
                 <?php endforeach; ?>
-            </div> -->
+            </div>
         </div>
         <div class=" mt-5 ">
             <div class="row p-3">
@@ -70,7 +70,7 @@ $cates = $pdo->query($c_sql)->fetchAll();
 
                             <div class="card-body pb-3">
                                 <h6 class="card-title fs-5" style="height:64px;"><?= $r['productname'] ?></h6>
-                                <p class="card-text text-primary "><i class="fa-solid fa-campground"></i><?= $r['productcategory'] ?></p>
+                                <p class="card-text text-primary "><i class="fa-solid fa-campground"></i><?= $r['productcolor'] ?></p>
                                 <p class="card-text text-secondary fs-4">NT <?= $r['productprice'] ?></p>
                                 <form>
                                     <div class="form-group w-100 d-flex justify-content-between">
