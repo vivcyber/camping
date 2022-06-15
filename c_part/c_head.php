@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="fontawesome/css/all.css" />
     <link rel="stylesheet" href="./js/gsap-public/src/all.js">
     <link rel="stylesheet" href="./theme_test.css">
+    <link rel="stylesheet" href="./css/Gordon_R_Front.css">
     <link rel="stylesheet" href="./css/diao_css.css">
 
     <title><?= $title ?? '露營前台' ?></title>

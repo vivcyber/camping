@@ -1,58 +1,136 @@
 <?php require __DIR__ . '/part/connect_db.php';
+
+    function build_calendar($month,$year){
+
+        $sql = "SELECT * FROM room_order WHERE MONTH(Date)=? AND YEAR(Date)=?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bind_param('ss',$month,$year);
+        $booking = array();
+        if($stmt->execute()){
+            $result = $stmt->get_result();
+            if($result -> numb_row >0 ){
+                while($row = $result->fetchAll(PDO::FETCH_ASSOC)){
+                    $booking[]=$row['date'];
+            }
+        }
+
+
+
+
+        $daysOfWeek = array('星期天','星期一','星期二','星期三','星期四','星期五','星期六');
+        $firstDayOfMonth = mktime(0,0,0,$month,1,$year);
+        $numberDays = date('t',$firstDayOfMonth);
+        $dateComponents = getdate($firstDayOfMonth);
+        $monthName=$dateComponents['month'];
+        $dayOfWeek = $dateComponents['wday'];
+        $dateToday = date('Y-m-d');
+       
+        $prev_month = date('m',mktime(0,0,0,$month-1,1,$year));
+        $prev_year = date('Y',mktime(0,0,0,$month-1,$year));
+        $next_month = date('m',mktime(0,0,0,$month+1,1,$year));
+        $next_year = date('Y',mktime(0,0,0,$month+1,$year));
+        $calendar = "<center><h2 style='padding-bottom:10px;'>$monthName $year</h2>";
+        $calendar.= "<a class='btn btn-primary btn-xs' href='?month=".$prev_month."&year=".$prev_year."'>Prev Month</a>";
+        $calendar.= "<a class='btn btn-primary btn-xs' href='?month=".date('m')."&year=".date('Y')."'>Current Month</a>";
+        $calendar.= "<a class='btn btn-primary btn-xs' href='?month=".$next_month."&year=".$next_year."'>Next Month</a></center>";
+        $calendar.="<br><table class='table table-bordered'>";
+        $calendar.="<tr>";
+        foreach($daysOfWeek as $day){
+            $calendar.= "<th class'header'>$day</th>";
+        } 
+
+        $calendar.="<tr></tr>";
+        $currentDay= 1;
+        if($dayOfWeek >0){
+            for($k = 0 ; $k < $dayOfWeek; $k++){
+                $calendar.="<td class='empty'></td>";
+            }
+        }
+
+        $month = str_pad($month,2,"0",STR_PAD_LEFT);
+        while($currentDay <= $numberDays){
+            if($dayOfWeek == 7){
+                $dayOfWeek = 0 ; 
+                $calendar.= "<tr></tr>"; 
+            }
+
+            $currentDayRel = str_pad($currentDay,2,"0",STR_PAD_LEFT);
+            $date = "$year-$month-$currentDayRel";
+            $dayName = strtolower(date('l',strtotime($date)));
+            $today = $date==date('Y-m-d')?'today':"";
+            
+            $calendar.="<td class='$today'><h4>$currentDayRel</h4> <a class='btn btn-success btn-xs'>Book</a></td>";
+            $currentDay++;
+            $dayOfWeek++;
+        }
+
+        if($dayOfWeek<7){
+            $remainingDays = 7- $dayOfWeek;
+            for($i = 0 ; $i < $remainingDays; $i++){
+                $calendar.= "<td class='empty'></td>";
+            }
+        }
+
+        $calendar.="</tr></table>";
+
+        return $calendar;
+    }
 ?>
 
 
-<?php include __DIR__ . '/part/html-head.php' ?>
-<style>
-    .opt {
-        width: 100%;
-        height: 100vh;
-    }
+<?php include __DIR__ . '/c_part/c_head.php' ?>
+<?php include __DIR__ . '/c_part/c_nav.php' ?>
 
-    .optbox {
-        background-color: rgba(255, 255, 255, 0.5);
-        width: 40%;
-        height: 40%;
-        border-radius: 10%;
-    }
+<div class="Full-Container">
+    <div class="">
+        <div class="opt d-flex justify-content-end align-items-center position-relative" id="sec1">
+            <div class="position-absolute slider ">
+                <ul class="runslide position-absolute d-flex">
+                    <li class="r-first"></li>
+                    <li></li>
+                    <li></li>
+                
+                </ul>
+                <ul class="slider-dots-area position-absolute">
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="calenderTable">
+                <div class="col-md-3 calender-bx ">
+                    <?php 
+                        $dateComponents = getdate();
+                        if(isset($_GET['month'])&& isset($_GET['year'])){
+                            $month = $_GET['month'];
+                            $year = $_GET['year'];
+                        }else {
+                            $month = $dateComponents['month'];
+                            $year = $dateComponents['year'];
+                        }
 
-    .slider-inner {
-        z-index: -1;
-        height: 100%;
-        width: 100%;
-        overflow: hidden;
-    }
+                        echo build_calendar($month,$year);
+                    
+                    
+                    
+                    ?>
 
-    .slider {
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
-        transition: background-image 1s ease;
-    }
-</style>
-<?php include __DIR__ . '/part/navbar.php' ?>
-
-<div class="container">
-    <div class="row">
-        <div class="opt slider d-flex justify-content-end align-items-center position-relative" id="sec1">
-
-            <div class="optbox d-flex align-items-end justify-content-center">
-                <a href="#sec2" class="go btn btn-primary">click me</a>
+                </div>
+                
             </div>
         </div>
         <div class="opt d-flex justify-content-end align-items-center" id="sec2">
             <div class="optbox d-flex align-items-end justify-content-center">
-                <a href="#sec3" class="go btn btn-primary">click me</a>
+                <a href="#" class="go btn btn-primary">click me</a>
             </div>
         </div>
         <div class="opt d-flex justify-content-end align-items-center" id="sec3">
             <div class="optbox d-flex align-items-end justify-content-center">
-                <a href="#sec4" class="go btn btn-primary">click me</a>
+                <a href="#" class="go btn btn-primary">click me</a>
             </div>
         </div>
         <div class="opt d-flex justify-content-end align-items-center" id="sec4">
             <div class="optbox d-flex align-items-end justify-content-center">
-                <a href="#sec5" class="go btn btn-primary">click me</a>
+                <a href="#" class="go btn btn-primary">click me</a>
                 <a href="#" class="btn btn-primary">加購區</a>
             </div>
         </div>
@@ -64,7 +142,7 @@
     </div>
 </div>
 
-<?php include __DIR__ . '/part/scripts.php' ?>
+<?php include __DIR__ . '/c_part/c_scripts.php' ?>
 <script>
     // $("#sec1").css("background-color","red");
     // $("#sec2").css("background-color","blue");
@@ -193,39 +271,44 @@
         "campRoom_s01.jpg",
     ];
     $slider = $('.slider');
-    $slider.css("background-image", "url(./imgs/Roomimg/campRoom_s01.jpg)");
+    $runslide = $('.runslide li');
+    // $slider.css("background-image", "url(./imgs/Roomimg/campRoom_s01.jpg)");
 
-    function car() {
+    // function car() {
 
-        $background = $slider.css("background-image");
-        $rd = Math.floor(Math.random() * $imgArr.length);
+    //     $background = $slider.css("background-image");
+    //     $rd = Math.floor(Math.random() * $imgArr.length);
 
-        $next = $imgArr[$rd];
+    //     $next = $imgArr[$rd];
 
-        if("url('" + $next + "')" == $background){
-            if($rd != $imgArr.length) {
-                $rd++;
-            }else {
-                $rd--;
-            }
-        }
+    //     if("url('" + $next + "')" == $background){
+    //         if($rd != $imgArr.length) {
+    //             $rd++;
+    //         }else {
+    //             $rd--;
+    //         }
+    //     }
 
-        $slider.css("background-image", "url(./imgs/Rooming/'" + $next + "')");
-    }
+    //     $slider.css("background-image", "url(./imgs/Rooming/'" + $next + "')");
+    // }
 
-    setInterval(car, 1000);
+    // setInterval(car, 1000);
+
+    $runslide.css("background-image",'url(./imgs/Roomimg/campRoom_s01.jpg)')
+    .next().css("background-image",'url(./imgs/Rooming/campRoom_s02.jpg)')
+    .next().css("background-image",'url(./imgs/Rooming/campRoom_s03.jpg)');
+    
 
 
-
-    $("#sec1").css("background-color", "red")
-        .next()
-        .css("background-color", "blue")
-        .next()
-        .css("background-color", "green")
-        .next()
-        .css("background-color", "pink")
-        .next()
-        .css("background-color", "yellow");
+    // $("#sec1").css("background-color", "red")
+    //     .next()
+    //     .css("background-color", "blue")
+    //     .next()
+    //     .css("background-color", "green")
+    //     .next()
+    //     .css("background-color", "pink")
+    //     .next()
+    //     .css("background-color", "yellow");
 </script>
 
-<?php include __DIR__ . '/part/html-foot.php' ?>
+<?php include __DIR__ . '/c_part/c_foot.php' ?>
