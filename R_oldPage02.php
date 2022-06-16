@@ -1,5 +1,84 @@
 <?php require __DIR__ . '/part/connect_db.php';
 
+        
+       
+
+    function build_calendar($month,$year){
+        global $pdo;
+
+        $query = "SELECT * FROM room_order WHERE MONTH(Date)=? AND YEAR(Date)=?";
+        $result = $pdo->prepare($query);
+        $result->bindParam('ss',$month,$year,PDO::PARAM_INT);
+        $booking = array();
+        if($result->execute()){
+            if($result -> numb_row >0 ){
+                while($row = $result->fetchAll(PDO::FETCH_ASSOC)){
+                    $booking[]=$row['date'];
+                }
+            }
+        }
+      
+
+
+        $daysOfWeek = array('星期天','星期一','星期二','星期三','星期四','星期五','星期六');
+        $firstDayOfMonth = mktime(0,0,0,$month,1,$year);
+        $numberDays = date('t',$firstDayOfMonth);
+        $dateComponents = getdate($firstDayOfMonth);
+        $monthName=$dateComponents['month'];
+        $dayOfWeek = $dateComponents['wday'];
+        $dateToday = date('Y-m-d');
+       
+        $prev_month = date('m',mktime(0,0,0,$month-1,1,$year));
+        $prev_year = date('Y',mktime(0,0,0,$month-1,$year));
+        $next_month = date('m',mktime(0,0,0,$month+1,1,$year));
+        $next_year = date('Y',mktime(0,0,0,$month+1,$year));
+        $calendar = "<center><h2 style='padding-bottom:10px;'>$monthName $year</h2>";
+        $calendar.= "<a class='btn btn-primary btn-xs' href='?month=".$prev_month."&year=".$prev_year."'>Prev Month</a>";
+        $calendar.= "<a class='btn btn-primary btn-xs' href='?month=".date('m')."&year=".date('Y')."'>Current Month</a>";
+        $calendar.= "<a class='btn btn-primary btn-xs' href='?month=".$next_month."&year=".$next_year."'>Next Month</a></center>";
+        $calendar.="<br><table class='table table-bordered'>";
+        $calendar.="<tr>";
+        foreach($daysOfWeek as $day){
+            $calendar.= "<th class'header'>$day</th>";
+        } 
+
+        $calendar.="<tr></tr>";
+        $currentDay= 1;
+        if($dayOfWeek >0){
+            for($k = 0 ; $k < $dayOfWeek; $k++){
+                $calendar.="<td class='empty'></td>";
+            }
+        }
+
+        $month = str_pad($month,2,"0",STR_PAD_LEFT);
+        while($currentDay <= $numberDays){
+            if($dayOfWeek == 7){
+                $dayOfWeek = 0 ; 
+                $calendar.= "<tr></tr>"; 
+            }
+
+            $currentDayRel = str_pad($currentDay,2,"0",STR_PAD_LEFT);
+            $date = "$year-$month-$currentDayRel";
+            $dayName = strtolower(date('l',strtotime($date)));
+            $today = $date==date('Y-m-d')?'today':"";
+            
+            $calendar.="<td class='$today'><h4>$currentDayRel</h4> <a class='btn btn-success btn-xs'>Book</a></td>";
+            $currentDay++;
+            $dayOfWeek++;
+        }
+
+        if($dayOfWeek<7){
+            $remainingDays = 7- $dayOfWeek;
+            for($i = 0 ; $i < $remainingDays; $i++){
+                $calendar.= "<td class='empty'></td>";
+            }
+        }
+
+        $calendar.="</tr></table>";
+
+        return $calendar;
+    }
+
 ?>
 
 
@@ -14,60 +93,34 @@
                     <li class="r-first"></li>
                     <li></li>
                     <li></li>
-
+                
                 </ul>
                 <ul class="slider-dots-area position-absolute">
                     <li></li>
                     <li></li>
                 </ul>
             </div>
-            <div id="calender-wrapper" class="calender-wrapper">
-                <div class="calender-bx">
-                    <div id="calender-title" class="disable-select flex center-v around">
-                        <div id="left" class="flex  center-vh">
-                            <span>< </span>
-                        </div>
-                        <p class="flex row center-vh"></p>
-                        <div id="right" class="flex  center-vh">
-                            <span> ></span>
-                        </div>
-                    </div>
-                    <div class="flex row center-vh colorRed disable-select" id="days">
-                        <p>星期一</p>
-                        <p>星期二</p>
-                        <p>星期三</p>
-                        <p>星期四</p>
-                        <p>星期五</p>
-                        <p>星期六</p>
-                        <p>星期天</p>
-                    </div>
-                    <div class="flex row wrap disable-select" id="calender-content"></div>
-                    <div class="flex row center-v end" id="calender-panel">
-                        <div class="flex column center-vh bgColorDarkRed" id="info">
-                            <!-- <div class="flex row center-vh" id="info-titles">
-                                <p class="flex column center-vh">Start Date</p>
-                                <p class="flex column center-vh">End Date</p>
-                            </div> -->
-                            <!-- <div class="flex row center-vh bgColorRed">
-                                <p class="flex column center-vh" id="startdate"></p>
-                                <p class="flex colum center-vh" id="enddate"></p>
-                            </div> -->
-                        </div>
-                        <div class="flex column center-vh bgColorDarkRed" id="clear">
-                            <p>CLEAR SELECTION</p>
-                        </div>
-                    </div>
-                    <div id="calender-buttons" class="flex row center-vh wrap">
-                        <div id="make-booking" class="flex column center-vh width-half">
-                            <p>MARK AVAILABLE</p>
-                        </div>
-                        <!-- <div id="remove-booking" class="flex column center-vh width-half">
-                            <p>MARK UNAVAILABLE</p>
-                        </div> -->
-                    </div>
-                </div>
-            </div>
+            <div class="calenderTable">
+                <div class="col-md-3 calender-bx ">
+                    <?php 
+                        $dateComponents = getdate();
+                        if(isset($_GET['month'])&& isset($_GET['year'])){
+                            $month = $_GET['month'];
+                            $year = $_GET['year'];
+                        }else {
+                            $month = $dateComponents['month'];
+                            $year = $dateComponents['year'];
+                        }
 
+                        echo build_calendar($month,$year);
+                    
+                    
+                    
+                    ?>
+
+                </div>
+                
+            </div>
         </div>
         <div class="opt d-flex justify-content-end align-items-center" id="sec2">
             <div class="optbox d-flex align-items-end justify-content-center">
@@ -94,7 +147,6 @@
 </div>
 
 <?php include __DIR__ . '/c_part/c_scripts.php' ?>
-<script src="./js/calendar.js"></script>
 <script>
     // $("#sec1").css("background-color","red");
     // $("#sec2").css("background-color","blue");
@@ -214,7 +266,7 @@
     // }
 
     $imgArr = [
-
+        
         "campRoom_s02.jpg",
         "campRoom_s03.jpg",
         "campRoom_s04.jpg",
@@ -246,10 +298,10 @@
 
     // setInterval(car, 1000);
 
-    $runslide.css("background-image", 'url(./imgs/Roomimg/campRoom_s01.jpg)')
-        .next().css("background-image", 'url(./imgs/Rooming/campRoom_s02.jpg)')
-        .next().css("background-image", 'url(./imgs/Rooming/campRoom_s03.jpg)');
-
+    $runslide.css("background-image",'url(./imgs/Roomimg/campRoom_s01.jpg)')
+    .next().css("background-image",'url(./imgs/Rooming/campRoom_s02.jpg)')
+    .next().css("background-image",'url(./imgs/Rooming/campRoom_s03.jpg)');
+    
 
 
     // $("#sec1").css("background-color", "red")
